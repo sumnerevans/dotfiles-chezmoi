@@ -1,0 +1,6 @@
+#compdef wgitignore
+
+# Completion for my shell function to retrieve .gitignore files from
+# http://gitignore.io/
+
+_arguments '*:Ignore Type:($(curl -s https://www.gitignore.io/api/list | sed "s/,/ /g"))'
