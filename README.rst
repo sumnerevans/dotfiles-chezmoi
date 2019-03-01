@@ -47,4 +47,6 @@ License
 -------
 
 All of these dotfiles are licensed under the Unlicense. See the
-[LICENSE](./LICENSE) file.
+LICENSE_ file.
+
+.. _LICENSE: https://gitlab.com/sumner/dotfiles/blob/master/LICENSE
