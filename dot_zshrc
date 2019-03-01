@@ -241,18 +241,18 @@ alias gst="git stash"
 
 # Config
 alias getquote="fortune ~/.mutt/quotes"
-alias i3conf="vim ~/.config/i3/config"
-alias muttrc='vim ~/.mutt/muttrc'
-alias quotesfile="vim ~/.mutt/quotes && strfile -r ~/.mutt/quotes"
+alias i3conf="chezmoi edit ~/.config/i3/config"
+alias muttrc='chezmoi edit ~/.mutt/muttrc'
+alias quotesfile="chezmoi edit ~/.mutt/quotes && strfile -r ~/.mutt/quotes"
 alias reload=". ~/.zshrc && echo 'ZSH Config Reloaded from ~/.zshrc'"
 alias soviet="amixer set Master on 50% && mpv --quiet -vo caca 'https://www.youtube.com/watch?v=U06jlgpMtQs'"
 alias sshconf="vim ~/.ssh/config"
-alias swayconf="vim ~/.config/sway/config"
+alias swayconf="chezmoi edit ~/.config/sway/config"
 alias vimrc="realvim ~/.vim/vimrc"
-command -v nvim >/dev/null && alias nvimrc="nvim ~/.config/nvim/init.vim"
-alias vimshort="vim ~/.vim/shortcuts"
-alias xresources="vim ~/.Xresources && xrdb -load ~/.Xresources && echo '~/Xresources reloaded'"
-alias zshrc="vim ~/.zshrc && reload"
+command -v nvim >/dev/null && alias nvimrc="chezmoi edit ~/.config/nvim/init.vim"
+alias vimshort="chezmoi edit ~/.vim/shortcuts"
+alias xresources="chezmoi edit ~/.Xresources && xrdb -load ~/.Xresources && echo '~/Xresources reloaded'"
+alias zshrc="chezmoi edit ~/.zshrc && reload"
 
 alias antioffice='libreoffice --headless --convert-to pdf'
 alias dbs="dropbox-cli status"
