@@ -1,0 +1,11 @@
+[Unit]
+Description=Compton compositor
+
+[Service]
+ExecStart=compton
+Restart=always
+RestartSec=0
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

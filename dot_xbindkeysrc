@@ -1,0 +1,40 @@
+# Screen Brightness Controls
+"light -U 5"
+    XF86MonBrightnessDown
+
+"light -A 5"
+    XF86MonBrightnessUp
+
+# Keyboard Brightness Controls
+"kbdlight down 10"
+    XF86KbdBrightnessDown
+
+"kbdlight up 10"
+    XF86KbdBrightnessUp
+
+# Media Controls
+"playerctl previous"
+    XF86AudioPrev
+
+"playerctl play-pause"
+    XF86AudioPlay
+
+"playerctl next"
+    XF86AudioNext
+
+# Volume Conrols
+"amixer set Master toggle"
+    XF86AudioMute
+
+"amixer set Master playback 5%-"
+    XF86AudioLowerVolume
+
+"amixer set Master playback 5%+"
+    XF86AudioRaiseVolume
+
+"amixer set Capture toggle"
+    XF86AudioMicMute
+
+# Print Screen
+"scrot '%Y-%m-%d-%T.png' -e 'mv $f ~/tmp'"
+    Print

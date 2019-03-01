@@ -1,0 +1,10 @@
+[Unit]
+Description=Offline msmtp
+
+[Service]
+ExecStart=/usr/bin/offlinemsmtp --daemon
+Restart=always
+RestartSec=0
+
+[Install]
+WantedBy=default.target

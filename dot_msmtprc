@@ -1,0 +1,30 @@
+# shared defaults since both are gmail accounts
+defaults
+auth on
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+protocol smtp
+timeout 5
+
+account personal
+host smtp.gmail.com
+port 587
+from sumner.evans98@gmail.com
+user sumner.evans98@gmail.com
+passwordeval "pass show Mail/Offlineimap-Personal | head -n 1"
+
+account tef
+host smtp.gmail.com
+port 587
+from sumner@the-evans.family
+user sumner@the-evans.family
+passwordeval "pass show Mail/the-evans.family | head -n 1"
+
+account mines
+host smtp.mines.edu
+port 587
+from jonathanevans@mines.edu
+user jonathanevans
+passwordeval "pass show School/Mines/MultiPass | head -n 1"
+
+account default : personal

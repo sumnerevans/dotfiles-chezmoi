@@ -1,0 +1,16 @@
+fullname: Sumner Evans
+gitlab:
+  api_root: https://gitlab.com/api/v4/
+  api_key: pass show VCS/GitLab-API-Key|
+sync_time: true
+tableformat: fancy_grid
+project_rates:
+  CSCI 406: 40
+  CSCI 400: 40
+  Grading 101: 15
+customer_addresses:
+  Tracy Camp: |
+    Computer Sceince Department
+    Colorado School of Mines
+customer_aliases:
+  Tracy Camp: Dr. Tracy Camp

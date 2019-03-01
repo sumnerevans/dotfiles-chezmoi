@@ -1,0 +1,17 @@
+[user]
+    email = sumner.evans98@gmail.com
+    name = Sumner Evans
+    signingkey = 8904527AB50022FD
+
+[core]
+    editor = nvim
+    excludesfile = ~/dotfiles/.gitignore_global
+
+[diff]
+    tool = kdiff3
+
+[merge]
+    tool = kdiff3
+
+[commit]
+    gpgsign = true

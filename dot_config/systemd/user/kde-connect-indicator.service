@@ -1,0 +1,11 @@
+[Unit]
+Description=KDE Connect Indicator
+
+[Service]
+ExecStart=/usr/bin/kdeconnect-indicator
+Restart=always
+RestartSec=0
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target

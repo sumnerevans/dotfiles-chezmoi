@@ -1,0 +1,26 @@
+# vim: ft=muttrc
+set realname  = "Jonathan Sumner Evans"
+set from      = "Jonathan Sumner Evans <jonathanevans@mines.edu>"
+set sendmail  = "offlinemsmtp -a mines"
+set mbox      = "+Mines/[Gmail].All Mail"
+set postponed = "+Mines/[Gmail].Drafts"
+set record    = "+Mines/[Gmail].Sent Mail"
+set signature = "python3 ~/.mutt/signatures/mines|"
+
+color status cyan default
+
+bind editor <space> noop
+
+macro index d \
+    "<save-message>+Mines/[Gmail].Trash<enter>" \
+    "move message to the trash"
+
+macro index gd "<delete-message>" "delete the mesage permanently"
+
+macro index y "<save-message>+Mines/[Gmail].All Mail<enter>" "Archive"
+
+# Shortcuts to move things around.
+macro index _ "<save-message>+Mines/Teaching<enter>" "Send to Teaching Folder"
+macro index i "<save-message>+Mines/INBOX<enter>" "Send to INBOX"
+
+alternates '^jonathanevans@mymail.mines.edu$'

@@ -1,0 +1,8 @@
+[Unit]
+Description=Update SSH config with new IP
+
+[Service]
+ExecStart=/home/sumner/bin/public-ip-update sumnerevans.com home
+
+[Install]
+WantedBy=default.target
