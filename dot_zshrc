@@ -475,3 +475,6 @@ ssh-add -l | grep "The agent has no identities" && ssh-add
 
 # Always start with an ls -la
 eval la
+
+# Check and see if there's any configuration which needs to be applied.
+[[ $(chezmoi diff) ]] && echo "$(tput bold)Configuration diffs exist. Run \`chezmoi apply\` to apply new configs.$(tput sgr0)"
