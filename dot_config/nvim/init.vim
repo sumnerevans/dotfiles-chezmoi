@@ -116,7 +116,7 @@ let g:ale_sign_warning = '⚠'
 let g:ale_sign_info = '➤'
 let g:ale_linters = {
             \ 'cpp': ['clangcheck'],
-            \ 'python': [],
+            \ 'python': ['mypy'],
             \ 'rust': ['rls'],
             \}
 let g:ale_fixers = {
@@ -147,7 +147,6 @@ set omnifunc=LanguageClient#complete    " Use LanguageClient as the completion e
 let g:LanguageClient_autoStart = 1      " Automatically start language servers.
 let g:LanguageClient_loadSettings = 1   " Load the settings from settings.json
 let g:LanguageClient_diagnosticsList = "Quickfix"
-let g:LanguageClient_hasSnippetSupport = 0 " Disable snippets?
 let g:LanguageClient_serverCommands = {
     \ 'cpp': ['clangd'],
     \ 'css': ['css-languageserver', '--stdio'],
