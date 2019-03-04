@@ -241,18 +241,18 @@ alias gst="git stash"
 
 # Config
 alias getquote="fortune ~/.mutt/quotes"
-alias i3conf="chezmoi edit ~/.config/i3/config"
-alias muttrc='chezmoi edit ~/.mutt/muttrc'
-alias quotesfile="chezmoi edit ~/.mutt/quotes && strfile -r ~/.mutt/quotes"
+alias i3conf="chezmoi edit ~/.config/i3/config && chezmoi apply"
+alias muttrc='chezmoi edit ~/.mutt/muttrc && chezmoi apply'
+alias quotesfile="chezmoi edit ~/.mutt/quotes && chezmoi apply && strfile -r ~/.mutt/quotes"
 alias reload=". ~/.zshrc && echo 'ZSH Config Reloaded from ~/.zshrc'"
 alias soviet="amixer set Master on 50% && mpv --quiet -vo caca 'https://www.youtube.com/watch?v=U06jlgpMtQs'"
 alias sshconf="vim ~/.ssh/config"
-alias swayconf="chezmoi edit ~/.config/sway/config"
+alias swayconf="chezmoi edit ~/.config/sway/config && chezmoi apply"
 alias vimrc="realvim ~/.vim/vimrc"
-command -v nvim >/dev/null && alias nvimrc="chezmoi edit ~/.config/nvim/init.vim"
-alias vimshort="chezmoi edit ~/.vim/shortcuts"
-alias xresources="chezmoi edit ~/.Xresources && xrdb -load ~/.Xresources && echo '~/Xresources reloaded'"
-alias zshrc="chezmoi edit ~/.zshrc && reload"
+command -v nvim >/dev/null && alias nvimrc="chezmoi edit ~/.config/nvim/init.vim && chezmoi apply"
+alias vimshort="chezmoi edit ~/.vim/shortcuts && chezmoi apply"
+alias xresources="chezmoi edit ~/.Xresources && chezmoi apply && xrdb -load ~/.Xresources && echo '~/Xresources reloaded'"
+alias zshrc="chezmoi edit ~/.zshrc && chezmoi apply && reload"
 
 alias antioffice='libreoffice --headless --convert-to pdf'
 alias dbs="dropbox-cli status"
