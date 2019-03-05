@@ -8,6 +8,14 @@ setopt prompt_subst
 autoload colors zsh/terminfo
 colors
 
+# Update the prompt every second
+TMOUT=1
+
+TRAPALRM() {
+    zle reset-prompt
+}
+
+
 # Just a modified version of adam1
 function __lprompt {
     # If we are in an SSH connection, show "SSH: hostname".
@@ -26,6 +34,8 @@ function __rprompt {
     else
         RESULT="[%F{red}%B%?%b%f]"
     fi
+
+    echo -n "[%*]"
 
     # Local variables for color
     local YELLOW="%F{yellow}"
