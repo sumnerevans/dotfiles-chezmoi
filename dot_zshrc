@@ -1,3 +1,4 @@
+# vim ft=zsh
 # Determine OS
 [[ `uname` == 'Linux'  ]] && export LINUX=1 || export LINUX=
 [[ `uname` == 'Darwin'  ]] && export MACOS=1 || export MACOS=
@@ -319,9 +320,14 @@ function chpwd() {
     while [ $current_dir != '/' ]; do
         if [[ -f $current_dir/.virtualenv &&
               ( ! -v "VIRTUAL_ENV" || "$(cat $current_dir/.virtualenv)" != "$current_ve" ) ]]; then
-            echo -e "\nActivating the '$(cat $current_dir/.virtualenv)' virtual environment..."
-            workon "$(cat $current_dir/.virtualenv)"
-            echo -e "The '$(cat $current_dir/.virtualenv)' virtual environment has been activated."
+            ve=$(cat $current_dir/.virtualenv)
+            echo -e "\nActivating the '${ve}' virtual environment..."
+            workon "${ve}"
+            if [[ "$?" == "0" ]]; then
+                echo -e "The '${ve}' virtual environment has been activated."
+            else
+                echo -e "$(tput bold)$(tput setaf 1)Failed to activate ${ve}!$(tput sgr 0)"
+            fi
             break
         fi
 
