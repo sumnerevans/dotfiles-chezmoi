@@ -13,9 +13,10 @@ colors
 TMOUT=1
 
 TRAPALRM() {
-    zle reset-prompt
+    if [ "$WIDGET" != "complete-word" ]; then
+        zle reset-prompt
+    fi
 }
-
 
 # Just a modified version of adam1
 function __lprompt {
