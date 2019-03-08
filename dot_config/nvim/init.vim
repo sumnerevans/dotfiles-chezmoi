@@ -308,10 +308,10 @@ autocmd BufNewFile,BufRead *.html setlocal spell spelllang=en_gb
 
 " Automatically break lines at 80 characters when writing emails in mutt
 " Enable spell check for emails in mutt and quotes file
-autocmd BufRead $HOME/tmp/mutt-*,$HOME/.mutt/quotes setlocal tw=72
-autocmd BufRead $HOME/tmp/mutt-*,$HOME/.mutt/quotes setlocal spell spelllang=en_gb
-autocmd BufRead $HOME/tmp/mutt-*,$HOME/.mutt/quotes setlocal colorcolumn=72,80
-autocmd BufRead $HOME/tmp/mutt-*,$HOME/.mutt/quotes match Over100Length /\%73v.\+/
+autocmd BufRead $HOME/tmp/mutt-*,$HOME/.local/share/chezmoi/dot_mutt/quotes setlocal tw=72
+autocmd BufRead $HOME/tmp/mutt-*,$HOME/.local/share/chezmoi/dot_mutt/quotes setlocal spell spelllang=en_gb
+autocmd BufRead $HOME/tmp/mutt-*,$HOME/.local/share/chezmoi/dot_mutt/quotes setlocal colorcolumn=72,80
+autocmd BufRead $HOME/tmp/mutt-*,$HOME/.local/share/chezmoi/dot_mutt/quotes match Over100Length /\%73v.\+/
 
 " Use TAB = 2 spaces for a few file types
 autocmd FileType javascript,xhtml,html,scss,yaml,css,markdown,rst,lisp setlocal shiftwidth=2
