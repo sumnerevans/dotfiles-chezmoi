@@ -302,7 +302,7 @@ function chpwd() {
     la
 
     # Fetch if this is a Git repo.
-    [ -d .git ] || git rev-parse --git-dir > /dev/null 2>&1
+    [[ -d .git ]] || git rev-parse --git-dir > /dev/null 2>&1
     if [[ "$?" == "0" ]]; then
         echo -e "Fetching from git in the background..."
         (git fetch 2&>/dev/null &)
@@ -318,7 +318,7 @@ function chpwd() {
     # directory.
     current_ve=$(basename "$VIRTUAL_ENV")
     current_dir=$(command pwd)
-    while [ $current_dir != '/' ]; do
+    while [[ $current_dir != '/' ]]; do
         if [[ -f $current_dir/.virtualenv &&
               ( ! -v "VIRTUAL_ENV" || "$(cat $current_dir/.virtualenv)" != "$current_ve" ) ]]; then
             ve=$(cat $current_dir/.virtualenv)
@@ -483,7 +483,7 @@ command -v rustc >/dev/null && export RUST_SRC_PATH="$(rustc --print sysroot)/li
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
 # Set up the ssh-agent if necesarry
-if [ ! -S ~/.ssh/ssh_auth_sock  ]; then
+if [[ ! -S ~/.ssh/ssh_auth_sock  ]]; then
     eval `ssh-agent`
     ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi

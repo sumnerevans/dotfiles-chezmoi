@@ -89,12 +89,12 @@ highlight Over100Length ctermbg=red ctermfg=white guibg=#BD4F4F
 match Over100Length /\%101v.\+/
 
 " UI =========================================================================
-set colorcolumn=80,100,120                              " Column guides
-set mouse=a                                             " Enable mouse scrolling
-set number                                              " Show the current line number
-set signcolumn=yes                                      " Always show the sign column for git gutter
-set title                                               " Override the terminal title
-set list listchars=tab:\▶\ ,trail:␣,nbsp:␣        " Highlight unwanted whitespace
+set colorcolumn=80,100,120                      " Column guides
+set mouse=a                                     " Enable mouse scrolling
+set number                                      " Show the current line number
+set signcolumn=yes                              " Always show the sign column for git gutter
+set title                                       " Override the terminal title
+set list listchars=tab:\▶\ ,trail:␣,nbsp:␣      " Highlight unwanted whitespace
 set showbreak=↩\ 
 
 " PLUGIN CONFIGURATIONS ======================================================
