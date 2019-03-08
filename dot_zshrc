@@ -9,13 +9,8 @@ setopt prompt_subst
 autoload colors zsh/terminfo
 colors
 
-# Update the prompt every second
-TMOUT=1
-
-TRAPALRM() {
-    if [[ "$WIDGET" != "complete-word" && "$WIDGET" != "expand-or-complete" ]]; then
-        zle reset-prompt
-    fi
+function preexec() {
+    cmd_start=$SECONDS
 }
 
 # Just a modified version of adam1
@@ -37,7 +32,10 @@ function __rprompt {
         RESULT="[%F{red}%B%?%b%f]"
     fi
 
-    echo -n "[%*]"
+    if [ $cmd_start ]; then
+        timer_show=$(($SECONDS - $cmd_start))
+        echo -n "[%F{cyan}${timer_show}s%f]"
+    fi
 
     # Local variables for color
     local YELLOW="%F{yellow}"
