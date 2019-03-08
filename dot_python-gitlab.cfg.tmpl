@@ -1,0 +1,8 @@
+[global]
+default = gitlab
+ssl_verify = true
+timeout = 5
+
+[gitlab]
+url = https://gitlab.com
+private_token = {{ pass "VCS/GitLab-API-Key" }}

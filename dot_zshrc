@@ -13,7 +13,7 @@ colors
 TMOUT=1
 
 TRAPALRM() {
-    if [ "$WIDGET" != "complete-word" ]; then
+    if [[ "$WIDGET" != "complete-word" && "$WIDGET" != "expand-or-complete" ]]; then
         zle reset-prompt
     fi
 }
