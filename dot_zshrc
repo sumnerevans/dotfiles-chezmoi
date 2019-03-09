@@ -15,7 +15,7 @@ function preexec() {
 
 # Just a modified version of adam1
 function __lprompt {
-    # If we are in an SSH connection, show "SSH: hostname".
+    # If we are in an SSH connection, show green "[SSH]".
     if [[ -n $SSH_CONNECTION ]]; then
         echo -n "%B%F{green}[SSH]%f%b "
     fi
