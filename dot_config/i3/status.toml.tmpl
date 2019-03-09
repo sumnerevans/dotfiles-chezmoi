@@ -1,3 +1,5 @@
+# vim: set ft=toml:
+
 theme = "slick"
 icons = "awesome"
 
@@ -17,6 +19,14 @@ inboxes = [
 ]
 threshold_warning = 10
 threshold_critical = 50
+
+[[block]]
+block = "toggle"
+text = "Send Email?"
+command_state = "ls ~/tmp/offlinemsmtp-sendmail >/dev/null && echo 'Send Email'"
+command_on = "touch ~/tmp/offlinemsmtp-sendmail"
+command_off = "rm ~/tmp/offlinemsmtp-sendmail"
+interval = 5
 
 [[block]]
 block = "memory"
