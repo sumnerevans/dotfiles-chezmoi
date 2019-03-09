@@ -2,7 +2,7 @@
 Description=Offline msmtp
 
 [Service]
-ExecStart=/usr/bin/offlinemsmtp --daemon
+ExecStart=/usr/bin/offlinemsmtp --daemon --send-mail-file /home/sumner/tmp/offlinemsmtp-sendmail
 Restart=always
 RestartSec=0
 
