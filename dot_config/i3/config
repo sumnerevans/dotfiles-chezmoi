@@ -185,12 +185,6 @@ bar {
         background $transparent
         separator #aaaaaa
     }
-    # status_command bumblebee-status -m sensors nic disk memory pasink nic time battery \
-    #     -p nic.exclude=tun0,lo,vnet,virbr,docker,veth,br,enp \
-    #     time.format="%a, %Y-%m-%d %H:%M:%S" \
-    #     disk.warning=95 disk.critical=99 \
-    #     layout.lang="3l|us" \
-    #     -t gruvbox-powerline
 }
 
 # Custom Keybindings
