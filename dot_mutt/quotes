@@ -548,7 +548,7 @@ I treat it as write-only memory.
 %
 All of this was a mistake, we should go live in nuclear bunkers and use
 TempleOS... Except MBR still exists.
-    -- Josephine Westarp (LUG Officers group chat)
+    -- Jo (LUG Officers group chat)
 %
 Noah: Oh! I just got that XKCD about loosing the presents under the
     Christmas tree!
@@ -583,4 +583,8 @@ History will be kind to me for I intend to write it.
 You only know what I want you to know; you only see what I want you to
 see.
     -- Art3mis (Ready Player One)
+%
+I ask Jack, "What is a monad transformer?" and he's like "First, imagine
+the entire world is a data type."
+    -- Joseph McKinsey (on talking to Jack Garner about Haskell)
 %

@@ -11,6 +11,7 @@ ctrlp-root
 *_BASE_*
 *_LOCAL_*
 *_REMOTE_*
+.ccls-cache
 
 # Created by https://www.gitignore.io/api/linux,vim,macos
 

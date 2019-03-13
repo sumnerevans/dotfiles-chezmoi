@@ -148,7 +148,7 @@ let g:LanguageClient_autoStart = 1      " Automatically start language servers.
 let g:LanguageClient_loadSettings = 1   " Load the settings from settings.json
 let g:LanguageClient_diagnosticsList = "Quickfix"
 let g:LanguageClient_serverCommands = {
-    \ 'cpp': ['clangd'],
+    \ 'cpp': ['ccls'],
     \ 'css': ['css-languageserver', '--stdio'],
     \ 'html': ['html-languageserver', '--stdio'],
     \ 'javascript': ['javascript-typescript-stdio'],
