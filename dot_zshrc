@@ -1,4 +1,4 @@
-# vim ft=zsh
+# vim: ft=zsh
 # Determine OS
 [[ `uname` == 'Linux'  ]] && export LINUX=1 || export LINUX=
 [[ `uname` == 'Darwin'  ]] && export MACOS=1 || export MACOS=
@@ -460,7 +460,7 @@ elif [[ $MACOS == "1" ]]; then
 fi
 
 # Add to PATH
-export PATH="$HOME/.gem/ruby/2.5.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -490,3 +490,8 @@ ssh-add -l | grep "The agent has no identities" && ssh-add
 
 # Always start with an ls -la
 eval la
+
+# Notify me if I haven't written in my journal for the day.
+if [[ ! -f ~doc/journal/$(date +%Y-%m-%d).rst ]]; then
+    echo "$(tput bold)Make sure to write in your journal today.$(tput sgr 0)"
+fi
