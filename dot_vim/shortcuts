@@ -24,6 +24,7 @@ augroup LaTeX
     autocmd FileType tex inoremap ;min \begin{minted}{(<>)}<Enter>(<>)<Enter>\end{minted}<Esc>2kA{}<Esc>i
     autocmd FileType tex inoremap ;int \int_{(<>)}^{(<>)}<Space>(<>)<Esc>T{i
     autocmd FileType tex inoremap ;sum \sum_{(<>)}^{(<>)}<Space>(<>)<Esc>T{i
+    autocmd FileType tex inoremap ;verb \verb\|\|<Esc>i
 augroup END
 
 " HTML
