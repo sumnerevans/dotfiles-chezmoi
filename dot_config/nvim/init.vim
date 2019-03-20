@@ -115,11 +115,13 @@ let g:ale_sign_error = '✖'              " Consistent sign column with Language
 let g:ale_sign_warning = '⚠'
 let g:ale_sign_info = '➤'
 let g:ale_linters = {
+            \ 'c': ['clangcheck'],
             \ 'cpp': ['clangcheck'],
             \ 'python': ['mypy'],
             \ 'rust': ['rls'],
             \}
 let g:ale_fixers = {
+            \ 'c': ['clang-format'],
             \ 'cpp': ['clang-format'],
             \ 'css': ['stylelint'],
             \ 'haskell': ['brittany'],
@@ -148,6 +150,7 @@ let g:LanguageClient_autoStart = 1      " Automatically start language servers.
 let g:LanguageClient_loadSettings = 1   " Load the settings from settings.json
 let g:LanguageClient_diagnosticsList = "Quickfix"
 let g:LanguageClient_serverCommands = {
+    \ 'c': ['ccls'],
     \ 'cpp': ['ccls'],
     \ 'css': ['css-languageserver', '--stdio'],
     \ 'html': ['html-languageserver', '--stdio'],
@@ -293,6 +296,8 @@ set undodir=~/tmp/nvim/undo//   " Store undo files in ~/tmp to avoid disk I/O
 set directory=~/tmp/nvim/swap// " Store swap files in ~/tmp to aviod disk I/O
 
 " FILETYPE SPECIFIC CONFIGURATIONS ===========================================
+set modeline " allow stuff like vim: set spelllang=en_us at the top of files
+
 " Automatically break lines at 80 characters on TeX/LaTeX, Markdown, and text
 " files
 " Enable spell check on TeX/LaTeX, Markdown, and text files
