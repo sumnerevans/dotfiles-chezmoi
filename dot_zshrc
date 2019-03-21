@@ -269,7 +269,7 @@ alias dbs="dropbox-cli status"
 alias grep="grep --color -n"
 alias hostdir="python -m http.server"
 alias iftop='sudo iftop -i any'
-alias journal='vim ~doc/journal/$(date +%Y-%M-%d).rst'
+alias journal='vim ~doc/journal/$(date +%Y-%m-%d).rst'
 [[ "$LINUX" == "1" ]] && alias ls="ls --color -F"
 alias la="ls -a"
 alias ll="ls -lah"

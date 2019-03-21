@@ -20,7 +20,7 @@ macro index gd "<delete-message>" "delete the mesage permanently"
 macro index y "<save-message>+Mines/[Gmail].All Mail<enter>" "Archive"
 
 # Shortcuts to move things around.
-macro index _ "<save-message>+Mines/Teaching<enter>" "Send to Teaching Folder"
+macro index = "<save-message>+Mines/Teaching<enter>" "Send to Teaching Folder"
 macro index i "<save-message>+Mines/INBOX<enter>" "Send to INBOX"
 
 alternates '^jonathanevans@mymail.mines.edu$'
