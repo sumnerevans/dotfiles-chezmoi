@@ -87,5 +87,5 @@ augroup END
 " C and CUDA
 augroup C_CUDA
     autocmd!
-    autocmd FileType c,cuda inoremap ;pr printf();<Esc>ba
+    autocmd FileType cuda inoremap ;pr cout <<  << endl;<Esc>2bhi
 augroup END

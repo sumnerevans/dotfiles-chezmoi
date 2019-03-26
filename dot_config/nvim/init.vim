@@ -152,6 +152,7 @@ let g:LanguageClient_diagnosticsList = "Quickfix"
 let g:LanguageClient_serverCommands = {
     \ 'c': ['ccls'],
     \ 'cpp': ['ccls'],
+    \ 'cuda': ['ccls'],
     \ 'css': ['css-languageserver', '--stdio'],
     \ 'html': ['html-languageserver', '--stdio'],
     \ 'javascript': ['javascript-typescript-stdio'],
