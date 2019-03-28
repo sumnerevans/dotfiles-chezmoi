@@ -15,9 +15,9 @@ set $term termite
 set $gap 7
 
 # i3-gaps =====================================================================
-# hide_edge_borders both
-# for_window [class="^.*"] border pixel 0
-# gaps inner $gap
+hide_edge_borders both
+for_window [class="^.*"] border pixel 0
+gaps inner $gap
 
 bindsym $mod+F3 gaps inner all set 0
 bindsym $mod+Shift+F3 gaps inner all set $gap

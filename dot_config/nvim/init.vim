@@ -123,6 +123,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
             \ 'c': ['clang-format'],
             \ 'cpp': ['clang-format'],
+            \ 'cuda': ['clang-format'],
             \ 'css': ['stylelint'],
             \ 'haskell': ['brittany'],
             \ 'html': ['prettier'],
