@@ -339,13 +339,13 @@ Whenever we see for loops, we are happy.
     -- Bo Wu (Advanced HPC, Fall 2018)
 %
 [Some] people call *JavaScript* modern.
-    -- Jake Vossen
+    -- Jake Vossen (MHacks 2018)
 %
 Everything is proceeding as I have foreseen.
     -- Emperor Palpatine
 %
 If you saw this code, you would kick us out of ACM.
-    -- Jake Vossen
+    -- Jake Vossen (MHacks 2018)
 %
 Sam: It's kinda like coding by instinct instead of reason.
 Carl: That's called writing JavaScript.
@@ -592,7 +592,7 @@ Ok, you have to admit that gender is at least quantized.
     -- Me
 %
 Jack Garner: We should make Assembly Macros. That would be...
-Me: A programming language!
+Me: A programming language!?!
 %
 When 900 years old, you reach; look as good, you will not.
     -- Yoda
@@ -624,6 +624,16 @@ I've got a bad feeling about this.
 %
 Always in motion is the future.
     -- Yoda
+%
+I'm beginning to understand why people thought Idris was a good idea,
+and that scares me.
+    -- Joseph McKinsey
+%
+This is 2019 and I had a merge conflict with a floppy disk driver.
+    -- Jack Rosenthal
+%
+"Frontend" is everything from the Linux kernel up.
+    -- Jack Rosenthal (about the Chrome OS team)
 %
 This isn't how it's supposed to be!
     -- Viceroy Nute Gunray

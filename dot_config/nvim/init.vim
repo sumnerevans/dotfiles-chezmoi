@@ -131,7 +131,7 @@ let g:ale_fixers = {
             \ 'json': ['prettier'],
             \ 'jsx': ['eslint'],
             \ 'markdown': ['prettier'],
-            \ 'python': ['isort', 'yapf'],
+            \ 'python': ['yapf'],
             \ 'rust': ['rustfmt'],
             \}
 let g:ale_tex_chktex_options = '-I -n18 -n44'
