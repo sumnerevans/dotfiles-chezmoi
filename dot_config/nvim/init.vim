@@ -168,7 +168,7 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F6> :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> @ :call LanguageClient#textDocument_documentSymbol()<CR>
+nnoremap <silent> S :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 
 " ToggleList - toggle the quickfix list by pressing E (for errors)
