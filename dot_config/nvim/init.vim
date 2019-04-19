@@ -150,6 +150,7 @@ set omnifunc=LanguageClient#complete    " Use LanguageClient as the completion e
 let g:LanguageClient_autoStart = 1      " Automatically start language servers.
 let g:LanguageClient_loadSettings = 1   " Load the settings from settings.json
 let g:LanguageClient_diagnosticsList = "Quickfix"
+let g:LanguageClient_loggingFile = expand('~/tmp/LanguageClient.log')
 let g:LanguageClient_serverCommands = {
     \ 'c': ['ccls'],
     \ 'cpp': ['ccls'],
