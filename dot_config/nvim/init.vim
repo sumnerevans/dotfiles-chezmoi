@@ -152,6 +152,7 @@ let g:LanguageClient_loadSettings = 1   " Load the settings from settings.json
 let g:LanguageClient_diagnosticsList = "Quickfix"
 let g:LanguageClient_loggingFile = expand('~/tmp/LanguageClient.log')
 let g:LanguageClient_serverCommands = {
+    \ 'bash': ['bash-language-server', 'start'],
     \ 'c': ['ccls'],
     \ 'cpp': ['ccls'],
     \ 'cuda': ['ccls'],
@@ -162,6 +163,7 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'rust': ['rls'],
     \ 'racket': ['racket', '--lib', 'racket-langserver'],
+    \ 'sh': ['bash-language-server', 'start'],
     \ 'typescript': ['javascript-typescript-stdio'],
 \ }
 
