@@ -1,0 +1,89 @@
+IMAPAccount personal
+Host imap.gmail.com
+User sumner.evans98@gmail.com
+PassCmd "pass Mail/Offlineimap-Personal"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPAccount tef
+Host imap.gmail.com
+User sumner@the-evans.family
+PassCmd "pass Mail/Offlineimap-tef"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPAccount mines
+Host imap.gmail.com
+User jonathanevans@mymail.mines.edu
+PassCmd "pass Mail/Offlineimap-Mines"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore personal-remote
+Account personal
+
+IMAPStore tef-remote
+Account tef
+
+IMAPStore mines-remote
+Account mines
+
+MaildirStore personal-local
+Subfolders Verbatim
+Path ~/Mail/Personal/  # The trailing "/" is important
+Inbox ~/Mail/Personal/INBOX
+
+MaildirStore tef-local
+Subfolders Verbatim
+Path ~/Mail/TEF/  # The trailing "/" is important
+Inbox ~/Mail/TEF/INBOX
+
+MaildirStore mines-local
+Subfolders Verbatim
+Path ~/Mail/Mines/  # The trailing "/" is important
+Inbox ~/Mail/Mines/INBOX
+
+Channel personal-all
+Master :personal-remote:
+Slave :personal-local:
+Patterns *
+Create Both
+Remove Both
+SyncState *
+
+Channel personal-inbox
+Master :personal-remote:
+Slave :personal-local:
+Patterns INBOX
+Create Both
+SyncState *
+
+Channel tef-all
+Master :tef-remote:
+Slave :tef-local:
+Patterns *
+Create Both
+Remove Both
+SyncState *
+
+Channel tef-inbox
+Master :tef-remote:
+Slave :tef-local:
+Patterns INBOX
+Create Both
+SyncState *
+
+Channel mines-all
+Master :mines-remote:
+Slave :mines-local:
+Pattern *
+Create Both
+Remove Both
+SyncState *
+
+Channel mines-inbox
+Master :mines-remote:
+Slave :mines-local:
+Pattern INBOX
+Create Both
+SyncState *
