@@ -37,7 +37,8 @@ set sort_re
 # Set up the mailboxes
 set imap_check_subscribed=yes
 source ~/.mutt/mailboxes
-macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
+macro index 'c' '<change-folder>?<change-dir><home>^K=<enter><tab>'
+macro index 's' '<save-message>?<tab>'
 
 # Look and feel
 set pager_index_lines   = 12

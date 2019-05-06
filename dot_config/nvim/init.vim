@@ -163,6 +163,7 @@ let g:LanguageClient_serverCommands = {
     \ 'python': ['pyls'],
     \ 'rust': ['rls'],
     \ 'racket': ['racket', '--lib', 'racket-langserver'],
+    \ 'scss': ['css-languageserver', '--stdio'],
     \ 'sh': ['bash-language-server', 'start'],
     \ 'typescript': ['javascript-typescript-stdio'],
 \ }
