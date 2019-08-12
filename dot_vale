@@ -6,16 +6,12 @@ MinAlertLevel = suggestion # suggestion, warning or error
 # Global settings (applied to every syntax)
 [*]
 # List of styles to load
-BasedOnStyles = vale, joblint, proselint
+# joblint is not applicable for normal writing. Enable if writing stuff for job posts/resume.
+BasedOnStyles = vale, proselint
+# BasedOnStyles = vale, joblint, proselint
 
 # Vale
 vale.GenderBias = NO # handled by Proselint
-
-# Joblint
-joblint.Benefits = NO       # not applicable for normal writing, I need to use pronouns
-joblint.Competitive = NO    # not applicable for normal writing, I need to use pronouns
-joblint.Gendered = NO       # not applicable for normal writing, I need to use pronouns
-joblint.DevEnv = NO         # Not applicable for normal writing, I talk about my dev env a lot
 
 # Proselint
 proselint.DateCase = NO
