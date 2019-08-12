@@ -1,2 +1,6 @@
 README.rst
 LICENSE
+{{- if eq .chezmoi.hostname "SEvans" }}
+.config/contact_query/*
+.python-gitlab.cfg
+{{- end }}
