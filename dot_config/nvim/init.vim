@@ -117,7 +117,7 @@ let g:ale_sign_info = '➤'
 let g:ale_linters = {
             \ 'c': ['clangcheck'],
             \ 'cpp': ['clangcheck'],
-            \ 'python': ['mypy'],
+            \ 'python': ['pycodestyle'],
             \ 'rust': ['rls'],
             \}
 let g:ale_fixers = {
