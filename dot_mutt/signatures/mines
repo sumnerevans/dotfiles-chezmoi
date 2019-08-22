@@ -2,10 +2,10 @@
 from sig_helper import get_quote
 
 lines = [
-    ('Jonathan Sumner Evans', 'Graduate Student, Computer Science'),
-    ('https://sumnerevans.com', 'Chair, Mines ACM'),
-    ('+1 (720) 459-1501', 'Service Chair, TBP'),
-    ('GPG: B50022FD', 'Linux Help Guru, LUG'),
+    ('Jonathan Sumner Evans', 'CS@Mines Alumnus'),
+    ('https://sumnerevans.com', 'M.S. Computer Science'),
+    ('+1 (720) 459-1501', 'Software Engineer'),
+    ('GPG: B50022FD', 'The Trade Desk'),
 ]
 
 print('\n'.join('{:32}{}'.format(*x) for x in lines))
