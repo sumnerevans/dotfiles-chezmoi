@@ -43,6 +43,17 @@ Notes
 I use NeoVim instead of Vim now. The old Vim config has not been updated in a
 while.
 
+Links to the Most Interesting Dotfiles
+--------------------------------------
+
+- My ``.zshrc``: https://gitlab.com/sumner/dotfiles/blob/master/dot_zshrc
+- My NeoVim config: https://gitlab.com/sumner/dotfiles/blob/master/dot_config/nvim/init.vim
+- My i3 config: https://gitlab.com/sumner/dotfiles/blob/master/dot_config/i3/config
+- My ``i3status-rust`` config: https://gitlab.com/sumner/dotfiles/blob/master/dot_config/i3/status.toml.tmpl
+- My ``muttrc``: https://gitlab.com/sumner/dotfiles/blob/master/dot_mutt/muttrc
+- My quotesfile: https://gitlab.com/sumner/dotfiles/blob/master/dot_mutt/quotes
+- My ``offlineimap`` config: https://gitlab.com/sumner/dotfiles/blob/master/dot_offlineimaprc
+
 License
 -------
 
