@@ -211,7 +211,7 @@ assign [class="Telegram"] $workspace11
 assign [class="Slack"] $workspace11
 
 for_window [class="Spotify"] move container to workspace $workspace12
-for_window [title="Airsonic"] move container to workspace $workspace12
+# for_window [title="Airsonic"] move container to workspace $workspace12
 
 # Screensaver/Lock
 bindsym $mod+Shift+x exec "~/bin/fuzzy_lock_sleep.sh"
