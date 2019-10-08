@@ -1,8 +1,8 @@
 # Screen Brightness Controls
-"light -U 5"
+"xbacklight -5"
     XF86MonBrightnessDown
 
-"light -A 5"
+"xbacklight +5"
     XF86MonBrightnessUp
 
 # Keyboard Brightness Controls
