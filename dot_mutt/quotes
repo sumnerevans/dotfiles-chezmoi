@@ -448,7 +448,7 @@ Don't trampolines jump for you?
 It's fundamentally a vulnerability with if statements.
     -- Sam Sartor (referring to speculative execution attacks)
 %
-Remember when we though this project would be boring?
+Remember when we thought this project would be boring?
     -- Jack Garner (after winning Facebook Global Hackathon Finals)
 %
 When people say "Oh, you're a computer scientist, does that mean you can
