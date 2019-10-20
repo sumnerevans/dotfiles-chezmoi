@@ -177,6 +177,7 @@ hash -d vid=~/Videos
 hash -d fl=~proj/flight
 hash -d gchal=~proj/google-challenge
 hash -d res=~doc/resume
+hash -d sub=~proj/sublime-music
 hash -d sws=~proj/sumnerevans.com
 hash -d tef=~proj/the-evans.family
 hash -d tt=~proj/tracktime
@@ -453,11 +454,11 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/var/lib/snapd/snap/bin:$PATH"
-export PATH="/opt/cuda/bin:$PATH"
 
 # Python Virtual Environment Wrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 command -v /usr/bin/virtualenvwrapper_lazy.sh >/dev/null && source /usr/bin/virtualenvwrapper_lazy.sh
 
 # Do the thing so rust blows up verbosely
