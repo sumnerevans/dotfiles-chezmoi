@@ -211,7 +211,7 @@ assign [class="Telegram"] $workspace11
 assign [class="Slack"] $workspace11
 
 for_window [class="Spotify"] move container to workspace $workspace12
-# for_window [title="Airsonic"] move container to workspace $workspace12
+for_window [class="Sublime Music"] move container to workspace $workspace12
 
 # Screensaver/Lock
 bindsym $mod+Shift+x exec "~/bin/fuzzy_lock_sleep.sh"
@@ -230,7 +230,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id dropbox-cli start
 exec --no-startup-id compton
 exec --no-startup-id riot-desktop
-exec --no-startup-id ~/.webapps/family-the-evans-airsonic-linux-x64/family-the-evans-airsonic
+exec --no-startup-id sublime-music
 
 # External monitor
 exec_always --no-startup-id ~/bin/display-configuration.sh
