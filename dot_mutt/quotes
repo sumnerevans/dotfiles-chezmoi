@@ -638,10 +638,6 @@ This is 2019 and I had a merge conflict with a floppy disk driver.
 This isn't how it's supposed to be!
     -- Viceroy Nute Gunray
 %
-I'm beginning to understand why people thought Idris was a good idea,
-and that scares me.
-    -- Joseph McKinsey
-%
 AI is basically "Problems for which to use Lisp, the class".
     -- Jordan Newport
 %
@@ -702,4 +698,7 @@ We often think Jesus Christ came into this world to make bad people
 good. That's wrong. It's not got anything to do with making bad people
 good, it's coming into the world to make dead people live.
     -- Ravi Zacharias on the Rubin Report
+%
+WebSockets is just TCP sockets in a for loop.
+    -- Robby Zampino
 %
