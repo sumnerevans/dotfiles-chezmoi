@@ -16,11 +16,20 @@
 "playerctl previous"
     XF86AudioPrev
 
+"playerctl previous"
+    m:0x51 + c:49
+
 "playerctl play-pause"
     XF86AudioPlay
 
+"playerctl play-pause"
+    c:49
+
 "playerctl next"
     XF86AudioNext
+
+"playerctl next"
+    m:0x50 + c:49
 
 # Volume Conrols
 "amixer set Master toggle"
