@@ -17,16 +17,16 @@
     XF86AudioPrev
 
 "playerctl previous"
-    m:0x51 + c:49
+    Mod2+Mod4 + Prior
 
 "playerctl play-pause"
     XF86AudioPlay
 
 "playerctl play-pause"
-    c:49
+    Mod2+Mod4 + Up
 
 "playerctl next"
-    XF86AudioNext
+    Mod2+Mod4 + Next
 
 "playerctl next"
     m:0x50 + c:49
