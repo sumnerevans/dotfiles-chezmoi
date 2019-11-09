@@ -25,6 +25,9 @@
 "playerctl play-pause"
     Mod2+Mod4 + Up
 
+"playerctl stop"
+    XF86AudioStop
+
 "playerctl next"
     Mod2+Mod4 + Next
 
