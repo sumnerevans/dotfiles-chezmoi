@@ -2,9 +2,9 @@
 set realname  = "Sumner Evans"
 set from      = "Sumner Evans <sumner.evans98@gmail.com>"
 set sendmail  = "offlinemsmtp -a personal"
-set mbox      = "+Personal/[Gmail]/All Mail"
-set postponed = "+Personal/[Gmail]/Drafts"
-set record    = "+Personal/[Gmail]/Sent Mail"
+set mbox      = "+Personal/Archive"
+set postponed = "+Personal/Drafts"
+set record    = "+Personal/Sent"
 set signature = "python3 ~/.mutt/signatures/personal|"
 
 color status green default
@@ -12,9 +12,9 @@ color status green default
 bind editor <space> noop
 
 macro index d \
-    "<save-message>+Personal/[Gmail]/Trash<enter>" \
+    "<save-message>+Personal/Trash<enter>" \
     "move message to the trash"
 
 macro index gd "<delete-message>" "delete the mesage permanently"
 
-macro index y "<save-message>+Personal/[Gmail]/All Mail<enter>" "Archive"
+macro index y "<save-message>+Personal/Archive<enter>" "Archive"

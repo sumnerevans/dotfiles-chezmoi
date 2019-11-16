@@ -1,6 +1,6 @@
-set spoolfile           = "+Mines/INBOX"
+set spoolfile           = "+Personal/INBOX"
 
-source ~/.mutt/accounts/mines
+source ~/.mutt/accounts/personal
 
 # Switching between accounts
 folder-hook Personal/*  source ~/.mutt/accounts/personal
