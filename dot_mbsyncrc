@@ -1,7 +1,14 @@
 IMAPAccount personal
+Host imap.migadu.com
+User me@sumnerevans.com
+PassCmd "pass Mail/Offlineimap/me@sumnerevans.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPAccount gmail
 Host imap.gmail.com
 User sumner.evans98@gmail.com
-PassCmd "pass Mail/Offlineimap/Personal"
+PassCmd "pass Mail/Offlineimap/Personal-Gmail"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -22,6 +29,9 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 IMAPStore personal-remote
 Account personal
 
+IMAPStore gmail-remote
+Account gmail
+
 IMAPStore tef-remote
 Account tef
 
@@ -32,6 +42,11 @@ MaildirStore personal-local
 Subfolders Verbatim
 Path ~/Mail/Personal/  # The trailing "/" is important
 Inbox ~/Mail/Personal/INBOX
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/Mail/Gmail/  # The trailing "/" is important
+Inbox ~/Mail/Gmail/INBOX
 
 MaildirStore tef-local
 Subfolders Verbatim
@@ -54,6 +69,22 @@ SyncState *
 Channel personal-inbox
 Master :personal-remote:
 Slave :personal-local:
+Patterns INBOX
+Create Both
+Remove Both
+SyncState *
+
+Channel gmail-all
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns *
+Create Both
+Remove Both
+SyncState *
+
+Channel gmail-inbox
+Master :gmail-remote:
+Slave :gmail-local:
 Patterns INBOX
 Create Both
 Remove Both

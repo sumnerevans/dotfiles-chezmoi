@@ -7,6 +7,13 @@ protocol smtp
 timeout 5
 
 account personal
+host smtp.migadu.com
+port 587
+from me@sumnerevans.com
+user me@sumnerevans..com
+passwordeval "pass show Mail/Offlineimap/me@sumnerevans.com | head -n 1"
+
+account gmail
 host smtp.gmail.com
 port 587
 from sumner.evans98@gmail.com
