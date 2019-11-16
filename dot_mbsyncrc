@@ -1,21 +1,21 @@
 IMAPAccount personal
 Host imap.gmail.com
 User sumner.evans98@gmail.com
-PassCmd "pass Mail/Offlineimap-Personal"
+PassCmd "pass Mail/Offlineimap/Personal"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPAccount tef
 Host imap.gmail.com
 User sumner@the-evans.family
-PassCmd "pass Mail/Offlineimap-tef"
+PassCmd "pass Mail/Offlineimap/tef"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPAccount mines
 Host imap.gmail.com
 User jonathanevans@mymail.mines.edu
-PassCmd "pass Mail/Offlineimap-Mines"
+PassCmd "pass Mail/Offlineimap/Mines"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
