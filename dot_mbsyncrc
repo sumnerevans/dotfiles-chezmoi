@@ -13,7 +13,7 @@ SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPAccount tef
-Host imap.gmail.com
+Host imap.migadu.com
 User sumner@the-evans.family
 PassCmd "pass Mail/Offlineimap/tef"
 SSLType IMAPS

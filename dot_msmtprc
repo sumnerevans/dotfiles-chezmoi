@@ -10,7 +10,7 @@ account personal
 host smtp.migadu.com
 port 587
 from me@sumnerevans.com
-user me@sumnerevans..com
+user me@sumnerevans.com
 passwordeval "pass show Mail/Offlineimap/me@sumnerevans.com | head -n 1"
 
 account gmail
@@ -21,7 +21,7 @@ user sumner.evans98@gmail.com
 passwordeval "pass show Mail/Offlineimap/Personal-Gmail | head -n 1"
 
 account tef
-host smtp.gmail.com
+host smtp.migadu.com
 port 587
 from sumner@the-evans.family
 user sumner@the-evans.family
