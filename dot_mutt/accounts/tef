@@ -2,9 +2,9 @@
 set realname  = "Sumner Evans"
 set from      = "Sumner Evans <sumner@the-evans.family>"
 set sendmail  = "offlinemsmtp -a tef"
-set mbox      = "+TEF/[Gmail]/All Mail"
-set postponed = "+TEF/[Gmail]/Drafts"
-set record    = "+TEF/[Gmail]/Sent Mail"
+set mbox      = "+TEF/Archive"
+set postponed = "+TEF/Drafts"
+set record    = "+TEF/Sent"
 set signature = "python3 ~/.mutt/signatures/tef|"
 
 color status green default
@@ -12,9 +12,9 @@ color status green default
 bind editor <space> noop
 
 macro index d \
-    "<save-message>=TEF/[Gmail]/Trash<enter>" \
+    "<save-message>=TEF/Trash<enter>" \
     "move message to the trash"
 
 macro index gd "<delete-message>" "delete the mesage permanently"
 
-macro index y "<save-message>=TEF/[Gmail]/All Mail<enter>" "Archive"
+macro index y "<save-message>=TEF/Archive<enter>" "Archive"
