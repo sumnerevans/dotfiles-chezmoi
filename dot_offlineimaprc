@@ -59,7 +59,7 @@ localfolders = ~/Mail/TEF
 [Repository Personal-Remote]
 type = Gmail
 remoteuser = sumner.evans98@gmail.com
-remotepasseval = get_pass('Offlineimap/Personal-Gmail')
+remotepasseval = get_pass('sumner.evans98@gmail.com')
 realdelete = no
 ssl_version = tls1_2
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
@@ -75,7 +75,7 @@ sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 [Repository TEF-Remote]
 type = Gmail
 remoteuser = sumner@the-evans.family
-remotepasseval = get_pass('Offlineimap/tef')
+remotepasseval = get_pass('the-evans.family')
 realdelete = no
 ssl_version = tls1_2
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt

@@ -11,14 +11,14 @@ host smtp.migadu.com
 port 587
 from me@sumnerevans.com
 user me@sumnerevans.com
-passwordeval "pass show Mail/Offlineimap/me@sumnerevans.com | head -n 1"
+passwordeval "pass show Mail/me@sumnerevans.com | head -n 1"
 
 account gmail
 host smtp.gmail.com
 port 587
 from sumner.evans98@gmail.com
 user sumner.evans98@gmail.com
-passwordeval "pass show Mail/Offlineimap/Personal-Gmail | head -n 1"
+passwordeval "pass show Mail/sumner.evans98@gmail.com | head -n 1"
 
 account tef
 host smtp.migadu.com
