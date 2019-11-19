@@ -1,8 +1,8 @@
 [Unit]
-Description=Compton compositor
+Description=Picom compositor
 
 [Service]
-ExecStart=compton
+ExecStart=picom
 Restart=always
 RestartSec=0
 Environment=DISPLAY=:0

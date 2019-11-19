@@ -219,7 +219,7 @@ bindsym $mod+Shift+x exec "~/bin/fuzzy_lock_sleep.sh"
 # Auto-Start Programs
 exec --no-startup-id firefox-nightly
 # exec --no-startup-id dropbox-cli start
-#exec --no-startup-id compton
+#exec --no-startup-id picom
 #exec --no-startup-id kdeconnect-indicator
 # exec --no-startup-id riot-desktop
 # exec --no-startup-id ~/.webapps/family-the-evans-airsonic-linux-x64/family-the-evans-airsonic
