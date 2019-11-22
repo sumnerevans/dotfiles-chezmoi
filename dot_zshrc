@@ -302,25 +302,11 @@ function chpwd() {
 
     # Automatically activate the virtualenv if it exists in this or any parent
     # directory.
-    current_ve=$(basename "$VIRTUAL_ENV")
-    current_dir=$(command pwd)
-    while [[ $current_dir != '/' ]]; do
-        if [[ -f $current_dir/.virtualenv &&
-              ( ! -v "VIRTUAL_ENV" || "$(cat $current_dir/.virtualenv)" != "$current_ve" ) ]]; then
-            ve=$(cat $current_dir/.virtualenv)
-            echo -e "\nActivating the '${ve}' virtual environment..."
-            workon "${ve}"
-            if [[ "$?" == "0" ]]; then
-                echo -e "The '${ve}' virtual environment has been activated."
-            else
-                echo -e "$(tput bold)$(tput setaf 1)Failed to activate ${ve}!$(tput sgr 0)"
-            fi
-            break
-        fi
-
-        # Go up a directory
-        current_dir=$(dirname $current_dir)
-    done
+    pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
+    if [ $pipenv_dir ]; then
+        echo "Activating ${pipenv_dir} virtual environment."
+        source "${pipenv_dir}/bin/activate"
+    fi
 }
 
 # "delete" files (use ~/tmp as a recycle bin)
@@ -455,11 +441,10 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/var/lib/snapd/snap/bin:$PATH"
 
-# Python Virtual Environment Wrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-command -v /usr/bin/virtualenvwrapper_lazy.sh >/dev/null && source /usr/bin/virtualenvwrapper_lazy.sh
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Do the thing so rust blows up verbosely
 command -v rustc >/dev/null && export RUST_BACKTRACE=1
