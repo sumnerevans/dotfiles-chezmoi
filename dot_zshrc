@@ -303,7 +303,7 @@ function chpwd() {
     # Automatically activate the virtualenv if it exists in this or any parent
     # directory.
     pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
-    if [ $pipenv_dir ]; then
+    if [[ $pipenv_dir && $pipenv_dir != $VIRTUAL_ENV ]]; then
         echo "Activating ${pipenv_dir} virtual environment."
         source "${pipenv_dir}/bin/activate"
     fi
