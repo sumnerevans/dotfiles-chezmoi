@@ -86,7 +86,7 @@ let g:rooter_patterns = ['.rooter_root', 'Makefile', '.git/', 'setup.py', 'Cargo
 
 " Airline - Status bar
 let g:airline_powerline_fonts = 1       " Enable fancy chars
-let g:airline#extensions#languageclient#enabled = 1
+let g:airline#extensions#coc#enabled = 1
 
 " CoC - Linting, Code Completion
 set cmdheight=2
@@ -125,9 +125,12 @@ endfunction
 " Remap for rename current word
 nmap <silent> <F6> <Plug>(coc-rename)
 
+" Go to symbol
+nmap <silent> S :CocList symbols<CR>
+
 " Remap for format selected region
-xmap <C-S-F>  <Plug>(coc-format-selected)
-nmap <C-S-F>  <Plug>(coc-format)
+xmap <C-S-F> <Plug>(coc-format-selected)
+nmap <C-S-F> <Plug>(coc-format)
 
 " FZF - Fuzzy finder
 nnoremap <C-p> :FZF<CR>
@@ -135,14 +138,8 @@ autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-" Language Client - Handling autocomplete for many languages
-" set omnifunc=LanguageClient#complete    " Use LanguageClient as the completion engine
-" let g:LanguageClient_autoStart = 1      " Automatically start language servers.
-" let g:LanguageClient_loadSettings = 1   " Load the settings from settings.json
-" let g:LanguageClient_diagnosticsList = "Quickfix"
-
 " ToggleList - toggle the quickfix list by pressing E (for errors)
-nmap <script> <silent> E :call ToggleQuickfixList()<CR>
+nmap <script> <silent> E :call ToggleLocationList()<CR>
 
 " NERD Tree
 let g:NERDTreeIndicatorMapCustom = {
@@ -182,6 +179,10 @@ set showtabline=2 " always show the tab bar
 map <c-h> :tabp<CR>
 map <c-l> :tabn<CR>
 map <c-t> :tabnew<CR>
+
+" Buffer back and forward
+map <M-H> :bp<CR>
+map <M-L> :bn<CR>
 
 " Navigation between buffers in tab
 set splitbelow          " Split below, rather than above
