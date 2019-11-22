@@ -41,7 +41,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'      " Git integration for NERDTree
 Plug 'alvan/vim-closetag'               " Automatically close HTML tags
 Plug 'aperezdc/vim-template'            " Templates for various types of files
 Plug 'dyng/ctrlsf.vim'                  " Better find
-Plug 'ervandew/supertab'                " Use tab for autocomplete
 Plug 'gioele/vim-autoswap'              " Swap to the already opened file
 Plug 'milkypostman/vim-togglelist'      " Toggle the Quickfix list
 Plug 'terryma/vim-multiple-cursors'     " Allow multiple cursors
@@ -49,24 +48,8 @@ Plug 'tpope/vim-commentary'             " Easy commenting of lines
 Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
 Plug 'jiangmiao/auto-pairs'             " Automatically close parentheses, etc.
 
-" Code Completion
-Plug 'ncm2/ncm2'                        " Code completion Manager
-Plug 'roxma/nvim-yarp'                  " Required for ncm2
-Plug 'ncm2/ncm2-bufword'                " Completions for words in buffer
-Plug 'ncm2/ncm2-path'                   " Completions for paths
-
-" Code Snippets
-Plug 'ncm2/ncm2-ultisnips'              " UltiSnips
-Plug 'SirVer/ultisnips'
-
-" LanguageClient
-Plug 'autozimu/LanguageClient-neovim', {
-  \ 'branch': 'next',
-  \ 'do': 'bash install.sh',
-  \ }
-
-" Linting
-Plug 'w0rp/ale'
+" Language Client
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -105,39 +88,46 @@ let g:rooter_patterns = ['.rooter_root', 'Makefile', '.git/', 'setup.py', 'Cargo
 let g:airline_powerline_fonts = 1       " Enable fancy chars
 let g:airline#extensions#languageclient#enabled = 1
 
-" ALE - Linting
-" let g:ale_open_list = 1                 " Auto open the error list
-" let g:ale_completion_enabled = 1        " Enable completion
-let g:ale_set_loclist = 0               " Limit the size of the ALE output to 5 lines
-let g:ale_set_quickfix = 1              " Limit the size of the ALE output to 5 lines
-let g:ale_list_window_size = 5          " Limit the size of the ALE output to 5 lines
-let g:ale_sign_error = '✖'              " Consistent sign column with Language Client
-let g:ale_sign_warning = '⚠'
-let g:ale_sign_info = '➤'
-let g:ale_linters = {
-            \ 'c': ['clangcheck'],
-            \ 'cpp': ['clangcheck'],
-            \ 'python': ['pycodestyle'],
-            \ 'rust': ['rls'],
-            \}
-let g:ale_fixers = {
-            \ 'c': ['clang-format'],
-            \ 'cpp': ['clang-format'],
-            \ 'cuda': ['clang-format'],
-            \ 'css': ['stylelint'],
-            \ 'haskell': ['brittany'],
-            \ 'html': ['prettier'],
-            \ 'javascript': ['eslint', 'trim_whitespace'],
-            \ 'json': ['prettier'],
-            \ 'jsx': ['eslint'],
-            \ 'markdown': ['prettier'],
-            \ 'python': ['yapf'],
-            \ 'rust': ['rustfmt'],
-            \}
-let g:ale_tex_chktex_options = '-I -n18 -n44'
-let g:ale_cpp_clangtidy_options = '-Wall -std=c++17 -x c++'
-let g:ale_cpp_clangcheck_options = '-- -Wall -std=c++17 -x c++'
-noremap <C-S-F> :ALEFix<CR>
+" CoC - Linting, Code Completion
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap for rename current word
+nmap <silent> <F6> <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <C-S-F>  <Plug>(coc-format-selected)
+nmap <C-S-F>  <Plug>(coc-format)
 
 " FZF - Fuzzy finder
 nnoremap <C-p> :FZF<CR>
@@ -146,50 +136,13 @@ autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " Language Client - Handling autocomplete for many languages
-set omnifunc=LanguageClient#complete    " Use LanguageClient as the completion engine
-let g:LanguageClient_autoStart = 1      " Automatically start language servers.
-let g:LanguageClient_loadSettings = 1   " Load the settings from settings.json
-let g:LanguageClient_diagnosticsList = "Quickfix"
-let g:LanguageClient_loggingFile = expand('~/tmp/LanguageClient.log')
-let g:LanguageClient_serverCommands = {
-    \ 'bash': ['bash-language-server', 'start'],
-    \ 'c': ['ccls'],
-    \ 'cpp': ['ccls'],
-    \ 'cuda': ['ccls'],
-    \ 'css': ['css-languageserver', '--stdio'],
-    \ 'html': ['html-languageserver', '--stdio'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'python': ['pyls'],
-    \ 'rust': ['rls'],
-    \ 'racket': ['racket', '--lib', 'racket-langserver'],
-    \ 'scss': ['css-languageserver', '--stdio'],
-    \ 'sh': ['bash-language-server', 'start'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-\ }
-
-" Language Client keybinds
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F6> :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> S :call LanguageClient#textDocument_documentSymbol()<CR>
-nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
+" set omnifunc=LanguageClient#complete    " Use LanguageClient as the completion engine
+" let g:LanguageClient_autoStart = 1      " Automatically start language servers.
+" let g:LanguageClient_loadSettings = 1   " Load the settings from settings.json
+" let g:LanguageClient_diagnosticsList = "Quickfix"
 
 " ToggleList - toggle the quickfix list by pressing E (for errors)
 nmap <script> <silent> E :call ToggleQuickfixList()<CR>
-
-" ncm2 - Neovim Completion Manager
-autocmd BufEnter * call ncm2#enable_for_buffer()  " enable ncm2 for all buffers
-set completeopt=menu,menuone,preview,noselect,noinsert
-
-" UltiSnips - snippet management
-" Press enter key to trigger snippet expansion
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-
-" c-j c-k for moving in snippet
-let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " NERD Tree
 let g:NERDTreeIndicatorMapCustom = {
@@ -213,9 +166,6 @@ map <S-T> <plug>NERDTreeTabsToggle<CR>
 let g:rainbow_active = 1                " Enable the parentheses coloring
 source $PLUGIN_CONFIG_ROOT/rainbow.vim  " Configuration for rainbow
 
-" Supertab - Use tab for autocomplete
-let g:SuperTabDefaultCompletionType = '<c-n>'   " Pressing tab goes down the
-                                                " list
 " Vim Templates - Templates for various filetypes
 let g:templates_directory = '~/.vim/vim-templates'  " Custom templates
 
