@@ -321,7 +321,7 @@ function chpwd() {
         current_dir=$(dirname $current_dir)
     done
 
-    [[ $in_venv -eq 0 ]] && deactivate && command rm -f ~/tmp/active_pipfile
+    [[ ! -z "$ACTIVE_PIPFILE" && $in_venv -eq 0 ]] && deactivate && export ACTIVE_PIPFILE=
 }
 
 # "delete" files (use ~/tmp as a recycle bin)
