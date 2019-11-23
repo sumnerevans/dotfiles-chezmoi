@@ -302,11 +302,26 @@ function chpwd() {
 
     # Automatically activate the virtualenv if it exists in this or any parent
     # directory.
-    pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
-    if [[ $pipenv_dir && $pipenv_dir != $VIRTUAL_ENV ]]; then
-        echo "Activating ${pipenv_dir} virtual environment."
-        source "${pipenv_dir}/bin/activate"
-    fi
+    current_ve=$(basename "$VIRTUAL_ENV")
+    current_dir=$(command pwd)
+    in_venv=0
+    while [[ $current_dir != '/' ]]; do
+        if [[ -f $current_dir/Pipfile ]]; then
+            if [[ ! -f ~/tmp/active_pipfile || $ACTIVE_PIPFILE != $current_dir ]]; then
+                pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
+                echo "Activating the $pipenv_dir virtualenv."
+                source "${pipenv_dir}/bin/activate"
+                export ACTIVE_PIPFILE=${current_dir}
+                in_venv=1
+                break
+            fi
+        fi
+
+        # Go up a directory
+        current_dir=$(dirname $current_dir)
+    done
+
+    [[ $in_venv -eq 0 ]] && deactivate && command rm -f ~/tmp/active_pipfile
 }
 
 # "delete" files (use ~/tmp as a recycle bin)
@@ -442,6 +457,7 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="/var/lib/snapd/snap/bin:$PATH"
 
 # pyenv
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
