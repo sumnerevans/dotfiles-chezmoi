@@ -223,7 +223,6 @@ bindsym $mod+Shift+x exec "~/bin/fuzzy_lock_sleep.sh"
 exec --no-startup-id firefox-nightly
 exec --no-startup-id dunst
 exec --no-startup-id blueman-applet
-exec --no-startup-id dropbox-cli start
 exec --no-startup-id picom
 exec --no-startup-id riot-desktop
 exec --no-startup-id sublime-music

@@ -252,7 +252,6 @@ alias xresources="chezmoi edit ~/.Xresources && chezmoi apply && xrdb -load ~/.X
 alias zshrc="chezmoi edit ~/.zshrc && chezmoi apply && reload"
 
 alias antioffice='libreoffice --headless --convert-to pdf'
-alias dbs="dropbox-cli status"
 alias grep="grep --color -n"
 alias hostdir="python -m http.server"
 alias iftop='sudo iftop -i any'
