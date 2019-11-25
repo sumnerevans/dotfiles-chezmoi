@@ -306,12 +306,12 @@ function chpwd() {
     in_venv=0
     while [[ $current_dir != '/' ]]; do
         if [[ -f $current_dir/Pipfile ]]; then
-            if [[ ! -f ~/tmp/active_pipfile || $ACTIVE_PIPFILE != $current_dir ]]; then
+            in_venv=1
+            if [[ $ACTIVE_PIPFILE != $current_dir ]]; then
                 pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
                 echo "Activating the $pipenv_dir virtualenv."
                 source "${pipenv_dir}/bin/activate"
                 export ACTIVE_PIPFILE=${current_dir}
-                in_venv=1
                 break
             fi
         fi
@@ -320,7 +320,7 @@ function chpwd() {
         current_dir=$(dirname $current_dir)
     done
 
-    [[ ! -z "$ACTIVE_PIPFILE" && $in_venv -eq 0 ]] && deactivate && export ACTIVE_PIPFILE=
+    [[ ! -z "$ACTIVE_PIPFILE" && $in_venv -eq 0 ]] && deactivate && unset ACTIVE_PIPFILE
 }
 
 # "delete" files (use ~/tmp as a recycle bin)
