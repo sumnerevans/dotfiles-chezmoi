@@ -40,7 +40,11 @@ critical_swap = 95
 
 [[block]]
 block = "music"
+{{- if eq .chezmoi.hostname "jedha" }}
 buttons = ["play", "next"]
+{{- else if eq .chezmoi.hostname "coruscant" }}
+buttons = ["prev", "play", "next"]
+{{- end }}
 
 {{ if eq .chezmoi.hostname "jedha" }}
 [[block]]
