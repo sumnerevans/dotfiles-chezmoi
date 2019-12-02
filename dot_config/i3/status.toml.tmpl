@@ -63,8 +63,8 @@ interval = 5
 block = "toggle"
 text = "WG VPN"
 command_state = "nmcli con show --active | grep 'Wireguard' >/dev/null && echo 'WG VPN'"
-command_on = "nmcli con up id 'WG VPN'"
-command_off = "nmcli con down id 'WG VPN'"
+command_on = "nmcli con up id Wireguard"
+command_off = "nmcli con down id Wireguard"
 interval = 5
 
 [[block]]
