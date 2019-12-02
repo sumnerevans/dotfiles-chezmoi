@@ -53,10 +53,18 @@ block = "backlight"
 
 [[block]]
 block = "toggle"
-text = "VPN"
-command_state = "nmcli con show --active | grep 'Mines VPN' >/dev/null && echo 'VPN'"
+text = "Mines VPN"
+command_state = "nmcli con show --active | grep 'Mines VPN' >/dev/null && echo 'Mines VPN'"
 command_on = "nmcli con up id 'Mines VPN'"
 command_off = "nmcli con down id 'Mines VPN'"
+interval = 5
+
+[[block]]
+block = "toggle"
+text = "WG VPN"
+command_state = "nmcli con show --active | grep 'Wireguard' >/dev/null && echo 'WG VPN'"
+command_on = "nmcli con up id 'WG VPN'"
+command_off = "nmcli con down id 'WG VPN'"
 interval = 5
 
 [[block]]
