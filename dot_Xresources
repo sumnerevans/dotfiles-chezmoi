@@ -60,5 +60,5 @@ rofi.padding:                           6
 rofi.line-margin:                       7
 rofi.location:                          2
 rofi.yoffset:                           80
-rofi.matcher:                           fuzzy
+rofi.matching:                          fuzzy
 rofi.case-sensitive:                    false
