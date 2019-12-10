@@ -225,7 +225,7 @@ exec --no-startup-id dunst
 exec --no-startup-id blueman-applet
 exec --no-startup-id picom
 exec --no-startup-id riot-desktop
-exec --no-startup-id sublime-music
+# exec --no-startup-id sublime-music
 
 # External monitor
 exec_always --no-startup-id ~/bin/display-configuration.sh
