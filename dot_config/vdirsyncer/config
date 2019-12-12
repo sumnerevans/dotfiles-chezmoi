@@ -1,0 +1,3 @@
+[general]
+# A folder where vdirsyncer can store some metadata about each pair.
+status_path = "~/.local/share/vdirsyncer/status/"
