@@ -309,6 +309,11 @@ function chpwd() {
             in_venv=1
             if [[ $ACTIVE_PIPFILE != $current_dir ]]; then
                 pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
+                if [[ "$pipenv_dir" == "" ]]; then
+                    pipenv install --dev
+                    pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
+                fi
+
                 echo "Activating the $pipenv_dir virtualenv."
                 source "${pipenv_dir}/bin/activate"
                 export ACTIVE_PIPFILE=${current_dir}
