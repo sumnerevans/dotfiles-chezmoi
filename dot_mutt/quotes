@@ -732,6 +732,12 @@ Proof: Holdo is incompetent, but thinks she's competent.
        Jar Jar is incompetent, but doesn't think.
     -- Me
 %
+I think I now understand the appeal of a language like Go. There is one
+and only one canonical way to solve this problem. Rust feels like you
+are car shopping. There are 50 different libraries with infinite
+combinations and the differences between them are all kinda pedantic.
+    -- Sam Sartor (talking to Robby about Rust libraries)
+%
 We had a lot of scary LaTeX so it must be true.
     -- Matthew Hodgson
 %
