@@ -42,7 +42,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 bindsym XF86Calculator exec = -- -lines 3
 bindsym F3 exec passmenu -- -i
-bindsym $mod+space exec i3-dmenu-desktop
+bindsym $mod+space exec rofi -show drun -show-icons
 
 # change focus
 bindsym $mod+h focus left
