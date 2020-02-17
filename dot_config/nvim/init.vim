@@ -41,6 +41,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'      " Git integration for NERDTree
 Plug 'alvan/vim-closetag'               " Automatically close HTML tags
 Plug 'aperezdc/vim-template'            " Templates for various types of files
 Plug 'dyng/ctrlsf.vim'                  " Better find
+Plug 'editorconfig/editorconfig-vim'    " Use .editorconfig
 Plug 'gioele/vim-autoswap'              " Swap to the already opened file
 Plug 'milkypostman/vim-togglelist'      " Toggle the Quickfix list
 Plug 'terryma/vim-multiple-cursors'     " Allow multiple cursors
@@ -172,6 +173,9 @@ vmap     <C-S> <Plug>CtrlSFVwordPath
 
 " Signify - VCS gutter
 let g:signify_sign_delete = '-' " Make delete use - rather than _
+
+" Editorconfig
+let g:EditorConfig_max_line_indicator = "exceeding"
 
 " TABS AND BUFFERS ===========================================================
 " Editor Tabs
