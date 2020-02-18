@@ -54,6 +54,27 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
+" CoC Extensions
+let g:coc_global_extensions=[
+            \ 'coc-css',
+            \ 'coc-dictionary',
+            \ 'coc-docker',
+            \ 'coc-elixir',
+            \ 'coc-eslint',
+            \ 'coc-html',
+            \ 'coc-json',
+            \ 'coc-lists',
+            \ 'coc-marketplace',
+            \ 'coc-omnisharp',
+            \ 'coc-python',
+            \ 'coc-rust-analyzer',
+            \ 'coc-snippets',
+            \ 'coc-texlab',
+            \ 'coc-tsserver',
+            \ 'coc-word',
+            \ 'coc-yaml',
+            \ ]
+
 " VARIABLES
 let s:os = system('uname -s')
 let $PLUGIN_CONFIG_ROOT = '$HOME/.config/nvim/plugin_configs'

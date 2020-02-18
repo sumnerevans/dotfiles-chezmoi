@@ -170,6 +170,8 @@ hash -d pass=~/.password-store
 hash -d pics=~/Pictures
 hash -d proj=~/projects
 hash -d pres=~doc/presentations
+hash -d sch=~/school
+hash -d tea=~sch/teaching
 hash -d tmp=~/tmp
 hash -d vid=~/Videos
 
