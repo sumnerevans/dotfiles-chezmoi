@@ -134,7 +134,7 @@ bindcode $mod+Shift+20 move container to workspace $workspace11
 bindcode $mod+Shift+21 move container to workspace $workspace12
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -185,7 +185,8 @@ bar {
 
 # Custom Keybindings
 bindsym --release $mod+c exec clipmenu
-bindsym --release $mod+shift+c exec "scrot -s '%Y-%m-%d-%T.png' -e 'mv $f ~/tmp'"
+bindsym --release $mod+shift+c exec "scrot -s '%Y-%m-%d-%T.png' -e 'mv $f ~/tmp && xclip -selection clipboard -i ~/tmp/$f -t image/png'"
+bindsym $mod+shift+f exec "flameshot gui -p ~/tmp"
 bindcode $mod+34 exec ~/bin/mutt_helper.sh
 bindcode $mod+35 exec riot-desktop
 
