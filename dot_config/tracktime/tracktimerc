@@ -1,3 +1,4 @@
+# vim:ft=yaml
 fullname: Sumner Evans
 gitlab:
   api_root: https://gitlab.com/api/v4/
@@ -8,9 +9,16 @@ project_rates:
   CSCI 406: 40
   CSCI 400: 40
   Grading 101: 15
+customer_rates:
+  TTD: 50
 customer_addresses:
+  TTD: |
+    42 N. Chestnut St
+    Ventura, CA 93001
+    United States of America
   Tracy Camp: |
     Computer Sceince Department
     Colorado School of Mines
 customer_aliases:
+  TTD: The Trade Desk
   Tracy Camp: Dr. Tracy Camp
