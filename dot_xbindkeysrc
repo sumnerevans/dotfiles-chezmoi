@@ -29,6 +29,9 @@
     XF86AudioStop
 
 "playerctl next"
+    XF86AudioNext
+
+"playerctl next"
     Mod2+Mod4 + Next
 
 "playerctl next"
