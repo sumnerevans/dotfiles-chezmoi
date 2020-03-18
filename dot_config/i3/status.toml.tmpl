@@ -79,7 +79,7 @@ interval = 5
 # Ping time
 [[block]]
 block = "custom"
-command = "echo P: $(ping -c 1 -W 1 8.8.8.8 | grep -Po 'time=(.*)' | cut -d '=' -f 2)"
+command = "echo P: $(ping -c 5 -W 1 8.8.8.8 | grep 'rtt' | cut -d '/' -f 5)"
 interval = 5
 
 [[block]]
