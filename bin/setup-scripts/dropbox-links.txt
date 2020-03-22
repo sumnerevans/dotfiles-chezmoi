@@ -1,0 +1,11 @@
+.simplenoterc
+Desktop
+Documents
+Pictures
+projects
+school
+texmf
+.todo
+.ssh/config
+rsync-exclude
+aws-exclude

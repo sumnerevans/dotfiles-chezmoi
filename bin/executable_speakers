@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+~/bin/change_audio_sink.sh 'PCM2704 16-bit stereo audio DAC Analog Stereo'

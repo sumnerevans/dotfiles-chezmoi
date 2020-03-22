@@ -6,9 +6,6 @@ https://gitlab.com/sumner/dotfiles-old.
 
 .. _chezmoi: https://github.com/twpayne/chezmoi/
 
-See also my scripts: https://gitlab.com/sumner/scripts. I put them into
-``~/bin``.
-
 Installation
 ------------
 

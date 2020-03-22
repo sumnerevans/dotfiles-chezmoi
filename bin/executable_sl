@@ -1,0 +1,19 @@
+#! /usr/bin/env python3
+# Reverse ls when you type sl
+
+import subprocess
+
+p = subprocess.Popen(
+    ['ls', '-lah'],
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE,
+    universal_newlines=True)
+output, errors = p.communicate()
+
+lines = output.splitlines()
+
+max_line_len = max(len(l) for l in lines)
+
+for line in output.splitlines():
+    print(' ' * (max_line_len - len(line)), end="")
+    print(line[::-1])
