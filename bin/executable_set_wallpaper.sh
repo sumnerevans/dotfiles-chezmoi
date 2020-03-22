@@ -2,11 +2,17 @@
 
 # THE FUNCTION TO CALL
 # TYPE="mojave_dynamic"
-TYPE="catalina_dynamic"
-# TYPE="random_bg"
+# TYPE="catalina_dynamic"
+TYPE="random_bg"
 
 FILE="$HOME/tmp/bg_list.txt"
-BG_DIR="$HOME/Pictures/wallpapers/"
+BG_DIRS=(
+    $HOME/Pictures/wallpapers/elementary
+    $HOME/Pictures/wallpapers/linux
+    $HOME/Pictures/wallpapers/pexels
+    $HOME/Pictures/wallpapers/star-wars
+    $HOME/Pictures/wallpapers/system76
+)
 TMP_WP="$HOME/tmp/wallpaper.jpg"
 
 pgrep sway > /dev/null
@@ -171,14 +177,19 @@ die () {
 
 load_list() {
     # Append all of the wallpaper file names to bg_list.txt
-    find -L $BG_DIR -type f | shuf | while read bg; do
-        echo $bg >> "$FILE"
+    for bg_dir in "${BG_DIRS[@]}"; do
+        find -L $bg_dir -type f | while read bg; do
+            echo $bg >> "$FILE"
+        done
     done
+    cat $FILE | shuf | tee $FILE
 }
 
 random_bg () {
     # Check args
-    [[ -d "$BG_DIR" ]] || [[ -f "$BG_DIR" ]] || die "$BG_DIR is not a file or directory"
+    for bg_dir in "${BG_DIRS[@]}"; do
+        [[ -d "$bg_dir" ]] || [[ -f "$bg_dir" ]] || die "$bg_dir is not a file or directory"
+    done
 
     # Add shuffle backgrounds into bg_list.txt if necessary
     touch "$FILE"
@@ -186,7 +197,7 @@ random_bg () {
     # Remove the used image from the top of the file
     tail -n +3 $FILE > "$FILE.tmp" && mv "$FILE.tmp" "$FILE"
 
-    [[ $(wc -l <"$FILE") == 0 ]] && load_list $BG_DIR
+    [[ $(wc -l <"$FILE") == 0 ]] && load_list $BG_DIRS
 
     # Set the background
     f1=$(head -1 $FILE)
