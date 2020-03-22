@@ -1,0 +1,8 @@
+[Unit]
+Description=Write a new ping value for rolling ping average calculation
+
+[Service]
+ExecStart=/home/sumner/bin/writeping.sh
+
+[Install]
+WantedBy=default.target
