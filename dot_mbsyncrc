@@ -26,6 +26,13 @@ PassCmd "pass Mail/Offlineimap/Mines"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
+IMAPAccount admin
+Host imap.migadu.com
+User admin@sumnerevans.com
+PassCmd "pass Mail/admin@sumnerevans.com"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
 IMAPStore personal-remote
 Account personal
 
@@ -37,6 +44,9 @@ Account tef
 
 IMAPStore mines-remote
 Account mines
+
+IMAPStore admin-remote
+Account admin
 
 MaildirStore personal-local
 Subfolders Verbatim
@@ -57,6 +67,11 @@ MaildirStore mines-local
 Subfolders Verbatim
 Path ~/Mail/Mines/  # The trailing "/" is important
 Inbox ~/Mail/Mines/INBOX
+
+MaildirStore admin-local
+Subfolders Verbatim
+Path ~/Mail/Admin/  # The trailing "/" is important
+Inbox ~/Mail/Admin/INBOX
 
 Channel personal-all
 Master :personal-remote:
@@ -117,6 +132,22 @@ SyncState *
 Channel mines-inbox
 Master :mines-remote:
 Slave :mines-local:
+Pattern INBOX
+Create Both
+Remove Both
+SyncState *
+
+Channel admin-all
+Master :admin-remote:
+Slave :admin-local:
+Pattern *
+Create Both
+Remove Both
+SyncState *
+
+Channel admin-inbox
+Master :admin-remote:
+Slave :admin-local:
 Pattern INBOX
 Create Both
 Remove Both
