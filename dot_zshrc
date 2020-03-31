@@ -274,6 +274,7 @@ alias tt-slack-update='tt start -c TTD "Slack standup thread update"'
 alias tt-standup='tt start -c TTD "Standup"'
 alias wdir='watch --color -n .5 "ls -lha --color=always"'
 alias xelatex='xelatex -shell-escape'
+alias yay='yay --pacman powerpill'
 alias zathura=$PDFVIEWER
 
 # Use nvim by default if it exists
