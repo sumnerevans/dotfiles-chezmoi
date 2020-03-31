@@ -1,0 +1,7 @@
+{
+    "pacmanbin": "powerpill",
+    "pacmanconf": "/etc/pacman.conf",
+    "sudoloop": true,
+    "timeupdate": false,
+    "devel": true
+}
