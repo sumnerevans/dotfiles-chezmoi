@@ -112,7 +112,7 @@ function __rprompt {
 export PROMPT='$(__lprompt)'
 export RPS1='$(__rprompt)'
 
-export TERM=xterm-256color
+export TERM=screen-256color
 
 # Program Environment Variables
 command -v nvim >/dev/null && export VISUAL=nvim || export VISUAL=vim
@@ -188,6 +188,7 @@ hash -d vid=~/Videos
 # Projects
 hash -d fl=~proj/flight
 hash -d gchal=~proj/google-challenge
+hash -d infra=~proj/infrastructure
 hash -d res=~doc/resume
 hash -d sub=~proj/sublime-music
 hash -d sws=~proj/sumnerevans.com
