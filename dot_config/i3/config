@@ -203,8 +203,9 @@ assign [class="Pale moon"] $workspace1
 assign [class="Firefox"] $workspace1
 assign [class="Nightly"] $workspace1
 
-assign [title="Mutt"] $workspace11
 assign [class="HexChat"] $workspace11
+assign [title="Mutt"] $workspace11
+assign [class="quassel"] $workspace11
 assign [class="Riot"] $workspace11
 assign [class="Telegram"] $workspace11
 assign [class="Slack"] $workspace11

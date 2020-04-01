@@ -41,10 +41,10 @@
 "amixer set Master toggle"
     XF86AudioMute
 
-"amixer set Master playback 5%-"
+"amixer set Master playback 2%-"
     XF86AudioLowerVolume
 
-"amixer set Master playback 5%+"
+"amixer set Master playback 2%+"
     XF86AudioRaiseVolume
 
 "amixer set Capture toggle"

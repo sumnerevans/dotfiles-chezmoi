@@ -1,4 +1,14 @@
 # vim: ft=zsh
+
+# Run tmux.
+if command -v tmux &> /dev/null &&
+    [ -n "$PS1" ] &&
+    [[ ! "$TERM" =~ screen ]] &&
+    [[ ! "$TERM" =~ tmux ]] &&
+    [ -z "$TMUX" ]; then
+  exec tmux && exit
+fi
+
 # Determine OS
 [[ `uname` == 'Linux'  ]] && export LINUX=1 || export LINUX=
 [[ `uname` == 'Darwin'  ]] && export MACOS=1 || export MACOS=

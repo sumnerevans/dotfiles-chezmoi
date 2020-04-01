@@ -15,6 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Workspace
 Plug 'airblade/vim-rooter'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Themes
 Plug 'dracula/vim'
@@ -198,6 +199,15 @@ let g:signify_sign_delete = '-' " Make delete use - rather than _
 " Editorconfig
 let g:EditorConfig_max_line_indicator = "exceeding"
 
+" Tmux integration
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_disable_when_zoomed = 1
+
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+
 " TABS AND BUFFERS ===========================================================
 " Editor Tabs
 set showtabline=2 " always show the tab bar
@@ -212,10 +222,6 @@ map <M-L> :bn<CR>
 " Navigation between buffers in tab
 set splitbelow          " Split below, rather than above
 set splitright          " Split to the right, rather than the left
-map <A-k> <C-W><C-K>
-map <A-j> <C-W><C-J>
-map <A-h> <C-W><C-H>
-map <A-l> <C-W><C-L>
 
 " Quickfix
 au FileType qf call AdjustWindowHeight(5, 5)
