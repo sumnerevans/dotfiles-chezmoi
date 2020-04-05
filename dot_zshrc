@@ -1,14 +1,5 @@
 # vim: ft=zsh
 
-# Run tmux.
-if command -v tmux &> /dev/null &&
-    [ -n "$PS1" ] &&
-    [[ ! "$TERM" =~ screen ]] &&
-    [[ ! "$TERM" =~ tmux ]] &&
-    [ -z "$TMUX" ]; then
-  exec tmux && exit
-fi
-
 # Determine OS
 [[ `uname` == 'Linux'  ]] && export LINUX=1 || export LINUX=
 [[ `uname` == 'Darwin'  ]] && export MACOS=1 || export MACOS=
@@ -112,7 +103,12 @@ function __rprompt {
 export PROMPT='$(__lprompt)'
 export RPS1='$(__rprompt)'
 
-export TERM=screen-256color
+# If tmux, use screen-256color as TERM
+if [ -z "${TMUX+x}" ]; then
+    export TERM=xterm-256color
+else
+    export TERM=screen-256color
+fi
 
 # Program Environment Variables
 command -v nvim >/dev/null && export VISUAL=nvim || export VISUAL=vim
