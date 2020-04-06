@@ -315,7 +315,7 @@ function chpwd() {
 
     # Automatically activate the virtualenv if it exists in this or any parent
     # directory.
-    command -v pipenv >/dev/null && return  # Short circuit if we don't have pipenv
+    command -v pipenv >/dev/null || return  # Short circuit if we don't have pipenv
 
     current_ve=$(basename "$VIRTUAL_ENV")
     current_dir=$(command pwd)
