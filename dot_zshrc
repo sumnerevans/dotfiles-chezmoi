@@ -184,6 +184,7 @@ hash -d vid=~/Videos
 # Projects
 hash -d fl=~proj/flight
 hash -d gchal=~proj/google-challenge
+hash -d hspc=~proj/hspc-problems
 hash -d infra=~proj/infrastructure
 hash -d res=~doc/resume
 hash -d sub=~proj/sublime-music
