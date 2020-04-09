@@ -96,7 +96,7 @@ color body              brightblue      black [-a-z_0-9.]+@[-a-z_0-9.]+
 
 # Color signature verification
 color body              brightgreen     black "^(gpg: )?Good signature"
-color body              brightgreen     black "^(gpg: )?encrypted"
+color body              brightgreen     black "^(gpg: )?Encrypted"
 color body              brightred       black "^(gpg: )?Bad signature"
 color body              red             black "^(gpg: )?Problem signature from:.*"
 color body              red             black "^(gpg: )?warning:"
