@@ -452,6 +452,8 @@ if [[ $LINUX == "1" ]]; then
     fi
     if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
         source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+        export ZSH_AUTOSUGGEST_STRATEGY=(completion match_prev_cmd)
+        export ZSH_AUTOSUGGEST_USE_ASYNC=1
     fi
     if [[ -f /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh ]]; then
         source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
