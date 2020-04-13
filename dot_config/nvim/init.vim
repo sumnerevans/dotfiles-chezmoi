@@ -68,6 +68,7 @@ let g:coc_global_extensions=[
             \ 'coc-docker',
             \ 'coc-elixir',
             \ 'coc-eslint',
+            \ 'coc-go',
             \ 'coc-html',
             \ 'coc-json',
             \ 'coc-lists',
