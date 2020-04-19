@@ -5,12 +5,15 @@
 " - https://github.com/jhgarner/DotFiles
 "
 " Dependencies
-" - python-neovim
-" - wmctrl
+" - bat
 " - fzf
+" - python-neovim
+" - ripgrep
+" - wmctrl
 " - probably others
 
-" PLUG: https://github.com/junegunn/vim-plug =================================
+" PLUG: https://github.com/junegunn/vim-plug
+" =============================================================================
 " Automatically install Vim-Plug if it is not yet installed
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -19,9 +22,15 @@ endif
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Workspace
-Plug 'airblade/vim-rooter'
-Plug 'christoomey/vim-tmux-navigator'
+" Project Navigation and Configuration
+Plug 'airblade/vim-rooter'              " Change vim's cwd to the project root
+Plug 'dyng/ctrlsf.vim'                  " Sublime Text-like search
+Plug 'editorconfig/editorconfig-vim'    " Use .editorconfig
+Plug 'yuki-ycino/fzf-preview.vim'       " Fuzzy finder with preview window
+Plug 'tpope/vim-fugitive'               " Git integration
+
+" Integration with environment
+Plug 'christoomey/vim-tmux-navigator'   " TMUX alt-h,j,k,l integration
 
 " Themes
 Plug 'dracula/vim'
@@ -29,35 +38,29 @@ Plug 'iCyMind/NeoSolarized'
 Plug 'joshdick/onedark.vim'
 Plug 'lanox/lanox-vim-theme'
 Plug 'mhartington/oceanic-next'
+Plug 'ryanoasis/vim-devicons'           " Fancy icons
 
-" Language Support
-Plug 'sheerun/vim-polyglot'             " Supports all of the languages
-Plug 'idris-hackers/idris-vim'          " Idris Support
-
-" UI
-Plug 'jistr/vim-nerdtree-tabs'          " File tree compatibilty with tabs
-Plug 'junegunn/fzf'                     " Fuzzy finder
-Plug 'luochen1990/rainbow'              " Color pairs of parentheses
-Plug 'mhinz/vim-signify'                " VCS integration in the gutter
+" UI Chrome
+Plug 'gioele/vim-autoswap'              " Swap to the already opened file
+Plug 'milkypostman/vim-togglelist'      " Toggle the Quickfix list
 Plug 'scrooloose/nerdtree'              " File tree
 Plug 'vim-airline/vim-airline'          " Cooler status bar
 Plug 'vim-airline/vim-airline-themes'   " Status bar themes
 Plug 'Xuyuanp/nerdtree-git-plugin'      " Git integration for NERDTree
 
-" Editing
+" Editor
 Plug 'alvan/vim-closetag'               " Automatically close HTML tags
 Plug 'aperezdc/vim-template'            " Templates for various types of files
-Plug 'dyng/ctrlsf.vim'                  " Better find
-Plug 'editorconfig/editorconfig-vim'    " Use .editorconfig
-Plug 'gioele/vim-autoswap'              " Swap to the already opened file
-Plug 'milkypostman/vim-togglelist'      " Toggle the Quickfix list
+Plug 'jiangmiao/auto-pairs'             " Automatically close parentheses, etc.
+Plug 'luochen1990/rainbow'              " Color pairs of parentheses
+Plug 'mhinz/vim-signify'                " VCS integration in the gutter
 Plug 'terryma/vim-multiple-cursors'     " Allow multiple cursors
 Plug 'tpope/vim-commentary'             " Easy commenting of lines
 Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
-Plug 'jiangmiao/auto-pairs'             " Automatically close parentheses, etc.
 
-" Language Client
+" Language Support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'             " Syntax support for basically all of the languages
 
 call plug#end()
 
@@ -84,42 +87,151 @@ let g:coc_global_extensions=[
             \ ]
 
 " VARIABLES
+" =============================================================================
 let s:os = system('uname -s')
 let $PLUGIN_CONFIG_ROOT = '$HOME/.config/nvim/plugin_configs'
 
-" COLOR SCHEME ===============================================================
-if $TERM == 'xterm-256color' && !has('gui_running')
+" THEME
+" =============================================================================
+if ($TERM == 'xterm-256color' || $TERM == 'screen-256color') && !has('gui_running')
     set termguicolors
 endif
-colorscheme onedark
+colorscheme OceanicNext
 " set background=dark
 
-highlight NonText ctermfg=DarkRed guifg=#aa3333
-highlight Comment ctermfg=74 guifg=#6a6a6a
+highlight NonText ctermfg=DarkRed guifg=#aa3333 ctermfg=DarkBlue guibg=#1b2b34
+" highlight Comment ctermfg=74 guifg=#6a6a6a
+" TODO: find color is a bit bright
 
 " Highlight past 100 characters
 highlight Over100Length ctermbg=red ctermfg=white guibg=#BD4F4F
 match Over100Length /\%101v.\+/
 
-" UI =========================================================================
-set colorcolumn=80,100,120                      " Column guides
-set mouse=a                                     " Enable mouse scrolling
-set number                                      " Show the current line number
-set signcolumn=yes                              " Always show the sign column for git gutter
-set title                                       " Override the terminal title
-set list listchars=tab:\▶\ ,trail:␣,nbsp:␣      " Highlight unwanted whitespace
-set showbreak=↩\ 
+" PLUGIN CONFIGURATIONS
+" =============================================================================
 
-" PLUGIN CONFIGURATIONS ======================================================
-" Vim Rooter
-let g:rooter_patterns = ['.rooter_root', 'Makefile', '.git/', 'setup.py', 'Cargo.toml', '__init__.py']
+" Project Navigation and Configuration ----------------------------------------
+" Vim Rooter (airblade/vim-rooter)
+let g:rooter_patterns = [
+            \'.rooter_root',
+            \'.git/',
+            \'Makefile',
+            \'setup.py',
+            \'Cargo.toml',
+            \'__init__.py',
+            \]
 
-" Airline - Status bar
-let g:airline_powerline_fonts = 1       " Enable fancy chars
-let g:airline#extensions#coc#enabled = 1
+" CtrlSF (dyng/ctrlsf.vim)
+nmap <C-S> <Plug>CtrlSFPrompt
+vmap <C-S> <Plug>CtrlSFVwordPath
+let g:ctrlsf_ackprg = '/usr/bin/rg'
+let g:ctrlsf_auto_focus = { "at": "start" }
+let g:ctrlsf_default_root = 'cwd'
+let g:ctrlsf_mapping = {
+    \ "next": "n",
+    \ "prev": "N",
+    \ }
+let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_winsize = '30%'
 
-" CoC - Linting, Code Completion
-set cmdheight=2
+" Editorconfig (editorconfig/editorconfig-vim)
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" FZF Preview (yuki-ycino/fzf-preview.vim)
+nnoremap <C-p> :call FzfPreview()<CR>
+let g:fzf_preview_filelist_command = 'fd --type f --hidden --follow --exclude .git'
+let g:fzf_preview_use_dev_icons = 1
+
+function! FzfPreview()
+    silent !git rev-parse --show-toplevel
+    if v:shell_error
+        FzfPreviewFromResources buffer directory
+    else
+        FzfPreviewFromResources buffer project
+    endif
+endfunction
+
+" Integration with Environment ------------------------------------------------
+" Tmux Navigator integration (christoomey/vim-tmux-navigator)
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_disable_when_zoomed = 1
+
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+
+" UI Chrome -------------------------------------------------------------------
+" Vim Autoswap (gioele/vim-autoswap)
+let g:autoswap_detect_tmux = 1
+
+" ToggleList (milkypostman/vim-togglelist)
+nmap <script> <silent> E :call ToggleQuickfixList()<CR>
+" TODO come back to this
+
+" NERD Tree (scrooloose/nerdtree, Xuyuanp/nerdtree-git-plugin)
+let g:NERDTreeBookmarksFile = "$HOME/.local/share/nvim/.NERDTreeBookmarks"
+let g:NerdTreeNaturalSort = 1
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeShowIgnoredStatus = 1
+let g:NERDTreeWinSize = 40
+let g:NERDTreeIgnore = [
+            \'.aux$[[file]]',
+            \'.bk$[[file]]',
+            \'.coverage$[[file]]',
+            \'.egg-info$[[dir]]',
+            \'.fdb_latexmk$[[file]]',
+            \'.fls$[[file]]',
+            \'.git$[[dir]]',
+            \'.gz$[[file]]',
+            \'.hypothesis$[[dir]]',
+            \'.ibc$[[file]]',
+            \'.log$[[file]]',
+            \'.mypy_cache$[[dir]]',
+            \'.nyc_output$[[dir]]',
+            \'.o$[[file]]',
+            \'.out$[[file]]',
+            \'.pyc$',
+            \'.pytest_cache$[[dir]]',
+            \'.ropeproject$[[dir]]',
+            \'.sass-cache$[[dir]]',
+            \'.tmp$[[dir]]',
+            \'__pycache__$[[dir]]',
+            \'_minted-*',
+            \'dist$[[dir]]',
+            \]
+map <S-T> :NERDTreeToggle<CR>
+
+" Airline (vim-airline/vim-airline)
+let g:airline_powerline_fonts = 1                       " Enable fancy chars
+let g:airline#extensions#coc#enabled = 1                " Code competion/linting
+let g:airline#extensions#fugitiveline#enabled = 1       " Git branch, etc
+let g:airline#extensions#nerdtree_status = 1            " Use NERDTree statusline
+let g:airline#extensions#tabline#enabled = 1            " Show the tabline
+let g:airline#extensions#tabline#show_tabs = 0          " Don't show tabs, just buffers
+
+" Editor ----------------------------------------------------------------------
+" Vim Templates (aperezdc/vim-template)
+let g:templates_directory = [
+            \'~/.vim/vim-templates',
+            \'~/.config/nvim/templates',
+            \]
+
+" Vim Autopairs (jiangmiao/auto-pairs)
+let g:AutoPairsFlyMode = 1
+
+" Rainbow (luochen1990/rainbow)
+let g:rainbow_active = 1                " Enable the parentheses coloring
+source $PLUGIN_CONFIG_ROOT/rainbow.vim  " Configuration for rainbow
+
+" Signify (mhinz/vim-signify)
+let g:signify_sign_delete = '-' " Make delete use - rather than _
+
+" Commentary (tpope/vim-commentary)
+noremap <F8> :Commentary<CR>
+
+" Language Support ------------------------------------------------------------
+" CoC (neoclide/coc.nvim)
 set updatetime=300
 set shortmess+=c
 
@@ -142,15 +254,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+nnoremap <silent> K :call CocAction('doHover')<CR>
 
 " Remap for rename current word
 nmap <silent> <F6> <Plug>(coc-rename)
@@ -162,117 +266,58 @@ nmap <silent> S :CocList symbols<CR>
 xmap <C-S-F> <Plug>(coc-format-selected)
 nmap <C-S-F> <Plug>(coc-format)
 
-" FZF - Fuzzy finder
-nnoremap <C-p> :FZF<CR>
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+" VIM SETTINGS
+" =============================================================================
+set colorcolumn=80,100,120                      " Column guides
+set hidden                                      " Don't close when switching buffers
+set list listchars=tab:\▶\ ,trail:␣,nbsp:␣      " Highlight unwanted whitespace
+set mouse=a                                     " Enable mouse scrolling
+set number                                      " Show the current line number
+set pastetoggle=<F2>                            " Make C-S-V paste work better
+set scrolloff=5                                 " Always have 5 lines above/below the current line
+set showbreak=↩\ 
+set signcolumn=yes                              " Always show the sign column for git gutter
+set title                                       " Override the terminal title
+set virtualedit=onemore                         " Allow the cursor to go one past the EOL
 
-" ToggleList - toggle the quickfix list by pressing E (for errors)
-nmap <script> <silent> E :call ToggleLocationList()<CR>
+" Tabs
+set expandtab                                   " Insert spaces instead of tabs
+set shiftwidth=4                                " 4 is the only way
 
-" NERD Tree
-let g:NERDTreeIndicatorMapCustom = {
-            \'Modified': '✹', 'Staged': '✚', 'Untracked': '✭', 'Renamed': '➜', 'Unmerged': '═',
-            \'Deleted': '✖', 'Dirty': '✗', 'Clean': '✔︎', 'Unknown': '?' }
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeIgnore = [
-            \'.git$[[dir]]',
-            \'.sass-cache$[[dir]]', '__pycache__$[[dir]]', '.pyc',
-            \'.nyc_output$[[dir]]', '.tmp$[[dir]]', '.ropeproject$[[dir]]',
-            \'.bk$[[file]]', '.out$[[file]]', '.aux$[[file]]', '.log$[[file]]', '_minted-*',
-            \'.gz$[[file]]', '.fls$[[file]]', '.fdb_latexmk$[[file]]',
-            \'.ibc$[[file]]', '.o$[[file]]',
-            \]
-let g:NERDTreeWinSize = 40
-let g:nerdtree_tabs_open_on_console_startup = 0
-let g:nerdtree_tabs_synchronize_view = 0
-map <S-T> <plug>NERDTreeTabsToggle<CR>
+" Search
+set ignorecase  " ignore case...
+set smartcase   " unless the search string has uppercase letters
 
-" Rainbow - Parentheses coloring
-let g:rainbow_active = 1                " Enable the parentheses coloring
-source $PLUGIN_CONFIG_ROOT/rainbow.vim  " Configuration for rainbow
+" Tabs and Buffers ------------------------------------------------------------
+set showtabline=2       " Always show the tab bar
+set splitbelow          " Default split below, rather than above
+set splitright          " Default split to the right, rather than the left
 
-" Vim Templates - Templates for various filetypes
-let g:templates_directory = '~/.vim/vim-templates'  " Custom templates
+" Buffer navigation
+map <C-H> :bp<CR>
+map <C-L> :bn<CR>
+map <C-W> :bdelete<CR>
 
-" CtrlSF
-nmap     <C-S> <Plug>CtrlSFPrompt
-vmap     <C-S> <Plug>CtrlSFVwordPath
-
-" Signify - VCS gutter
-let g:signify_sign_delete = '-' " Make delete use - rather than _
-
-" Editorconfig
-let g:EditorConfig_max_line_indicator = "exceeding"
-
-" Tmux integration
-let g:tmux_navigator_no_mappings = 1
-let g:tmux_navigator_disable_when_zoomed = 1
-
-nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <A-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
-
-" TABS AND BUFFERS ===========================================================
-" Editor Tabs
-set showtabline=2 " always show the tab bar
-map <c-h> :tabp<CR>
-map <c-l> :tabn<CR>
-map <c-t> :tabnew<CR>
-
-" Buffer back and forward
-map <M-H> :bp<CR>
-map <M-L> :bn<CR>
-
-" Navigation between buffers in tab
-set splitbelow          " Split below, rather than above
-set splitright          " Split to the right, rather than the left
-
-" Quickfix
+" Quickfix --------------------------------------------------------------------
 au FileType qf call AdjustWindowHeight(5, 5)
 function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
-au BufEnter * call MyLastWindow()
-function! MyLastWindow()
-  " if the window is quickfix go on
-  if &buftype=="quickfix"
-    " if this window is last on screen quit without warning
-    if winbufnr(2) == -1
-      quit!
-    endif
-  endif
-endfunction
-
-" EDITING ====================================================================
-set hidden                  " Don't close when switching buffers
-set scrolloff=5             " Always have 5 lines above/below the current line
-set virtualedit=onemore     " Allow the cursor to go one past the EOL
-set pastetoggle=<F2>        " Make C-S-V paste work better
-
-" Tabs
-set shiftwidth=4            " 4 is the only way
-set expandtab               " Insert spaces instead of tabs
-
-" Shortcuts for the things I type a lot in insert mode
+" Shortcuts (for the things I type a lot in insert mode) ----------------------
 source $HOME/.vim/shortcuts
 
-" Make j and k behave nicer when the line wraps
-noremap j gj
-noremap k gk
-
-" Make Vim the use the system clipboard
+" Clipboard (use system keyboard) ---------------------------------------------
 if s:os ==# "Linux\n"
     set clipboard+=unnamedplus
 else
     set clipboard+=unnamed
 endif
 
-" Commenting
-noremap <F8> :Commentary<CR>
+" Custom keybindings ----------------------------------------------------------
+" Make j and k behave nicer when the line wraps
+noremap j gj
+noremap k gk
 
 " Run make
 nnoremap <F5> :make<CR>
@@ -281,16 +326,14 @@ nnoremap <S-F5> :make run<CR>
 " Clean up paragraph
 noremap <C-c> vipgq
 
-" Search
-set ignorecase  " ignore case...
-set smartcase   " unless the search string has uppercase letters
-
-" Undo and Swap (~/tmp is a tmpfs, so writing to it does not use disk)
+" Undo and Swap ---------------------------------------------------------------
+" Note: ~/tmp is a tmpfs, so writing to it does not use disk)
 set undofile                    " Use an undo file
 set undodir=~/tmp/nvim/undo//   " Store undo files in ~/tmp to avoid disk I/O
 set directory=~/tmp/nvim/swap// " Store swap files in ~/tmp to aviod disk I/O
 
-" FILETYPE SPECIFIC CONFIGURATIONS ===========================================
+" FILETYPE SPECIFIC CONFIGURATIONS
+" =============================================================================
 set modeline " allow stuff like vim: set spelllang=en_us at the top of files
 
 " Automatically break lines at 80 characters on TeX/LaTeX, Markdown, and text
@@ -299,7 +342,7 @@ set modeline " allow stuff like vim: set spelllang=en_us at the top of files
 autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rst setlocal tw=80
 autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rst setlocal linebreak breakindent
 autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rst setlocal spell spelllang=en_gb
-autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rst highlight Over100Length none
+autocmd BufNewFile,BufRead *.tex,*.md,*.txt,*.rst match Over100Length /\%81v.\+/
 
 " Automatically break lines at 100 characters when writing HTML files
 " Enable spell check on HTML files

@@ -21,7 +21,7 @@ function __lprompt {
         echo -n "%B%F{green}[SSH]%f%b "
     fi
 
-    echo "%K{blue}%n@%m%k %B%F{cyan}%~%F{white} %# %b%f%k"
+    echo "%F{green}%n@%m%f %B%F{cyan}%~%F{white} %# %b%f"
 }
 
 function __rprompt {
@@ -339,6 +339,9 @@ function chpwd() {
                 echo "Activating the $pipenv_dir virtualenv."
                 source "${pipenv_dir}/bin/activate"
                 export ACTIVE_PIPFILE=${current_dir}
+
+                # Install packages to make neovim work
+                pip install -q neovim
                 break
             fi
         fi

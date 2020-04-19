@@ -11,7 +11,6 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $term termite
 # set $gap 7
 set $gap 0
 
