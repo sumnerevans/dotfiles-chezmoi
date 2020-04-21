@@ -34,7 +34,6 @@ Plug 'christoomey/vim-tmux-navigator'   " TMUX alt-h,j,k,l integration
 
 " Themes
 Plug 'dracula/vim'
-Plug 'iCyMind/NeoSolarized'
 Plug 'joshdick/onedark.vim'
 Plug 'lanox/lanox-vim-theme'
 Plug 'mhartington/oceanic-next'
@@ -65,6 +64,7 @@ call plug#end()
 " CoC Extensions
 let g:coc_global_extensions=[
             \ 'coc-css',
+            \ 'coc-clangd',
             \ 'coc-dictionary',
             \ 'coc-docker',
             \ 'coc-elixir',
@@ -78,7 +78,6 @@ let g:coc_global_extensions=[
             \ 'coc-omnisharp',
             \ 'coc-python',
             \ 'coc-rust-analyzer',
-            \ 'coc-snippets',
             \ 'coc-texlab',
             \ 'coc-tsserver',
             \ 'coc-word',
