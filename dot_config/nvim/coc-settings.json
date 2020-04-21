@@ -1,5 +1,19 @@
 {
     "coc.preferences.jumpCommand": "tab drop",
+    "explorer.keyMappings": {
+      "<cr>": ["expandable?", "expandOrCollapse", "open"]
+    },
+    "explorer.icon.enableNerdfont": true,
+    "explorer.file.column.git.icon.added": "✚",
+    "explorer.file.column.git.icon.deleted": "✖",
+    "explorer.file.column.git.icon.renamed": "➜",
+    "explorer.file.column.git.icon.copied": "➜",
+    "explorer.file.column.git.icon.unmerged": "═",
+    "explorer.file.column.git.icon.untracked": "?",
+    "explorer.file.column.git.icon.ignored": "☒",
+    "explorer.file.column.git.icon.mixed": "✹",
+    "explorer.file.column.git.icon.modified": "✹",
+    "explorer.file.column.git.showIgnored": true,
     "languageserver": {
         "bash": {
             "command": "bash-language-server",

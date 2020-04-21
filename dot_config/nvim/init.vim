@@ -43,10 +43,8 @@ Plug 'ryanoasis/vim-devicons'           " Fancy icons
 " UI Chrome
 Plug 'gioele/vim-autoswap'              " Swap to the already opened file
 Plug 'milkypostman/vim-togglelist'      " Toggle the Quickfix list
-Plug 'scrooloose/nerdtree'              " File tree
 Plug 'vim-airline/vim-airline'          " Cooler status bar
 Plug 'vim-airline/vim-airline-themes'   " Status bar themes
-Plug 'Xuyuanp/nerdtree-git-plugin'      " Git integration for NERDTree
 
 " Editor
 Plug 'alvan/vim-closetag'               " Automatically close HTML tags
@@ -71,6 +69,7 @@ let g:coc_global_extensions=[
             \ 'coc-docker',
             \ 'coc-elixir',
             \ 'coc-eslint',
+            \ 'coc-explorer',
             \ 'coc-go',
             \ 'coc-html',
             \ 'coc-json',
@@ -132,7 +131,7 @@ let g:ctrlsf_mapping = {
     \ "prev": "N",
     \ }
 let g:ctrlsf_position = 'bottom'
-let g:ctrlsf_winsize = '30%'
+let g:ctrlsf_winsize = '70%'
 
 " Editorconfig (editorconfig/editorconfig-vim)
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
@@ -169,39 +168,6 @@ let g:autoswap_detect_tmux = 1
 nmap <script> <silent> E :call ToggleQuickfixList()<CR>
 " TODO come back to this
 
-" NERD Tree (scrooloose/nerdtree, Xuyuanp/nerdtree-git-plugin)
-let g:NERDTreeBookmarksFile = "$HOME/.local/share/nvim/.NERDTreeBookmarks"
-let g:NerdTreeNaturalSort = 1
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeShowIgnoredStatus = 1
-let g:NERDTreeWinSize = 40
-let g:NERDTreeIgnore = [
-            \'.aux$[[file]]',
-            \'.bk$[[file]]',
-            \'.coverage$[[file]]',
-            \'.egg-info$[[dir]]',
-            \'.fdb_latexmk$[[file]]',
-            \'.fls$[[file]]',
-            \'.git$[[dir]]',
-            \'.gz$[[file]]',
-            \'.hypothesis$[[dir]]',
-            \'.ibc$[[file]]',
-            \'.log$[[file]]',
-            \'.mypy_cache$[[dir]]',
-            \'.nyc_output$[[dir]]',
-            \'.o$[[file]]',
-            \'.out$[[file]]',
-            \'.pyc$',
-            \'.pytest_cache$[[dir]]',
-            \'.ropeproject$[[dir]]',
-            \'.sass-cache$[[dir]]',
-            \'.tmp$[[dir]]',
-            \'__pycache__$[[dir]]',
-            \'_minted-*',
-            \'dist$[[dir]]',
-            \]
-map <S-T> :NERDTreeToggle<CR>
-
 " Airline (vim-airline/vim-airline)
 let g:airline_powerline_fonts = 1                       " Enable fancy chars
 let g:airline#extensions#coc#enabled = 1                " Code competion/linting
@@ -216,9 +182,6 @@ let g:templates_directory = [
             \'~/.vim/vim-templates',
             \'~/.config/nvim/templates',
             \]
-
-" Vim Autopairs (jiangmiao/auto-pairs)
-let g:AutoPairsFlyMode = 1
 
 " Rainbow (luochen1990/rainbow)
 let g:rainbow_active = 1                " Enable the parentheses coloring
@@ -253,18 +216,20 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window
+" Hover and rename
+nmap <silent> <F6> <Plug>(coc-rename)
 nnoremap <silent> K :call CocAction('doHover')<CR>
 
-" Remap for rename current word
-nmap <silent> <F6> <Plug>(coc-rename)
-
-" Go to symbol
+" Go to symbol in (document|project)
+nmap <silent> @ :CocList outline<CR>
 nmap <silent> S :CocList symbols<CR>
 
-" Remap for format selected region
+" Remap for format (selected region|document)
 xmap <C-S-F> <Plug>(coc-format-selected)
 nmap <C-S-F> <Plug>(coc-format)
+
+" CoC Explorero
+map <S-T> :CocCommand explorer<CR>
 
 " VIM SETTINGS
 " =============================================================================
@@ -357,7 +322,7 @@ autocmd BufRead $HOME/tmp/mutt-*,$HOME/.local/share/chezmoi/dot_mutt/quotes setl
 autocmd BufRead $HOME/tmp/mutt-*,$HOME/.local/share/chezmoi/dot_mutt/quotes match Over100Length /\%73v.\+/
 
 " Use TAB = 2 spaces for a few file types
-autocmd FileType javascript,xhtml,html,htmldjango,scss,less,yaml,css,markdown,rst,lisp setlocal shiftwidth=2
+autocmd FileType javascript,json,xhtml,html,htmldjango,scss,less,yaml,css,markdown,rst,lisp setlocal shiftwidth=2
 
 " Make spelling a top level syntax element
 autocmd FileType * syntax spell toplevel

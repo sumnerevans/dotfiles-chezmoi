@@ -2,8 +2,8 @@
 
 # THE FUNCTION TO CALL
 # TYPE="mojave_dynamic"
-# TYPE="catalina_dynamic"
-TYPE="random_bg"
+TYPE="catalina_dynamic"
+# TYPE="random_bg"
 
 FILE="$HOME/tmp/bg_list.txt"
 BG_DIRS=(
