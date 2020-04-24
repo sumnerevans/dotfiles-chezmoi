@@ -1,0 +1,10 @@
+[Unit]
+Description=Mail notification daemon
+
+[Service]
+ExecStart=/home/sumner/bin/mailnotify.py
+Restart=always
+RestartSec=0
+
+[Install]
+WantedBy=default.target
