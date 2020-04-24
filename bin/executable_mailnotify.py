@@ -2,15 +2,15 @@
 import email
 import re
 import time
+from email.header import decode_header
 from pathlib import Path
-from typing import Any
 
 import gi
 
 gi.require_version("Notify", "0.7")
 from gi.repository import Notify
 
-from watchdog.events import FileSystemEventHandler, LoggingEventHandler
+from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
 MAILDIR = Path("~/Mail").expanduser()
@@ -32,6 +32,10 @@ class MailWatchDaemon(FileSystemEventHandler):
         except Exception as e:
             print("ERROR", e)
 
+    def _get_header(self, message, header_name: str, default: str = "") -> str:
+        header = decode_header(message.get(header_name, default))[0][0]
+        return header.decode("utf-8") if isinstance(header, bytes) else header
+
     def _do_on_created(self, event):
         mail_path = event.src_path
         if self.metadata_re.match(mail_path):
@@ -43,9 +47,9 @@ class MailWatchDaemon(FileSystemEventHandler):
         with open(mail_path) as f:
             message = email.message_from_file(f)
 
-        from_address = message.get("From")
-        to_address = message.get("Delivered-To")
-        subject = message.get("Subject", "<NO SUBJECT>")
+        from_address = self._get_header(message, "From")
+        to_address = self._get_header(message, "Delivered-To")
+        subject = self._get_header(message, "Subject", "<NO SUBJECT>")
 
         message_content = None
         for payload in message.get_payload():
