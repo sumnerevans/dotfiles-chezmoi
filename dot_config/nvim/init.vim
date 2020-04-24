@@ -84,6 +84,8 @@ let g:coc_global_extensions=[
             \ 'coc-yaml',
             \ ]
 
+set runtimepath^=/home/sumner/projects/coc-vala
+
 " VARIABLES
 " =============================================================================
 let s:os = system('uname -s')
@@ -97,12 +99,12 @@ endif
 colorscheme OceanicNext
 " set background=dark
 
-highlight NonText ctermfg=DarkRed guifg=#aa3333 ctermfg=DarkBlue guibg=#1b2b34
+highlight NonText ctermfg=DarkRed guifg=#aa3333 ctermfg=Grey guibg=#1b2b34
 " highlight Comment ctermfg=74 guifg=#6a6a6a
 " TODO: find color is a bit bright
 
 " Highlight past 100 characters
-highlight Over100Length ctermbg=red ctermfg=white guibg=#BD4F4F
+highlight Over100Length ctermbg=red ctermfg=white guibg=#BD4F4F guifg=#cccccc
 match Over100Length /\%101v.\+/
 
 " PLUGIN CONFIGURATIONS
@@ -164,7 +166,7 @@ nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
 let g:autoswap_detect_tmux = 1
 
 " ToggleList (milkypostman/vim-togglelist)
-nmap <script> <silent> E :call ToggleQuickfixList()<CR>
+nmap <script> <silent> E :call ToggleLocationList()<CR>
 " TODO come back to this
 
 " Airline (vim-airline/vim-airline)

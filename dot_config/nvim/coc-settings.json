@@ -1,64 +1,72 @@
 {
-    "coc.preferences.jumpCommand": "tab drop",
-    "explorer.position": "floating",
-    "explorer.floating.position": "left-center",
-    "explorer.floating.width": 50,
-    "explorer.floating.height": 0,
-    "explorer.keyMappings": {
-      "<cr>": ["expandable?", "expandOrCollapse", "open"]
+  "coc.preferences.jumpCommand": "tab drop",
+  "explorer.width": -40,
+  "explorer.keyMappings": {
+    "<cr>": [
+      "expandable?",
+      "expandOrCollapse",
+      "open"
+    ]
+  },
+  "explorer.icon.enableNerdfont": true,
+  "explorer.file.column.git.icon.added": "✚",
+  "explorer.file.column.git.icon.deleted": "✖",
+  "explorer.file.column.git.icon.renamed": "➜",
+  "explorer.file.column.git.icon.copied": "➜",
+  "explorer.file.column.git.icon.unmerged": "═",
+  "explorer.file.column.git.icon.untracked": "?",
+  "explorer.file.column.git.icon.ignored": "☒",
+  "explorer.file.column.git.icon.mixed": "✹",
+  "explorer.file.column.git.icon.modified": "✹",
+  "explorer.file.column.git.showIgnored": true,
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh",
+        "bash"
+      ]
     },
-    "explorer.icon.enableNerdfont": true,
-    "explorer.file.column.git.icon.added": "✚",
-    "explorer.file.column.git.icon.deleted": "✖",
-    "explorer.file.column.git.icon.renamed": "➜",
-    "explorer.file.column.git.icon.copied": "➜",
-    "explorer.file.column.git.icon.unmerged": "═",
-    "explorer.file.column.git.icon.untracked": "?",
-    "explorer.file.column.git.icon.ignored": "☒",
-    "explorer.file.column.git.icon.mixed": "✹",
-    "explorer.file.column.git.icon.modified": "✹",
-    "explorer.file.column.git.showIgnored": true,
-    "languageserver": {
-        "bash": {
-            "command": "bash-language-server",
-            "args": [
-                "start"
-            ],
-            "filetypes": [
-                "sh",
-                "bash"
-            ]
-        },
-        "racket": {
-            "command": "racket",
-            "args": [
-                "--lib",
-                "racket-langserver"
-            ],
-            "filetypes": [
-                "racket"
-            ]
-        },
-        "ccls": {
-            "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "cuda",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls-root",
-                "compile_commands.json",
-                ".vim/",
-                ".git/"
-            ],
-            "initializationOptions": {
-                "cache": {
-                    "directory": ".ccls-cache"
-                }
-            }
+    "racket": {
+      "command": "racket",
+      "args": [
+        "--lib",
+        "racket-langserver"
+      ],
+      "filetypes": [
+        "racket"
+      ]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": [
+        "c",
+        "cpp",
+        "cuda",
+        "objc",
+        "objcpp"
+      ],
+      "rootPatterns": [
+        ".ccls-root",
+        "compile_commands.json",
+        ".vim/",
+        ".git/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": ".ccls-cache"
         }
+      }
+    },
+    "vala": {
+      "command": "vala-language-server",
+      "args": [],
+      "filetypes": [
+        "vala"
+      ]
     }
+  }
 }
