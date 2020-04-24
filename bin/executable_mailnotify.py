@@ -20,7 +20,7 @@ Notify.init("Mail Notification Daemon")
 
 
 class MailWatchDaemon(FileSystemEventHandler):
-    metadata_re = re.compile(".*\.mbsyncstate\..*$")
+    metadata_re = re.compile(r".*\.mbsyncstate\..*$")
     from_re = re.compile("(.*)<.*@.*>")
 
     def esc(self, string: str) -> str:
@@ -43,21 +43,29 @@ class MailWatchDaemon(FileSystemEventHandler):
         with open(mail_path) as f:
             message = email.message_from_file(f)
 
-        from_address = message.get("from")
-        to_address = message.get("delivered-to")
-        subject = message.get("subject", "<NO SUBJECT>")
+        from_address = message.get("From")
+        to_address = message.get("Delivered-To")
+        subject = message.get("Subject", "<NO SUBJECT>")
 
         message_content = None
         for payload in message.get_payload():
             if isinstance(payload, email.message.Message):
                 content_type = payload.get_content_type()
+                content_disposition = payload.get("Content-Disposition", "")
                 if "encrypted" in content_type:
                     message_content = ["<encrypted message>"]
-                elif content_type == "text/plain":
-                    non_empty_lines = filter(
-                        len, payload.get_payload().strip().split("\n")
+                elif (
+                    content_type == "text/plain"
+                    and "attachment" not in content_disposition
+                ):
+                    payload_lines = (
+                        payload.get_payload(decode=True)
+                        .decode("utf-8")
+                        .strip()
+                        .split("\n")
                     )
-                    message_content = list(non_empty_lines)[:3]
+                    payload_lines = map(self.esc, payload_lines)
+                    message_content = list(filter(len, payload_lines))[:3]
 
         if match := self.from_re.fullmatch(from_address):
             from_address = match.group(1)
@@ -68,10 +76,16 @@ class MailWatchDaemon(FileSystemEventHandler):
 
         notification = Notify.Notification.new(
             self.esc(from_address),
-            "\n".join([self.esc(subject), *map(self.esc, message_content)]),
+            "\n".join(
+                [
+                    f"<i>Subject: {self.esc(subject)}</i>",
+                    f"<i>To: {self.esc(to_address)}</i>",
+                    *message_content,
+                ]
+            ),
             ICON_PATH,
         )
-        notification.set_timeout(10000)
+        notification.set_timeout(15000)
         notification.show()
 
 

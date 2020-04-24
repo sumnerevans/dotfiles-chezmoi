@@ -20,5 +20,5 @@ if pgrep mbsync &>/dev/null; then
     exit 1
 fi
 
-# Limit mbsync to only use 50 Kbps
+# Limit mbsync to only use 4 Mbps
 trickle -u 4096 mbsync -aV 2>&1 | tee ~/tmp/mbsync.log
