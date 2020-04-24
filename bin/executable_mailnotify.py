@@ -28,11 +28,11 @@ class MailWatchDaemon(FileSystemEventHandler):
 
     def on_created(self, event):
         try:
-            self._do_on_created()
+            self._do_on_created(event)
         except Exception as e:
             print("ERROR", e)
 
-    def _do_on_created(self):
+    def _do_on_created(self, event):
         mail_path = event.src_path
         if self.metadata_re.match(mail_path):
             return
