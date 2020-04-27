@@ -2,6 +2,7 @@
 from sig_helper import get_quote, print_contact_info
 
 print('Sumner Evans')
+print('Software Engineer at The Trade Desk')
 print('2 Chronicles 7:14')
 print()
 print_contact_info()

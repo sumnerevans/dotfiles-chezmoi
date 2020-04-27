@@ -5,7 +5,7 @@ set sendmail  = "offlinemsmtp -a gmail"
 set mbox      = "+Gmail/[Gmail]/All Mail"
 set postponed = "+Gmail/[Gmail]/Drafts"
 set record    = "+Gmail/[Gmail]/Sent Mail"
-set signature = "python3 ~/.mutt/signatures/personal|"
+set signature = "python3 ~/.mutt/signatures/gmail|"
 
 color status green default
 
