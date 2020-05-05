@@ -189,7 +189,7 @@ bindsym --release $mod+c exec clipmenu
 bindsym --release $mod+shift+c exec "scrot -s '%Y-%m-%d-%T.png' -e 'mv $f ~/tmp && xclip -selection clipboard -i ~/tmp/$f -t image/png'"
 bindsym $mod+shift+f exec "flameshot gui -p ~/tmp"
 bindcode $mod+34 exec ~/bin/mutt_helper.sh
-bindcode $mod+35 exec riot-desktop
+bindcode $mod+35 exec riot-desktop-nightly
 
 # Program classes
 for_window [instance="lxappearance"] floating enable

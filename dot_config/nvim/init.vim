@@ -58,6 +58,7 @@ Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
 " Language Support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'             " Syntax support for basically all of the languages
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 call plug#end()
 
@@ -229,8 +230,11 @@ nmap <silent> S :CocList symbols<CR>
 xmap <C-S-F> <Plug>(coc-format-selected)
 nmap <C-S-F> <Plug>(coc-format)
 
-" CoC Explorero
+" CoC Explorer
 map <S-T> :CocCommand explorer<CR>
+
+" Markdown Preview (iamcco/markdown-preview.nvim)
+let g:mkdp_auto_close = 0
 
 " VIM SETTINGS
 " =============================================================================
