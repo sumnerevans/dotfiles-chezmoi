@@ -18,7 +18,7 @@ function preexec() {
 function __lprompt {
     # If we are in an SSH connection, show green "[SSH]".
     if [[ -n $SSH_CONNECTION ]]; then
-        echo -n "%B%F{green}[SSH]%f%b "
+        echo -n "%B%F{yellow}[SSH]%f%b "
     fi
 
     echo "%F{green}%n@%m%f %B%F{cyan}%~%F{white} %# %b%f"
