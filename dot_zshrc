@@ -276,6 +276,7 @@ alias journal='vim ~doc/journal/$(date +%Y-%m-%d).rst'
 [[ "$LINUX" == "1" ]] && alias ls="ls --color -F"
 alias la="ls -a"
 alias ll="ls -lah"
+alias man="MANWIDTH=80 man --nh --nj"
 alias ohea='echo "You need to either wake up or go to bed!"'
 [[ "$LINUX" == "1" ]] && alias open='(thunar &> /dev/null &)'
 [[ "$MACOS" == "1" ]] && alias open='open .'
