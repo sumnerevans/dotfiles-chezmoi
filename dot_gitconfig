@@ -18,3 +18,8 @@
 
 [tag]
     gpgsign = true
+
+[sendemail]
+    smtpserver = /usr/bin/offlinemsmtp
+    smtpserveroption = -a
+    smtpserveroption = personal

@@ -79,7 +79,7 @@ interval = 5
 # Ping time
 [[block]]
 block = "custom"
-command = 'printf "P: %0.3f" $(cat ~/tmp/rolling_ping | jq -s add/length)'
+command = 'printf "P: %s" $(~/bin/parse-rolling-ping.sh)'
 interval = 1
 
 [[block]]

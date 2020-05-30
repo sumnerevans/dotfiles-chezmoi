@@ -49,7 +49,11 @@ function __rprompt {
         echo -n "["
         echo -n $GREEN
         echo -n "VE: "
-        echo -n "$(basename $VIRTUAL_ENV)"
+        if [[ $(basename $VIRTUAL_ENV) == ".venv" ]]; then
+            echo -n "$(basename $(dirname $VIRTUAL_ENV))/.venv"
+        else
+            echo -n "$(basename $VIRTUAL_ENV)"
+        fi
         echo -n $RESET
         echo -n "]"
     fi
@@ -333,6 +337,7 @@ function chpwd() {
         if [[ -f "$current_dir/Pipfile" ]]; then
             in_venv=1
             if [[ $ACTIVE_PIPFILE != $current_dir ]]; then
+                [[ ! -z "$ACTIVE_PIPFILE" ]] && deactivate
                 pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
                 if [[ "$pipenv_dir" == "" ]]; then
                     pipenv install --dev
@@ -497,7 +502,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Pipenv
-export PIPENV_MAX_DEPTH=10000    # basically infinite
+export PIPENV_MAX_DEPTH=10000   # basically infinite
+export PIPENV_VENV_IN_PROJECT=1 # store the virtual environment in .venv in the project directory
 
 # Do the thing so rust blows up verbosely
 command -v rustc >/dev/null && export RUST_BACKTRACE=1

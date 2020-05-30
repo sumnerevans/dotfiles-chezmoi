@@ -136,6 +136,7 @@ let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_winsize = '70%'
 
 " Editorconfig (editorconfig/editorconfig-vim)
+let g:EditorConfig_preserve_formatoptions = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " FZF Preview (yuki-ycino/fzf-preview.vim)
@@ -223,7 +224,6 @@ nmap <silent> <F6> <Plug>(coc-rename)
 nnoremap <silent> K :call CocAction('doHover')<CR>
 
 " Go to symbol in (document|project)
-nmap <silent> @ :CocList outline<CR>
 nmap <silent> S :CocList symbols<CR>
 
 " Remap for format (selected region|document)
