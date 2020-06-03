@@ -11,12 +11,12 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-# set $gap 7
-set $gap 0
+set $gap 7
+# set $gap 0
 
 # i3-gaps =====================================================================
-# hide_edge_borders both
-# for_window [class="^.*"] border pixel 0
+hide_edge_borders both
+for_window [class="^.*"] border pixel 0
 gaps inner $gap
 
 bindsym $mod+F3 gaps inner all set 0
@@ -176,6 +176,7 @@ set $transparent #00000090
 bar {
     font pango:Iosevka, FontAwesome 11
     position top
+    modifier $mod
     status_command i3status-rs ~/.config/i3/status.toml
     i3bar_command i3bar -t
     colors {

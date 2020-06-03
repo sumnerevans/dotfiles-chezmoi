@@ -23,3 +23,5 @@
     smtpserver = /usr/bin/offlinemsmtp
     smtpserveroption = -a
     smtpserveroption = personal
+    smtpserveroption = --
+    annotate = yes
