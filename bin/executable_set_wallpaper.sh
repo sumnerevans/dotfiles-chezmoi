@@ -2,16 +2,16 @@
 
 # THE FUNCTION TO CALL
 # TYPE="mojave_dynamic"
-TYPE="catalina_dynamic"
-# TYPE="random_bg"
+# TYPE="catalina_dynamic"
+TYPE="random_bg"
 
 FILE="$HOME/tmp/bg_list.txt"
 BG_DIRS=(
     $HOME/Pictures/wallpapers/elementary
-    $HOME/Pictures/wallpapers/linux
-    $HOME/Pictures/wallpapers/pexels
-    $HOME/Pictures/wallpapers/star-wars
-    $HOME/Pictures/wallpapers/system76
+    # $HOME/Pictures/wallpapers/linux
+    # $HOME/Pictures/wallpapers/pexels
+    # $HOME/Pictures/wallpapers/star-wars
+    # $HOME/Pictures/wallpapers/system76
 )
 TMP_WP="$HOME/tmp/wallpaper.jpg"
 
