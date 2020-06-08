@@ -13,6 +13,9 @@
 [merge]
     tool = kdiff3
 
+[pull]
+    rebase = false
+
 [commit]
     gpgsign = true
 
