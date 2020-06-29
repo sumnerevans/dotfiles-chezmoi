@@ -12,13 +12,6 @@ PassCmd "pass Mail/sumner.evans98@gmail.com"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPAccount tef
-Host imap.migadu.com
-User sumner@the-evans.family
-PassCmd "pass Mail/sumner@the-evans.family"
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
 IMAPAccount mines
 Host imap.gmail.com
 User jonathanevans@mymail.mines.edu
@@ -39,9 +32,6 @@ Account personal
 IMAPStore gmail-remote
 Account gmail
 
-IMAPStore tef-remote
-Account tef
-
 IMAPStore mines-remote
 Account mines
 
@@ -57,11 +47,6 @@ MaildirStore gmail-local
 Subfolders Verbatim
 Path ~/Mail/Gmail/  # The trailing "/" is important
 Inbox ~/Mail/Gmail/INBOX
-
-MaildirStore tef-local
-Subfolders Verbatim
-Path ~/Mail/TEF/  # The trailing "/" is important
-Inbox ~/Mail/TEF/INBOX
 
 MaildirStore mines-local
 Subfolders Verbatim
@@ -100,22 +85,6 @@ SyncState *
 Channel gmail-inbox
 Master :gmail-remote:
 Slave :gmail-local:
-Patterns INBOX
-Create Both
-Remove Both
-SyncState *
-
-Channel tef-all
-Master :tef-remote:
-Slave :tef-local:
-Patterns *
-Create Both
-Remove Both
-SyncState *
-
-Channel tef-inbox
-Master :tef-remote:
-Slave :tef-local:
 Patterns INBOX
 Create Both
 Remove Both

@@ -6,12 +6,10 @@ source ~/.mutt/accounts/personal
 folder-hook Personal/*  source ~/.mutt/accounts/personal
 folder-hook Gmail/*  source ~/.mutt/accounts/gmail
 folder-hook Mines/*     source ~/.mutt/accounts/mines
-folder-hook TEF/*     source ~/.mutt/accounts/tef
 
 macro index P "<change-folder>=Personal/INBOX<enter>"  "go to Personal Inbox"
 macro index M "<change-folder>=Mines/INBOX<enter>"  "go to Mines Inbox"
 macro index A "<change-folder>=Gmail/INBOX<enter>"  "go to Gmail Inbox"
-macro index T "<change-folder>=TEF/INBOX<enter>"  "go to TEF Inbox"
 
 # Fetch mail
 macro index <F5> '!/home/sumner/bin/mailfetch.sh^M'

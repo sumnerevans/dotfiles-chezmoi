@@ -197,7 +197,7 @@ hash -d gchal=~proj/google-challenge
 hash -d hspc=~proj/hspc-problems
 hash -d infra=~proj/infrastructure
 hash -d res=~doc/resume
-hash -d sub=~proj/sublime-music
+hash -d sub=~proj/sublime-music/sublime-music
 hash -d sws=~proj/sumnerevans.com
 hash -d tef=~proj/the-evans.family
 hash -d tt=~proj/tracktime
@@ -318,12 +318,6 @@ function chpwd() {
     if [[ "$?" == "0" ]]; then
         echo -e "Fetching from git in the background..."
         (git fetch 2&>/dev/null &)
-    fi
-
-    # Add node_modules/.bin to path
-    if [[ -d node_modules ]]; then
-        export PATH="$(npm bin):$PATH"
-        echo "NPM added to path"
     fi
 
     # Automatically activate the virtualenv if it exists in this or any parent
@@ -504,6 +498,9 @@ eval "$(pyenv init -)"
 # Pipenv
 export PIPENV_MAX_DEPTH=10000   # basically infinite
 export PIPENV_VENV_IN_PROJECT=1 # store the virtual environment in .venv in the project directory
+
+# Direnv
+eval "$(direnv hook zsh)"
 
 # Do the thing so rust blows up verbosely
 command -v rustc >/dev/null && export RUST_BACKTRACE=1
