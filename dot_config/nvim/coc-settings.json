@@ -4,7 +4,7 @@
   "explorer.keyMappings": {
     "<cr>": [
       "expandable?",
-      "expandOrCollapse",
+      ["expanded?", "collapse", "expand"],
       "open"
     ]
   },

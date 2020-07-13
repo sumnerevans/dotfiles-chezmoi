@@ -258,19 +258,19 @@ alias gst="git stash"
 
 # Config
 alias getquote="fortune ~/.mutt/quotes"
-alias i3conf="chezmoi edit ~/.config/i3/config && chezmoi apply"
-alias muttrc='chezmoi edit ~/.mutt/muttrc && chezmoi apply'
+alias i3conf="chezmoi edit -a ~/.config/i3/config"
+alias muttrc='chezmoi edit -a ~/.mutt/muttrc && chezmoi apply'
 alias projectlist='vim ~nc/projectlist && projectsync'
-alias quotesfile="chezmoi edit ~/.mutt/quotes && chezmoi apply"
+alias quotesfile="chezmoi edit -a ~/.mutt/quotes"
 alias reload=". ~/.zshrc && echo 'ZSH Config Reloaded from ~/.zshrc'"
 alias soviet="amixer set Master on 50% && mpv --quiet -vo caca 'https://www.youtube.com/watch?v=U06jlgpMtQs'"
 alias sshconf="vim ~/.ssh/config"
-alias swayconf="chezmoi edit ~/.config/sway/config && chezmoi apply"
+alias swayconf="chezmoi edit -a ~/.config/sway/config"
 alias vimrc="realvim ~/.vim/vimrc"
-command -v nvim >/dev/null && alias nvimrc="chezmoi edit ~/.config/nvim/init.vim && chezmoi apply"
-alias vimshort="chezmoi edit ~/.vim/shortcuts && chezmoi apply"
-alias xresources="chezmoi edit ~/.Xresources && chezmoi apply && xrdb -load ~/.Xresources && echo '~/Xresources reloaded'"
-alias zshrc="chezmoi edit ~/.zshrc && chezmoi apply && reload"
+command -v nvim >/dev/null && alias nvimrc="chezmoi edit -a ~/.config/nvim/init.vim"
+alias vimshort="chezmoi edit -a ~/.vim/shortcuts"
+alias xresources="chezmoi edit -a ~/.Xresources && xrdb -load ~/.Xresources && echo '~/Xresources reloaded'"
+alias zshrc="chezmoi edit -a ~/.zshrc && reload"
 
 alias antioffice='libreoffice --headless --convert-to pdf'
 alias grep="grep --color -n"
@@ -287,11 +287,12 @@ alias ohea='echo "You need to either wake up or go to bed!"'
 alias pdflatex='pdflatex -shell-escape'
 alias sbcl='rlwrap sbcl'
 alias todo='todo.sh'
-alias tt-ttd='tt start -c TTD'
-alias tt-tv-task='tt start -c TTD -p TV -t jira -i'
+alias tt-plan='tt start -c TTD -p PLAN -t jira -i'
 alias tt-slack-catchup='tt start -c TTD "Slack catchup"'
 alias tt-slack-update='tt start -c TTD "Slack standup thread update"'
 alias tt-standup='tt start -c TTD "Standup"'
+alias tt-ttd='tt start -c TTD'
+alias tt-tv-task='tt start -c TTD -p TV -t jira -i'
 alias wdir='watch --color -n .5 "ls -lha --color=always"'
 alias xelatex='xelatex -shell-escape'
 alias zathura=$PDFVIEWER
@@ -498,6 +499,9 @@ eval "$(pyenv init -)"
 # Pipenv
 export PIPENV_MAX_DEPTH=10000   # basically infinite
 export PIPENV_VENV_IN_PROJECT=1 # store the virtual environment in .venv in the project directory
+
+# opam configuration
+test -r /home/sumner/.opam/opam-init/init.zsh && . /home/sumner/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # Direnv
 eval "$(direnv hook zsh)"

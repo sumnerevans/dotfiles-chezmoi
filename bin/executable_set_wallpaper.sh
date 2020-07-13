@@ -7,7 +7,8 @@ TYPE="random_bg"
 
 FILE="$HOME/tmp/bg_list.txt"
 BG_DIRS=(
-    $HOME/Pictures/wallpapers/elementary
+    $HOME/Pictures/wallpapers
+    # $HOME/Pictures/wallpapers/elementary
     # $HOME/Pictures/wallpapers/linux
     # $HOME/Pictures/wallpapers/pexels
     # $HOME/Pictures/wallpapers/star-wars
