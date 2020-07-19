@@ -1,5 +1,5 @@
 {
-    "pacmanbin": "powerpill",
+    "pacmanbin": "pacman",
     "pacmanconf": "/etc/pacman.conf",
     "sudoloop": true,
     "timeupdate": false,
