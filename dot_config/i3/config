@@ -207,12 +207,13 @@ assign [class="Firefox"] $workspace1
 assign [class="^Nightly$"] $workspace1
 
 # Chat Clients
-assign [class="HexChat"] $workspace11
-assign [title="Mutt"] $workspace11
-assign [class="quassel"] $workspace11
+assign [class="discord"] $workspace11
 assign [class="Element"] $workspace11
-assign [class="Telegram"] $workspace11
+assign [class="HexChat"] $workspace11
+assign [class="quassel"] $workspace11
 assign [class="Slack"] $workspace11
+assign [class="Telegram"] $workspace11
+assign [title="Mutt"] $workspace11
 
 # Music
 assign [class="sublime-music"] $workspace12
