@@ -14,6 +14,8 @@ set $mod Mod4
 set $gap 7
 # set $gap 0
 
+set $term alacritty
+
 # i3-gaps =====================================================================
 hide_edge_borders both
 for_window [class="^.*"] border pixel 0
@@ -33,7 +35,7 @@ font pango:Iosevka 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill

@@ -1,0 +1,5 @@
+{{- if eq .chezmoi.hostname "jedha" }}
+pinentry-program /run/current-system/sw/bin/pinentry
+{{- else }}
+pinentry-program /usr/bin/pinentry
+{{- end }}
