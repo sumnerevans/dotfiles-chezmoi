@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env sh
 
 if [[ $(setxkbmap -query | command grep 'variant:') =~ "3l" ]]; then
     echo "Setting to US"

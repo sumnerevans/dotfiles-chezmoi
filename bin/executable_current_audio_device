@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # Find the description of the active audio sink.
 sinks="$(pacmd list-sinks | command grep -e 'index:' -e 'device.description')"

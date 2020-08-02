@@ -1,6 +1,4 @@
-#! /bin/sh
-#
-# make-links.sh
+#! /usr/bin/env sh
 
 echo "Creating symbolic links..."
 

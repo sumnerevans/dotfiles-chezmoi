@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#! /usr/bin/env sh
 
 # THE FUNCTION TO CALL
 # TYPE="mojave_dynamic"

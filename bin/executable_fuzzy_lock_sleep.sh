@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env sh
 #
 # fuzzy_lock_sleep.sh
 #

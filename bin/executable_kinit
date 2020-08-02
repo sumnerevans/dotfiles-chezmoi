@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env sh
 # Initializes a Kattis problem.
 
 KATTIS_ROOT=$2

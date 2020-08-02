@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 device_description=$1
 

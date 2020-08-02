@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env sh
 #
 # antioffice.sh
 # Converts all MS Office files to PDF as soon as I download them

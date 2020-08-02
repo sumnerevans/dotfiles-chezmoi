@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /usr/bin/env sh
 
 fail=0
 pass=0

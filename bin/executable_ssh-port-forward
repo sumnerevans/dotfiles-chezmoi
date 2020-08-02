@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 print_usage() {
 	echo "Usage: ssh-port-forward <forward_name> <local_port> <forwarded_host> <forwarded_port>"

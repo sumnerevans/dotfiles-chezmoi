@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /usr/bin/env sh
 # Figures out how to XRandr properly for whatever the current display
 # configuration is.
 

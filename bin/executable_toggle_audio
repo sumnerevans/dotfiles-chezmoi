@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 
 # If it's on the headphones, toggle to speakers. Otherwise, toggle to the
 # headphones by default.
