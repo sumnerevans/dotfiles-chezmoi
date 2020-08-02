@@ -8,7 +8,6 @@ SERVICES=(
     nextcloud
     offlinemsmtp
     picom
-    redshift-gtk
     wallpaper
     writeping
 )
