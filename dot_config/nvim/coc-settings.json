@@ -1,6 +1,5 @@
 {
   "coc.preferences.jumpCommand": "tab drop",
-  "explorer.width": -40,
   "explorer.keyMappings": {
     "<cr>": [
       "expandable?",
