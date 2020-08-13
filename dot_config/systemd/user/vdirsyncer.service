@@ -1,0 +1,9 @@
+[Unit]
+Description=Synchronize Calendar and Contacts
+
+[Service]
+ExecStart=/usr/bin/env vdirsyncer sync
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target
