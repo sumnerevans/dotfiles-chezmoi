@@ -42,7 +42,7 @@ def test_internet():
     return run(command, stdout=PIPE, stderr=PIPE).returncode == 0
 
 
-if len(sys.argv) != 2 or len(sys.argv[1].strip()) < 1:
+if len(sys.argv) < 2:
     print('Enter something, you moron.')
     sys.exit(1)
 
@@ -51,7 +51,7 @@ def query_vdirsyncer(query):
     query = query.lower()
 
     contacts_dir = Path(
-        '~/.local/share/vdirsyncer/contacts/contacts').expanduser()
+        '~/.local/share/vdirsyncer/contacts/addressbook').expanduser()
     for contact_file in contacts_dir.glob('*.vcf'):
         with open(contact_file) as cf:
             contact = vobject.readOne(cf.read())
@@ -120,7 +120,7 @@ def query_csmdirsearch(query):
 
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
-    query = sys.argv[1]
+    query = " ".join(sys.argv[1:])
     futures = [
         executor.submit(fn, query) for fn in (
             query_vdirsyncer,
