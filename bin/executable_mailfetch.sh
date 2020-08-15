@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # Dependencies
 # - mbsync: for downloading the mail
 #       community/isync

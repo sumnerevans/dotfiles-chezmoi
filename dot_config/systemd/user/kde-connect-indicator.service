@@ -2,7 +2,7 @@
 Description=KDE Connect Indicator
 
 [Service]
-ExecStart=/usr/bin/kdeconnect-indicator
+ExecStart=/usr/bin/env kdeconnect-indicator
 Restart=always
 RestartSec=0
 Environment=DISPLAY=:0
