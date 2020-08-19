@@ -124,7 +124,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
     futures = [
         executor.submit(fn, query) for fn in (
             query_vdirsyncer,
-            query_goobook,
+            # query_goobook,
             query_gitlab,
             query_csmdirsearch,
         )

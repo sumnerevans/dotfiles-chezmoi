@@ -27,7 +27,7 @@ if len(photos) == 1:
         sys.exit(0)
 
     while True:
-        print("Already have a photo for {vcard.fn.value}. Replace? [Yn]: ", end="")
+        print(f"Already have a photo for {vcard.fn.value}. Replace? [Yn]: ", end="")
         response = input().lower()
         if response == "y":
             break
@@ -37,7 +37,7 @@ if len(photos) == 1:
 if len(photos) > 1:
     while True:
         print(
-            "Multiple photos found for {vcard.fn.value}. Remove all and replace? [Yn]: ",
+            f"Multiple photos found for {vcard.fn.value}. Remove all and replace? [Yn]: ",
             end="",
         )
         response = input().lower()
