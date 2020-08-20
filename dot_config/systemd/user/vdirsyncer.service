@@ -2,6 +2,7 @@
 Description=Synchronize Calendar and Contacts
 
 [Service]
+ExecStartPre=/usr/bin/env vdirsyncer metasync
 ExecStart=/usr/bin/env vdirsyncer sync
 Environment=DISPLAY=:0
 

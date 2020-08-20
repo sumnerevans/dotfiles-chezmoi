@@ -533,7 +533,7 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l | grep "The agent has no identities" && ssh-add
 
 echo "$(tput bold)======================================================================$(tput sgr 0)"
-command -v khal >/dev/null && khal list
+command -v khal >/dev/null && khal calendar
 
 # Notify me if I haven't written in my journal for the day.
 if [[ ! -f ~doc/journal/$(date +%Y-%m-%d).rst ]]; then
