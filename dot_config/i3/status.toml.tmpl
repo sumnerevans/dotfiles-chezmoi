@@ -118,7 +118,7 @@ hide_inactive = true
 {{- if eq .chezmoi.hostname "coruscant" }}
 [[block]]
 block = "custom"
-command = '[[ "$(~/bin/current_audio_device)" == "PCM2704 16-bit stereo audio DAC Analog Stereo" ]] && echo  ||  echo  '
+command = '[[ "$(~/bin/current_audio_device)" =~ "PCM2704 16-bit stereo audio DAC" ]] && echo  ||  echo  '
 on_click = "~/bin/toggle_audio"
 interval = 5
 {{- end }}

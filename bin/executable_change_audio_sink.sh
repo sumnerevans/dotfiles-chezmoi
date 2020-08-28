@@ -18,7 +18,7 @@ while IFS= read -r line; do
     else
         description="$(echo "$line" | sed -n 's/^.*device.description = "\(.*\)"$/\1/p')"
 
-        if [[ $description == $device_description ]]; then
+        if [[ $description =~ $device_description ]]; then
             break
         fi
     fi
