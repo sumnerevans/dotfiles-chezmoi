@@ -44,15 +44,15 @@ while.
 
 ## Links to the Most Interesting Dotfiles
 
-- My `.zshrc`: https://gitlab.com/sumner/dotfiles/blob/master/dot_zshrc
-- My NeoVim config: https://gitlab.com/sumner/dotfiles/blob/master/dot_config/nvim/init.vim
-- My i3 config: https://gitlab.com/sumner/dotfiles/blob/master/dot_config/i3/config
-- My `i3status-rust` config: https://gitlab.com/sumner/dotfiles/blob/master/dot_config/i3/status.toml.tmpl
-- My `muttrc`: https://gitlab.com/sumner/dotfiles/blob/master/dot_mutt/muttrc
-- My quotesfile: https://gitlab.com/sumner/dotfiles/blob/master/dot_mutt/quotes
-- My `offlineimap` config: https://gitlab.com/sumner/dotfiles/blob/master/dot_offlineimaprc
+- My `.zshrc`: https://git.sr.ht/~sumner/dotfiles/tree/master/dot_zshrc
+- My NeoVim config: https://git.sr.ht/~sumner/dotfiles/tree/master/dot_config/nvim/init.vim
+- My i3 config: https://git.sr.ht/~sumner/dotfiles/tree/master/dot_config/i3/config
+- My `i3status-rust` config: https://git.sr.ht/~sumner/dotfiles/tree/master/dot_config/i3/status.toml.tmpl
+- My `muttrc`: https://git.sr.ht/~sumner/dotfiles/tree/master/dot_mutt/muttrc
+- My quotesfile: https://git.sr.ht/~sumner/dotfiles/tree/master/dot_mutt/quotes
+- My `offlineimap` config: https://git.sr.ht/~sumner/dotfiles/tree/master/dot_offlineimaprc
 
 ## License
 
 All of these dotfiles are licensed under the Unlicense. See the
-[LICENSE](https://gitlab.com/sumner/dotfiles/blob/master/LICENSE) file.
+[LICENSE](https://git.sr.ht/~sumner/dotfiles/tree/master/LICENSE) file.
