@@ -5,7 +5,7 @@ My dotfiles are managed by [chezmoi](https://github.com/twpayne/chezmoi/).
 **Old Dotfile Repos:**
 
 * https://gitlab.com/sumner/dotfiles
-* https://gitlab.com/sumner/dotfiles-old.
+* https://gitlab.com/sumner/dotfiles-old
 
 ## Installation
 

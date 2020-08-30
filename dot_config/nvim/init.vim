@@ -56,9 +56,10 @@ Plug 'tpope/vim-commentary'             " Easy commenting of lines
 Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
 
 " Language Support
+Plug 'direnv/direnv.vim'                " Syntax support for .envrc files
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'             " Syntax support for basically all of the languages
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 call plug#end()
 
@@ -91,6 +92,9 @@ set runtimepath^=/home/sumner/projects/coc-vala
 " =============================================================================
 let s:os = system('uname -s')
 let $PLUGIN_CONFIG_ROOT = '$HOME/.config/nvim/plugin_configs'
+
+" Always use the Python from the ~/.local/share/nvim/virtualenv
+let g:python3_host_prog = '/home/sumner/.local/share/nvim/virtualenv/.venv/bin/python'
 
 " THEME
 " =============================================================================

@@ -333,40 +333,6 @@ function chpwd() {
         echo -e "Fetching from git in the background..."
         (git fetch 2&>/dev/null &)
     fi
-
-    # Automatically activate the virtualenv if it exists in this or any parent
-    # directory.
-    command -v pipenv >/dev/null || return  # Short circuit if we don't have pipenv
-
-    current_ve=$(basename "$VIRTUAL_ENV")
-    current_dir=$(command pwd)
-    in_venv=0
-    while [[ $current_dir != '/' ]]; do
-        if [[ -f "$current_dir/Pipfile" ]]; then
-            in_venv=1
-            if [[ $ACTIVE_PIPFILE != $current_dir ]]; then
-                [[ ! -z "$ACTIVE_PIPFILE" ]] && deactivate
-                pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
-                if [[ "$pipenv_dir" == "" ]]; then
-                    pipenv install --dev
-                    pipenv_dir=$(PIPENV_IGNORE_VIRTUALENVS=1 pipenv --venv 2>/dev/null)
-                fi
-
-                echo "Activating the $pipenv_dir virtualenv."
-                source "${pipenv_dir}/bin/activate"
-                export ACTIVE_PIPFILE=${current_dir}
-
-                # Install packages to make neovim work
-                pip install -q neovim
-                break
-            fi
-        fi
-
-        # Go up a directory
-        current_dir=$(dirname $current_dir)
-    done
-
-    [[ ! -z "$ACTIVE_PIPFILE" && $in_venv -eq 0 ]] && deactivate && unset ACTIVE_PIPFILE
 }
 
 # "delete" files (use ~/tmp as a recycle bin)
