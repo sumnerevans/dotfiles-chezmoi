@@ -26,8 +26,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-rooter'              " Change vim's cwd to the project root
 Plug 'dyng/ctrlsf.vim'                  " Sublime Text-like search
 Plug 'editorconfig/editorconfig-vim'    " Use .editorconfig
-Plug 'yuki-ycino/fzf-preview.vim'       " Fuzzy finder with preview window
 Plug 'tpope/vim-fugitive'               " Git integration
+
+" Fuzzy finder with preview window
+Plug '/usr/bin/fzf'
+Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
 
 " Integration with environment
 Plug 'christoomey/vim-tmux-navigator'   " TMUX alt-h,j,k,l integration
