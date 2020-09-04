@@ -484,6 +484,7 @@ export PIPENV_VENV_IN_PROJECT=1 # store the virtual environment in .venv in the 
 
 # opam configuration
 test -r /home/sumner/.opam/opam-init/init.zsh && . /home/sumner/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+command -v opam >/dev/null && eval $(opam env)
 
 # Direnv
 eval "$(direnv hook zsh)"
