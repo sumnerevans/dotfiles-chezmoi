@@ -1,5 +1,7 @@
-README.rst
+README.md
+LUG_NOTES.md
 LICENSE
+images
 {{- if eq .chezmoi.hostname "SEvans" }}
 .config/contact_query/*
 .python-gitlab.cfg

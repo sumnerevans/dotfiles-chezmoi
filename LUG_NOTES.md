@@ -4,6 +4,8 @@ union(form, function) != emptyset
 
 1. Transparency
 
+    ![Transparency]()
+
     - inspiration: transparency is just plain cool and exists in limited fashion
       in Windows and macOS
     - form: looks cool
