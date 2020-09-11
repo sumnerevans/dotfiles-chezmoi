@@ -511,4 +511,6 @@ command -v khal >/dev/null && khal calendar
 if [[ ! -f ~doc/journal/$(date +%Y-%m-%d).rst ]]; then
     echo "\n$(tput bold)Make sure to write in your journal today.$(tput sgr 0)"
 fi
+
+command -v fortune >/dev/null && echo && fortune ~/.mutt/quotes
 echo "$(tput bold)======================================================================$(tput sgr 0)"
