@@ -6,7 +6,7 @@ You can have both form and function, they are not mutually exclusive. I don't
 really have anything that is just "eye candy for eye candy's sake", pretty much
 everything that I do to customize my setup also has a functional aspect.
 
-1. Transparency
+1. ## Transparency
 
    ![Transparency](https://git.sr.ht/~sumner/dotfiles/blob/master/images/transparency.png)
 
@@ -23,7 +23,7 @@ everything that I do to customize my setup also has a functional aspect.
    config here:
    https://git.sr.ht/~sumner/dotfiles/tree/master/dot_config/picom/picom.conf
 
-2. Dynamic Wallpaper
+2. ## Dynamic Wallpaper
 
    ![Dynamic Wallpaper](https://git.sr.ht/~sumner/dotfiles/blob/master/images/dynamic-wallpaper.png)
 
@@ -35,7 +35,7 @@ everything that I do to customize my setup also has a functional aspect.
    script here:
    https://git.sr.ht/~sumner/dotfiles/tree/master/bin/executable_set_wallpaper.sh
 
-3. i3status-rust
+3. ## i3status-rust
 
    I use i3wm and i3bar for my window manager and status bar. Then I use
    i3status-rust to display useful information.
