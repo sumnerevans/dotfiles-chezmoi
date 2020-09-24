@@ -123,10 +123,6 @@ match Over100Length /\%101v.\+/
 let g:rooter_patterns = [
             \'.rooter_root',
             \'.git/',
-            \'Makefile',
-            \'setup.py',
-            \'Cargo.toml',
-            \'__init__.py',
             \]
 
 " CtrlSF (dyng/ctrlsf.vim)
