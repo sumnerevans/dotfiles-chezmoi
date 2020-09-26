@@ -1,6 +1,8 @@
 #! /usr/bin/env sh
 # Initializes a Kattis problem.
 
+set -xe
+
 KATTIS_ROOT=$2
 if [[ $KATTIS_ROOT == "" ]]; then
     KATTIS_ROOT=$KATTIS_ROOT

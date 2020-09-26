@@ -6,7 +6,6 @@
 #  - csmdirsearch (https://github.com/jackrosenthal/csmdirsearch/) by Jack
 #    Rosenthal for searching for Colorado School of Mines students and faculty
 #    email addresses.
-#  - goobook (https://gitlab.com/goobook/goobook/) to search Google contacts.
 #  - python-gitlab (https://github.com/python-gitlab/python-gitlab to enable
 #    GitLab issue creation auto-complete.
 #  - python-fuzzywuzzy (https://github.com/seatgeek/fuzzywuzzy) fuzzy search
@@ -66,23 +65,6 @@ def query_vdirsyncer(query):
                     yield f'{email}\t{fullname}'
 
 
-def query_goobook(query):
-    goobook = run(
-        f'goobook query "{query}"',
-        shell=True,
-        stderr=PIPE,
-        stdout=PIPE,
-    )
-    if goobook.returncode == 0:
-        # Remove the leading newline.
-        contacts = filter(
-            lambda x: len(x) > 0,
-            goobook.stdout.decode('utf-8').split('\n'),
-        )
-        for contact in contacts:
-            yield contact
-
-
 def query_gitlab(query):
     if not test_internet():
         return
@@ -124,7 +106,6 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
     futures = [
         executor.submit(fn, query) for fn in (
             query_vdirsyncer,
-            # query_goobook,
             query_gitlab,
             query_csmdirsearch,
         )
