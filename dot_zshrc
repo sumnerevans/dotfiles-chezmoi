@@ -500,6 +500,8 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l | grep "The agent has no identities" && ssh-add
 
 echo "$(tput bold)======================================================================$(tput sgr 0)"
+
+# Show my calendar
 command -v khal >/dev/null && khal calendar
 
 # Notify me if I haven't written in my journal for the day.
@@ -507,5 +509,7 @@ if [[ ! -f ~doc/journal/$(date +%Y-%m-%d).rst ]]; then
     echo "\n$(tput bold)Make sure to write in your journal today.$(tput sgr 0)"
 fi
 
+# Show a quote
 command -v fortune >/dev/null && echo && fortune ~/.mutt/quotes
+
 echo "$(tput bold)======================================================================$(tput sgr 0)"
