@@ -57,6 +57,7 @@ Plug 'mhinz/vim-signify'                " VCS integration in the gutter
 Plug 'terryma/vim-multiple-cursors'     " Allow multiple cursors
 Plug 'tpope/vim-commentary'             " Easy commenting of lines
 Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
+Plug 'Yggdroot/indentLine'              " Show indentation levels
 
 " Language Support
 Plug 'direnv/direnv.vim'                " Syntax support for .envrc files
@@ -198,6 +199,10 @@ let g:signify_sign_delete = '-' " Make delete use - rather than _
 
 " Commentary (tpope/vim-commentary)
 noremap <F8> :Commentary<CR>
+
+" Show line indentation (Yggdroot/indentLine)
+let g:indentLine_color_gui = '#4e5c82'
+let g:indentLine_char = '┊'
 
 " Language Support ------------------------------------------------------------
 " CoC (neoclide/coc.nvim)
