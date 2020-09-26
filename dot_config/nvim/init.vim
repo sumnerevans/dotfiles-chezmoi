@@ -144,7 +144,7 @@ let g:ctrlsf_winsize = '70%'
 let g:EditorConfig_preserve_formatoptions = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" FZF Preview (junegunn/fzf.vim)
+" FZF (junegunn/fzf.vim)
 nnoremap <C-p> :Files<CR>
 let g:fzf_preview_window = 'right:60%'
 
