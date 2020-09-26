@@ -1,7 +1,0 @@
-# Set the default cache time to one day
-default-cache-ttl       86400
-{{- if eq .chezmoi.hostname "jedha" }}
-pinentry-program /run/current-system/sw/bin/pinentry
-{{- else }}
-pinentry-program /usr/bin/pinentry
-{{- end }}
