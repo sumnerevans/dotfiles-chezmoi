@@ -29,8 +29,8 @@ Plug 'editorconfig/editorconfig-vim'    " Use .editorconfig
 Plug 'tpope/vim-fugitive'               " Git integration
 
 " Fuzzy finder with preview window
-Plug '/usr/bin/fzf'
-Plug 'yuki-ycino/fzf-preview.vim', { 'branch': 'release', 'do': ':UpdateRemotePlugins' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Integration with environment
 Plug 'christoomey/vim-tmux-navigator'   " TMUX alt-h,j,k,l integration
@@ -129,7 +129,7 @@ let g:rooter_patterns = [
 " CtrlSF (dyng/ctrlsf.vim)
 nmap <C-S> <Plug>CtrlSFPrompt
 vmap <C-S> <Plug>CtrlSFVwordPath
-let g:ctrlsf_ackprg = '/usr/bin/rg'
+let g:ctrlsf_ackprg = 'rg'
 let g:ctrlsf_auto_focus = { "at": "start" }
 let g:ctrlsf_default_root = 'cwd'
 let g:ctrlsf_mapping = {
@@ -143,19 +143,9 @@ let g:ctrlsf_winsize = '70%'
 let g:EditorConfig_preserve_formatoptions = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" FZF Preview (yuki-ycino/fzf-preview.vim)
-nnoremap <C-p> :call FzfPreview()<CR>
-let g:fzf_preview_filelist_command = 'fd --type f --hidden --follow --exclude .git'
-let g:fzf_preview_use_dev_icons = 1
-
-function! FzfPreview()
-    silent !git rev-parse --show-toplevel
-    if v:shell_error
-        FzfPreviewFromResources buffer directory
-    else
-        FzfPreviewFromResources buffer project
-    endif
-endfunction
+" FZF Preview (junegunn/fzf.vim)
+nnoremap <C-p> :Files<CR>
+let g:fzf_preview_window = 'right:60%'
 
 " Integration with Environment ------------------------------------------------
 " Tmux Navigator integration (christoomey/vim-tmux-navigator)
@@ -179,7 +169,6 @@ nmap <script> <silent> E :call ToggleLocationList()<CR>
 let g:airline_powerline_fonts = 1                       " Enable fancy chars
 let g:airline#extensions#coc#enabled = 1                " Code competion/linting
 let g:airline#extensions#fugitiveline#enabled = 1       " Git branch, etc
-let g:airline#extensions#nerdtree_status = 1            " Use NERDTree statusline
 let g:airline#extensions#tabline#enabled = 1            " Show the tabline
 let g:airline#extensions#tabline#show_tabs = 0          " Don't show tabs, just buffers
 
