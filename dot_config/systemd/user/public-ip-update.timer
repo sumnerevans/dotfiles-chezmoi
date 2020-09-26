@@ -1,8 +1,0 @@
-[Unit]
-Description=Update the IP address of the computer every 10 minutes
-
-[Timer]
-OnCalendar=*:0/10
-
-[Install]
-WantedBy=timers.target
