@@ -2,7 +2,11 @@
 fullname: Sumner Evans
 gitlab:
   api_root: https://gitlab.com/api/v4/
-  api_key: pass show VCS/GitLab-API-Key|
+  api_key: pass VCS/GitLab-API-Key|
+jira:
+  root: https://atlassian.thetradedesk.com/jira/
+  sso_email: sumner.evans@thetradedesk.com
+  sso_password: pass Work/TTD/SSO|
 sync_time: true
 tableformat: fancy_grid
 project_rates:
@@ -22,3 +26,5 @@ customer_addresses:
 customer_aliases:
   TTD: The Trade Desk
   Tracy Camp: Dr. Tracy Camp
+external_synchroniser_files:
+  jira: /home/sumner/projects/tracktime/examples/jira_selenium_chrome.py
