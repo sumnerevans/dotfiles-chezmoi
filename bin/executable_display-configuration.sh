@@ -7,6 +7,7 @@ set -x
 # ROTATION="left"
 ROTATION="normal"
 
+DP0=$(xrandr | grep '^DP-0 connected')
 DP1=$(xrandr | grep '^DP1 connected')
 DP2=$(xrandr | grep '^DP2 connected')
 DP23=$(xrandr | grep '^DP2-3 connected')
@@ -24,9 +25,13 @@ elif [[ $DP2 != "" ]]; then
     # External monitor at home (other USB-C port)
     xrandr --output DP2 --mode 1920x1200 --right-of eDP1 --rotate $ROTATION
 elif [[ $DP4 != "" ]]; then
-    # Double monitor set up with Desktop
-    xrandr --output DP-0 --mode 2560x1440 --rate 144.00
-    xrandr --output DP-4 --mode 1920x1200 --right-of DP-0 --rotate $ROTATION
+    if [[ $DP0 != "" ]]; then
+        # Double monitor set up with Desktop
+        xrandr --output DP-0 --mode 1920x1200 --right-of DP-4 --rotate $ROTATION
+        xrandr --output DP-4 --mode 2560x1440 --rate 144.00 --primary
+    else
+        xrandr --output DP-0 --mode 1920x1200 --right-of DP-0 --rotate $ROTATION --primary
+    fi
 elif [[ $DP23 != "" ]]; then
     # External monitor at home (USB-C dock)
     xrandr --output DP2-3 --mode 1920x1200 --right-of eDP1 --rotate $ROTATION

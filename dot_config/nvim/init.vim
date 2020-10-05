@@ -192,6 +192,7 @@ noremap <F8> :Commentary<CR>
 " Show line indentation (Yggdroot/indentLine)
 let g:indentLine_color_gui = '#4e5c82'
 let g:indentLine_char = '┊'
+let g:indentLine_fileTypeExclude = ['markdown']
 
 " Language Support ------------------------------------------------------------
 " CoC (neoclide/coc.nvim)
