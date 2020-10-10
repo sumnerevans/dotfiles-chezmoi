@@ -3,6 +3,10 @@ fullname: Sumner Evans
 gitlab:
   api_root: https://gitlab.com/api/v4/
   api_key: pass VCS/GitLab-API-Key|
+sourcehut:
+  api_root: https://todo.sr.ht/api/
+  access_token: pass VCS/Sourcehut-Access-Token|
+  username: ~sumner
 jira:
   root: https://atlassian.thetradedesk.com/jira/
   sso_email: sumner.evans@thetradedesk.com
