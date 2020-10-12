@@ -69,8 +69,8 @@ call plug#end()
 
 " CoC Extensions
 let g:coc_global_extensions=[
-            \ 'coc-css',
             \ 'coc-clangd',
+            \ 'coc-css',
             \ 'coc-dictionary',
             \ 'coc-docker',
             \ 'coc-elixir',
@@ -84,13 +84,12 @@ let g:coc_global_extensions=[
             \ 'coc-omnisharp',
             \ 'coc-python',
             \ 'coc-rust-analyzer',
+            \ 'coc-sh',
             \ 'coc-texlab',
             \ 'coc-tsserver',
             \ 'coc-word',
             \ 'coc-yaml',
             \ ]
-
-set runtimepath^=/home/sumner/projects/coc-vala
 
 " VARIABLES
 " =============================================================================

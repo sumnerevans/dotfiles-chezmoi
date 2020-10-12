@@ -3,7 +3,11 @@
   "explorer.keyMappings": {
     "<cr>": [
       "expandable?",
-      ["expanded?", "collapse", "expand"],
+      [
+        "expanded?",
+        "collapse",
+        "expand"
+      ],
       "open"
     ]
   },
@@ -18,26 +22,6 @@
   "explorer.file.column.git.icon.modified": "✹",
   "explorer.file.column.git.showIgnored": true,
   "languageserver": {
-    "bash": {
-      "command": "bash-language-server",
-      "args": [
-        "start"
-      ],
-      "filetypes": [
-        "sh",
-        "bash"
-      ]
-    },
-    "racket": {
-      "command": "racket",
-      "args": [
-        "--lib",
-        "racket-langserver"
-      ],
-      "filetypes": [
-        "racket"
-      ]
-    },
     "ccls": {
       "command": "ccls",
       "filetypes": [
@@ -59,9 +43,22 @@
         }
       }
     },
+    "nix": {
+      "command": "rnix-lsp",
+      "filetypes": ["nix"]
+    },
+    "racket": {
+      "command": "racket",
+      "args": [
+        "--lib",
+        "racket-langserver"
+      ],
+      "filetypes": [
+        "racket"
+      ]
+    },
     "vala": {
       "command": "vala-language-server",
-      "args": [],
       "filetypes": [
         "vala"
       ]
