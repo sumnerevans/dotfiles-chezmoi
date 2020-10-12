@@ -98,9 +98,6 @@ set runtimepath^=/home/sumner/projects/coc-vala
 let s:os = system('uname -s')
 let $PLUGIN_CONFIG_ROOT = '$HOME/.config/nvim/plugin_configs'
 
-" Always use the Python from the ~/.local/share/nvim/virtualenv
-" let g:python3_host_prog = '/home/sumner/.local/share/nvim/virtualenv/.venv/bin/python'
-
 " THEME
 " =============================================================================
 if ($TERM == 'xterm-256color' || $TERM == 'screen-256color') && !has('gui_running')
