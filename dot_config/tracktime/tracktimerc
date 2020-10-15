@@ -32,3 +32,5 @@ customer_aliases:
   Tracy Camp: Dr. Tracy Camp
 external_synchroniser_files:
   jira: /home/sumner/projects/tracktime/examples/jira_selenium_chrome.py
+chromedriver:
+  chrome_bin: /run/current-system/sw/bin/google-chrome-stable

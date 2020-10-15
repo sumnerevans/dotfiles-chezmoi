@@ -205,14 +205,11 @@ hash -d vid=~/Videos
 hash -d yt=~proj/youtube-content
 
 # Projects
-hash -d fl=~proj/flight
-hash -d gchal=~proj/google-challenge
 hash -d hspc=~proj/acm/hspc-problems
 hash -d infra=~proj/infrastructure
 hash -d res=~proj/resume
 hash -d sub=~proj/sublime-music/sublime-music
 hash -d sws=~proj/sumnerevans.com
-hash -d tef=~proj/the-evans.family
 hash -d tt=~proj/tracktime
 hash -d vis=~proj/acm/visplay
 
@@ -483,7 +480,7 @@ test -r /home/sumner/.opam/opam-init/init.zsh && . /home/sumner/.opam/opam-init/
 command -v opam >/dev/null && eval $(opam env)
 
 # Direnv
-eval "$(direnv hook zsh)"
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 # Do the thing so rust blows up verbosely
 command -v rustc >/dev/null && export RUST_BACKTRACE=1
