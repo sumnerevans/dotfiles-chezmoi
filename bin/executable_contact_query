@@ -2,7 +2,7 @@
 # Depends on:
 #  - python-vobject
 #    (https://www.archlinux.org/packages/community/any/python-vobject/) for
-#    querying the synced contacts from Nextcloud
+#    querying the synced contacts from Xandikos
 #  - csmdirsearch (https://github.com/jackrosenthal/csmdirsearch/) by Jack
 #    Rosenthal for searching for Colorado School of Mines students and faculty
 #    email addresses.

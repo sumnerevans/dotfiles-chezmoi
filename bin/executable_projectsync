@@ -38,4 +38,4 @@ while read -ra project; do
         git clone --recurse-submodules -j8 ${url} ${dir}
     fi
     echo
-done <"$HOME/Nextcloud/projectlist"
+done <"$HOME/Syncthing/projectlist"
