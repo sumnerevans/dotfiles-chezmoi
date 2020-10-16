@@ -60,6 +60,7 @@ Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
 Plug 'Yggdroot/indentLine'              " Show indentation levels
 
 " Language Support
+" Plug 'Cofyc/vim-uncrustify'             " Auto-formatting for Vala
 Plug 'direnv/direnv.vim'                " Syntax support for .envrc files
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -90,6 +91,8 @@ let g:coc_global_extensions=[
             \ 'coc-word',
             \ 'coc-yaml',
             \ ]
+
+set runtimepath^=/home/sumner/projects/coc-vala
 
 " VARIABLES
 " =============================================================================
