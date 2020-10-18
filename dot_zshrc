@@ -273,7 +273,7 @@ alias gst="git stash"
 alias getquote="fortune ~/.mutt/quotes"
 alias i3conf="chezmoi edit -a ~/.config/i3/config"
 alias muttrc='chezmoi edit -a ~/.mutt/muttrc && chezmoi apply'
-alias projectlist='vim ~nc/projectlist && projectsync'
+alias projectlist='vim ~st/projectlist && projectsync'
 alias quotesfile="chezmoi edit -a ~/.mutt/quotes && strfile -r ~/.mutt/quotes"
 alias reload=". ~/.zshrc && echo 'ZSH Config Reloaded from ~/.zshrc'"
 alias soviet="amixer set Master on 50% && mpv --quiet -vo caca 'https://www.youtube.com/watch?v=U06jlgpMtQs'"
