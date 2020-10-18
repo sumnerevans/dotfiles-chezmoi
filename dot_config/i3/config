@@ -232,12 +232,13 @@ bindsym $mod+Shift+x exec "~/bin/fuzzy_lock_sleep.sh"
 # exec xscreensaver -no-splash &
 
 # Auto-Start Programs
-exec --no-startup-id firefox
-exec --no-startup-id dunst
-exec --no-startup-id xbindkeys
 exec --no-startup-id blueman-applet
+exec --no-startup-id dunst
 exec --no-startup-id element-desktop
+exec --no-startup-id firefox
 exec --no-startup-id sublime-music
+exec --no-startup-id syncthing-gtk -m
+exec --no-startup-id xbindkeys
 
 # External monitor
 exec_always --no-startup-id ~/bin/display-configuration.sh
