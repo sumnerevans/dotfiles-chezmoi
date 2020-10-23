@@ -190,7 +190,6 @@ hash -d db=~/Dropbox
 hash -d df=~/.local/share/chezmoi
 hash -d dl=~/Downloads
 hash -d kattis=~/projects/kattis
-hash -d nc=~/Nextcloud
 hash -d no=~/Documents/notes
 hash -d pass=~/.password-store
 hash -d pics=~/Pictures
