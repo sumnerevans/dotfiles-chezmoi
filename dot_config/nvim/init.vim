@@ -57,7 +57,6 @@ Plug 'mhinz/vim-signify'                " VCS integration in the gutter
 Plug 'terryma/vim-multiple-cursors'     " Allow multiple cursors
 Plug 'tpope/vim-commentary'             " Easy commenting of lines
 Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
-Plug 'Yggdroot/indentLine'              " Show indentation levels
 
 " Language Support
 " Plug 'Cofyc/vim-uncrustify'             " Auto-formatting for Vala

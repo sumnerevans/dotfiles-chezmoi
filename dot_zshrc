@@ -294,6 +294,7 @@ alias journal='vim ~doc/journal/$(date +%Y-%m-%d).rst'
 alias la="ls -a"
 alias ll="ls -lah"
 alias man="MANWIDTH=80 man --nh --nj"
+alias myip="curl 'https://api.ipify.org?format=text' && echo"
 alias ohea='echo "You need to either wake up or go to bed!"'
 [[ "$LINUX" == "1" ]] && alias open='(thunar &> /dev/null &)'
 [[ "$MACOS" == "1" ]] && alias open='open .'
