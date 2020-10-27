@@ -44,7 +44,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 bindsym XF86Calculator exec = -- -lines 3
 bindsym F4 exec = -- -lines 3
-bindsym F3 exec passmenu -- -i
+bindsym F3 exec bwmenu -C --auto-lock -1
 bindsym $mod+space exec rofi -show drun -show-icons
 
 # change focus

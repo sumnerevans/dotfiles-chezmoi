@@ -206,7 +206,7 @@ hash -d yt=~proj/youtube-content
 # Projects
 hash -d fl=~proj/flight
 hash -d gchal=~proj/google-challenge
-hash -d hspc=~proj/hspc-problems
+hash -d hspc=~proj/acm/hspc-problems
 hash -d infra=~proj/infrastructure
 hash -d res=~proj/resume
 hash -d sub=~proj/sublime-music/sublime-music
