@@ -40,8 +40,6 @@ fi
 amixer sset Master unmute
 xbanish &
 
-xrandr --dpi 160x160
-
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export TERMINAL=alacritty

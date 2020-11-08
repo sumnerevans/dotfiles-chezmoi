@@ -252,6 +252,7 @@ set virtualedit=onemore                         " Allow the cursor to go one pas
 " Tabs
 set expandtab                                   " Insert spaces instead of tabs
 set shiftwidth=4                                " 4 is the only way
+set tabstop=8
 
 " Search
 set ignorecase  " ignore case...
