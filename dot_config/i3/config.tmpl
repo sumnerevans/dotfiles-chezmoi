@@ -10,7 +10,11 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+{{ if eq .chezmoi.hostname "mustafar" }}
+set $mod Mod1
+{{ else }}
 set $mod Mod4
+{{ end }}
 set $gap 7
 # set $gap 0
 
