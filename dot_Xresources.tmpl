@@ -9,7 +9,11 @@ Xft.lcdfilter:  lcddefault
 
 ! Cursor
 Xcursor.theme:                          Breeze
+{{ if eq .chezmoi.hostname "mustafar" }}
+Xcursor.size:                           32
+{{ else }}
 Xcursor.size:                           8
+{{ end }}
 
 ! URxvt
 URxvt*background:                       #202020
@@ -53,11 +57,19 @@ rofi.color-window:                      #002b37, #002b37, #003642
 rofi.color-normal:                      #002b37, #819396, #003643, #008ed4, #ffffff
 rofi.color-active:                      #002b37, #008ed4, #003643, #008ed4, #66c6ff
 rofi.color-urgent:                      #002b37, #da4281, #003643, #008ed4, #890661
+{{ if eq .chezmoi.hostname "mustafar" }}
+rofi.lines:                             20
+rofi.width:                             30
+rofi.font:                              pango:Iosevka Term 24
+rofi.padding:                           12
+rofi.line-margin:                       14
+{{ else }}
 rofi.lines:                             15
 rofi.width:                             25
 rofi.font:                              pango:Iosevka Term 12
 rofi.padding:                           6
 rofi.line-margin:                       7
+{{ end }}
 rofi.location:                          2
 rofi.yoffset:                           80
 rofi.matching:                          fuzzy

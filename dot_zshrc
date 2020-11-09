@@ -16,7 +16,7 @@ fi
 [[ `uname` == 'Darwin'  ]] && export MACOS=1 || export MACOS=
 
 # Prompt Setup
-autoload -Uz promptinit && promptinit
+# autoload -Uz promptinit && promptinit
 setopt prompt_subst
 autoload colors zsh/terminfo
 colors
@@ -159,7 +159,7 @@ setopt correct
 # add custom completion scripts
 fpath=(~/.zsh/completion $fpath)
 
-autoload -U compinit && compinit
+# autoload -U compinit && compinit
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:approximate:' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3 )) numeric)'

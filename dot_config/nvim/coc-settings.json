@@ -1,6 +1,6 @@
 {
   "coc.preferences.jumpCommand": "tab drop",
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>": [
       "expandable?",
       [
@@ -20,7 +20,7 @@
   "explorer.file.column.git.icon.ignored": "☒",
   "explorer.file.column.git.icon.mixed": "✹",
   "explorer.file.column.git.icon.modified": "✹",
-  "explorer.file.column.git.showIgnored": true,
+  "explorer.git.showIgnored": true,
   "languageserver": {
     "ccls": {
       "command": "ccls",
