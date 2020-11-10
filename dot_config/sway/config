@@ -61,7 +61,7 @@ input 11551:157:WCOM50C1:00_2D1F:009D map_to_output eDP-1
 # UI Chrome
 # =============================================================================
 
-font Iosevka 11
+font Iosevka 10
 hide_edge_borders both
 default_border pixel 0
 gaps inner $gap

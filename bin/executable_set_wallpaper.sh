@@ -21,6 +21,7 @@ IS_SWAY=$?
 
 do_set_wallpaper() {
     if [[ $IS_SWAY == "0" ]]; then
+        pkill swaybg
         swaybg -i $1 -m fill &
     else
         feh --bg-fill $@

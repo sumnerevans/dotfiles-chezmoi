@@ -4,6 +4,7 @@ border-radius=5
 default-timeout=8000
 group-by=app-name,summary
 sort=-priority
+width=400
 
 # Colors
 background-color=#191311CC
