@@ -34,16 +34,29 @@ set $workspace12 "12: "
 # Scale to 1.75 instead of 2.
 output eDP-1 scale 1.75
 
-# Use 3l-cros
 input * {
+    # Use 3l for all keyboards that get attached
+    xkb_layout us
+    xkb_variant 3l
+
+    # Get right click (2 finger) and middle click (3 finger) on touchpad
+    click_method clickfinger
+
+    # Always use natural scrolling
+    natural_scroll enabled
+}
+
+input 1:1:AT_Translated_Set_2_keyboard {
+    # Use 3l-cros on the internal keyboard
     xkb_layout us
     xkb_variant 3l-cros
 }
 
-# Autorotate
+# Don't scroll so fast
+input 1739:52731:Synaptics_TM3579-001 scroll_factor 0.75
+
+# Handle the touchscreen
 input 11551:157:WCOM50C1:00_2D1F:009D map_to_output eDP-1
-bindswitch tablet:on exec swaymsg output eDP-1 transform 180
-bindswitch tablet:off exec swaymsg output eDP-1 transform 0
 
 # UI Chrome
 # =============================================================================
@@ -73,6 +86,19 @@ exec_always --no-startup-id ~/bin/set_wallpaper.sh
 
 # Opacity
 exec --no-startup-id ~/bin/inactive-windows-transparency.py
+
+# GTK
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Arc-Dark'
+    gsettings set $gnome-schema icon-theme 'Arc'
+    gsettings set $gnome-schema cursor-theme 'breeze_cursors'
+}
+
+# Cursor niceness
+mouse_warping container
+seat * hide_cursor 2000
 
 # Key Bindings
 # =============================================================================
@@ -245,6 +271,7 @@ exec wl-paste -p -t text --watch clipman store -P --histpath="~/.cache/clipman.j
 exec --no-startup-id firefox
 exec --no-startup-id element-desktop
 exec --no-startup-id sublime-music
+exec --no-startup-id mako
 
 ## External monitor
 #exec_always --no-startup-id ~/bin/display-configuration.sh
