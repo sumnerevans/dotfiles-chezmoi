@@ -1,88 +1,21 @@
 # vim: ft=i3config
 # sway config file (v4)
 
-set $mod Mod4
-set $term termite
+# VARIABLES
+# =============================================================================
+
+set $mod Mod1
+set $term alacritty
 set $gap 7
 
-# gaps =====================================================================
-hide_edge_borders both
-for_window [class="^.*"] border pixel 0
-gaps inner $gap
+set $left h
+set $down j
+set $up k
+set $right l
 
-bindsym $mod+F3 gaps inner all set 0
-bindsym $mod+Shift+F3 gaps inner all set $gap
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
-# new_window 1pixel
-# new_float 1pixel
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:Iosevka 10
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec $term
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run
-bindsym F4 exec = -- -lines 3
-bindsym F3 exec passdmenu -- -i
-bindsym $mod+space exec i3-dmenu-desktop
-
-# change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+semicolon split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-bindsym --release button2 floating toggle
-
-# change focus between tiling / floating windows
-#bindsym $mod+tab focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-bindsym $mod+tab focus child
-
-# Internet
+# Workspace names
 set $workspace1 "1: "
 set $workspace2 "2"
 set $workspace3 "3"
@@ -93,13 +26,71 @@ set $workspace7 "7"
 set $workspace8 "8"
 set $workspace9 "9"
 set $workspace10 "10"
-
-# Chat
 set $workspace11 "11: "
-
-# Music
 set $workspace12 "12: "
 
+# Hardware Configuration
+# =============================================================================
+# Scale to 1.75 instead of 2.
+output eDP-1 scale 1.75
+
+# Use 3l-cros
+input * {
+    xkb_layout us
+    xkb_variant 3l-cros
+}
+
+# Autorotate
+input 11551:157:WCOM50C1:00_2D1F:009D map_to_output eDP-1
+bindswitch tablet:on exec swaymsg output eDP-1 transform 180
+bindswitch tablet:off exec swaymsg output eDP-1 transform 0
+
+# UI Chrome
+# =============================================================================
+
+font Iosevka 11
+hide_edge_borders both
+default_border pixel 0
+gaps inner $gap
+
+# Start swaybar to display a workspace bar (plus the system information swaystatus
+# finds out, if available)
+bar {
+    font pango:Iosevka, FontAwesome 12
+    position top
+    status_command i3status-rs ~/.config/i3/status.toml
+    colors {
+        background #00000090
+        separator #aaaaaa
+    }
+}
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Desktop Background
+exec_always --no-startup-id ~/bin/set_wallpaper.sh
+
+# Opacity
+exec --no-startup-id ~/bin/inactive-windows-transparency.py
+
+# Key Bindings
+# =============================================================================
+
+# MOVEMENT
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$right focus right
+bindsym $mod+$up focus up
+bindsym $mod+$down focus down
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# WORKSPACES
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
@@ -128,112 +119,132 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 bindcode $mod+Shift+20 move container to workspace $workspace11
 bindcode $mod+Shift+21 move container to workspace $workspace12
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart sway inplace (preserves your layout/session, can be used to upgrade sway)
-bindsym $mod+Shift+r restart
-# exit sway (logs you out of your X session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+# LAYOUT MANIPULATION
+# split in horizontal/vertical orientation
+bindsym $mod+semicolon split h
+bindsym $mod+v split v
 
-# resize window (you can also use the mouse for that)
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+bindsym --release button2 floating toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# RESIZE
 mode "  " {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings are for when in resize mode as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym $left resize shrink width 10 px or 10 ppt
+    bindsym $right resize grow width 10 px or 10 ppt
+    bindsym $up resize shrink height 10 px or 10 ppt
+    bindsym $down resize grow height 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter, Escape, or the same keybinding out
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "  "
 
-# Start swaybar to display a workspace bar (plus the system information swaystatus
-# finds out, if available)
-bar {
-    font pango:Iosevka, FontAwesome 11
-    position top
-    status_command i3status-rs ~/.config/i3/status.toml
-    colors {
-        background #00000090
-        separator #aaaaaa
-    }
-    # status_command bumblebee-status -m sensors nic disk memory pasink nic time battery \
-    #     -p nic.exclude=tun0,lo,vnet,virbr,docker,veth,br,enp \
-    #     time.format="%a, %Y-%m-%d %H:%M:%S" \
-    #     disk.warning=95 disk.critical=99 \
-    #     layout.lang="3l|us" \
-    #     -t gruvbox-powerline
-}
+# GAPS
+bindsym $mod+F3 gaps inner all set 0
+bindsym $mod+Shift+F3 gaps inner all set $gap
 
-# Custom Keybindings
-bindsym --release $mod+c exec clipmenu
-bindsym --release $mod+shift+c exec "scrot -s '%Y-%m-%d-%T.png' -e 'mv $f ~/tmp'"
+# EXITING AND RELOADING
+# kill focused window
+bindsym $mod+Shift+Q kill
+
+# restart sway in-place (preserves your layout/session, can be used to upgrade sway)
+bindsym $mod+Shift+R reload
+# exit sway (logs you out of your session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# LAUNCHERS
+# start a terminal
+bindsym $mod+Return exec $term
+
+# Launch mutt
 bindcode $mod+34 exec ~/bin/mutt_helper.sh
-bindcode $mod+35 exec riot-desktop
+
+# Launch Element
+bindcode $mod+35 exec element-desktop
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec rofi -show run
+bindsym F4 exec = -- -lines 3
+bindsym F3 exec rofi-pass -- -i
+bindsym $mod+space exec rofi -show drun -show-icons
+bindsym $mod+c exec clipman pick -t rofi \
+    --histpath="~/.cache/clipman/clipman.json"
+
+# Screenshot
+bindsym $mod+shift+c exec grim -g "$(slurp)" ~/tmp/$(date +%Y-%m-%d-%T).png
+
+# FUNCTION KEYS
+bindsym F6 exec brightnessctl s 5%-
+bindsym F7 exec brightnessctl s 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master playback 2%-
+bindsym XF86AudioRaiseVolume exec amixer set Master playback 2%+
 
 # Program classes
-for_window [instance="lxappearance"] floating enable
-for_window [instance="xscreensaver-demo"] floating enable
-for_window [instance="extcalc"] floating enable
+# =============================================================================
+
 for_window [instance="pinentry"] floating enable
 
 # Default Workspaces
+# =============================================================================
+
+# Browsers
 assign [class="Pale moon"] $workspace1
 assign [class="Firefox"] $workspace1
-assign [class="Nightly"] $workspace1
 
-assign [title="Mutt"] $workspace11
+# Chat Clients
+assign [class="discord"] $workspace11
+assign [class="Element"] $workspace11
 assign [class="HexChat"] $workspace11
-assign [class="Riot"] $workspace11
-assign [class="Telegram"] $workspace11
+assign [class="quassel"] $workspace11
 assign [class="Slack"] $workspace11
+assign [class="Telegram"] $workspace11
+assign [title="Mutt"] $workspace11
 
+# Music
+assign [class="sublime-music"] $workspace12
 for_window [class="Spotify"] move container to workspace $workspace12
-for_window [title="Airsonic"] move container to workspace $workspace12
 
 # Screensaver/Lock
 bindsym $mod+Shift+x exec "~/bin/fuzzy_lock_sleep.sh"
 # exec --no-startup-id xautolock -time 5 -locker '~/bin/fuzzy_lock_sleep.sh' -corners +000 -cornerdelay 3 -cornerredelay 10000 &
 
-# bindsym $mod+Shift+x exec "xscreensaver-command --lock"
-# exec xautolock -time 5 -locker 'xscreensaver-command --lock' &
-# exec xss-lock -- xscreensaver-command --lock &
-# exec ~/bin/xscreensaver-watch.sh &
-# exec xscreensaver -no-splash &
-
 # Auto-Start Programs
-exec --no-startup-id firefox-nightly
-#exec --no-startup-id picom
-#exec --no-startup-id kdeconnect-indicator
-# exec --no-startup-id riot-desktop
-# exec --no-startup-id ~/.webapps/family-the-evans-airsonic-linux-x64/family-the-evans-airsonic
-exec --no-startup-id nextcloud
+# =============================================================================
+
+# Clipboard manager
+exec wl-paste -t text --watch clipman store --histpath="~/.cache/clipman.json"
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.cache/clipman.json"
+
+exec --no-startup-id firefox
+exec --no-startup-id element-desktop
+exec --no-startup-id sublime-music
 
 ## External monitor
 #exec_always --no-startup-id ~/bin/display-configuration.sh
-#
-## Desktop Background
-#exec_always --no-startup-id ~/bin/set_wallpaper.sh
-
-# Inputs
-input 1:1:AT_Translated_Set_2_keyboard {
-    xkb_layout 3l
-    xkb_options grp:alt_shift_toggle
-}
-
-include /etc/sway/config.d/*
