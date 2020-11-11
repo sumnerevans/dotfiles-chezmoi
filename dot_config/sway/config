@@ -13,8 +13,6 @@ set $down j
 set $up k
 set $right l
 
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
-
 # Workspace names
 set $workspace1 "1: "
 set $workspace2 "2"
@@ -28,6 +26,16 @@ set $workspace9 "9"
 set $workspace10 "10"
 set $workspace11 "11: "
 set $workspace12 "12: "
+
+set $swaylockcmd swaylock \
+        --screenshots \
+        --clock \
+        --indicator \
+        --indicator-radius 100 \
+        --indicator-thickness 7 \
+        --effect-blur 7x5 \
+        --effect-vignette 0.7:0.7 \
+        --fade-in 0.5
 
 # Hardware Configuration
 # =============================================================================
@@ -82,6 +90,7 @@ bar {
 floating_modifier $mod
 
 # Desktop Background
+exec_always systemctl --user import-environment
 exec_always --no-startup-id ~/bin/set_wallpaper.sh
 
 # Opacity
@@ -221,7 +230,7 @@ bindsym F4 exec = -- -lines 3
 bindsym F3 exec rofi-pass -- -i
 bindsym $mod+space exec rofi -show drun -show-icons
 bindsym $mod+c exec clipman pick -t rofi \
-    --histpath="~/.cache/clipman/clipman.json"
+    --histpath="~/.cache/clipman.json"
 
 # Screenshot
 bindsym $mod+shift+c exec grim -g "$(slurp)" ~/tmp/$(date +%Y-%m-%d-%T).png
@@ -236,6 +245,7 @@ bindsym XF86AudioRaiseVolume exec amixer set Master playback 2%+
 # =============================================================================
 
 for_window [instance="pinentry"] floating enable
+for_window [title="Firefox - Sharing Indicator"] floating enable
 
 # Default Workspaces
 # =============================================================================
@@ -258,7 +268,7 @@ assign [class="sublime-music"] $workspace12
 for_window [class="Spotify"] move container to workspace $workspace12
 
 # Screensaver/Lock
-bindsym $mod+Shift+x exec "~/bin/fuzzy_lock_sleep.sh"
+bindsym $mod+Shift+x exec $swaylockcmd
 # exec --no-startup-id xautolock -time 5 -locker '~/bin/fuzzy_lock_sleep.sh' -corners +000 -cornerdelay 3 -cornerredelay 10000 &
 
 # Auto-Start Programs
@@ -270,7 +280,6 @@ exec wl-paste -p -t text --watch clipman store -P --histpath="~/.cache/clipman.j
 
 exec --no-startup-id firefox
 exec --no-startup-id element-desktop
-exec --no-startup-id sublime-music
 exec --no-startup-id mako
 
 ## External monitor
