@@ -238,6 +238,8 @@ bindsym $mod+shift+c exec grim -g "$(slurp)" ~/tmp/$(date +%Y-%m-%d-%T).png
 # FUNCTION KEYS
 bindsym F6 exec brightnessctl s 5%-
 bindsym F7 exec brightnessctl s 5%+
+bindsym $mod+F6 exec brightnessctl -d chromeos::kbd_backlight s 1%-
+bindsym $mod+F7 exec brightnessctl -d chromeos::kbd_backlight s 1%+
 bindsym XF86AudioLowerVolume exec amixer set Master playback 2%-
 bindsym XF86AudioRaiseVolume exec amixer set Master playback 2%+
 
