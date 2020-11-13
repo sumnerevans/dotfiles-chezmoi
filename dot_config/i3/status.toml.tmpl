@@ -63,15 +63,9 @@ interval = 5
 [[block]]
 block = "toggle"
 text = "WG"
-{{- if eq .chezmoi.osRelease.id "nixos" }}
-command_state = "systemctl is-active wg-quick-wg0.service | grep '^active$'"
-command_on = "systemctl start wg-quick-wg0"
-command_off = "systemctl stop wg-quick-wg0"
-{{- else if eq .chezmoi.hostname "coruscant" }}
 command_state = "nmcli con show --active | grep 'Wireguard'"
 command_on = "nmcli con up id Wireguard"
 command_off = "nmcli con down id Wireguard"
-{{- end }}
 interval = 5
 
 # Ping time

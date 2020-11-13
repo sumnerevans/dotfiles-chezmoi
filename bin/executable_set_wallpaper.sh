@@ -1,5 +1,7 @@
 #! /usr/bin/env sh
 
+set -x
+
 # THE FUNCTION TO CALL
 TYPE="mojave_dynamic"
 # TYPE="catalina_dynamic"
@@ -20,9 +22,9 @@ pgrep sway > /dev/null
 IS_SWAY=$?
 
 do_set_wallpaper() {
+    echo "Set wallpaper to $1"
     if [[ $IS_SWAY == "0" ]]; then
-        pkill swaybg
-        swaybg -i $1 -m fill &
+        swaymsg -s $SWAYSOCK output "*" bg $1 fill
     else
         feh --bg-fill $@
     fi

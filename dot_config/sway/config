@@ -280,9 +280,10 @@ bindsym $mod+Shift+x exec $swaylockcmd
 exec wl-paste -t text --watch clipman store --histpath="~/.cache/clipman.json"
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.cache/clipman.json"
 
-exec --no-startup-id firefox
-exec --no-startup-id element-desktop
 exec --no-startup-id mako
 
 ## External monitor
 #exec_always --no-startup-id ~/bin/display-configuration.sh
+
+# We've arrived at the Sway session, tell systemd that we are done.
+exec systemctl --user start sway-session.target
