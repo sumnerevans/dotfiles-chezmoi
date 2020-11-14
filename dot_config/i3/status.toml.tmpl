@@ -60,13 +60,15 @@ command_on = "nmcli con up id 'Mines VPN'"
 command_off = "nmcli con down id 'Mines VPN'"
 interval = 5
 
+{{- if ne .chezmoi.osRelease.id "nixos" }}
 [[block]]
 block = "toggle"
 text = "WG"
 command_state = "nmcli con show --active | grep 'Wireguard'"
-command_on = "nmcli con up id Wireguard"
-command_off = "nmcli con down id Wireguard"
+command_on = "nmcli con up Wireguard"
+command_off = "nmcli con down Wireguard"
 interval = 5
+{{- end }}
 
 # Ping time
 [[block]]
