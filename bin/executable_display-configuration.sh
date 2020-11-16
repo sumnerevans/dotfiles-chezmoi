@@ -27,10 +27,10 @@ elif [[ $DP2 != "" ]]; then
 elif [[ $DP4 != "" ]]; then
     if [[ $DP0 != "" ]]; then
         # Double monitor set up with Desktop
-        xrandr --output DP-0 --mode 1920x1200 --right-of DP-4 --rotate $ROTATION
+        xrandr --output DP-0 --mode 2560x1440 --right-of DP-4 --rotate $ROTATION
         xrandr --output DP-4 --mode 2560x1440 --rate 144.00 --primary
     else
-        xrandr --output DP-0 --mode 1920x1200 --right-of DP-0 --rotate $ROTATION --primary
+        xrandr --output DP-0 --mode 2560x1440 --right-of DP-0 --rotate $ROTATION --primary
     fi
 elif [[ $DP23 != "" ]]; then
     # External monitor at home (USB-C dock)

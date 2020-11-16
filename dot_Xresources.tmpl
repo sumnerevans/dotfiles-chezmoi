@@ -1,15 +1,19 @@
-! Fonts {{{
+! Fonts \{\{\{
 Xft.antialias:  true
 Xft.hinting:    true
 Xft.rgba:       rgb
 Xft.hintstyle:  hintmedium
-Xft.dpi:        90
+Xft.dpi:        160
 Xft.lcdfilter:  lcddefault
-! }}}
+! \}\}\}
 
 ! Cursor
 Xcursor.theme:                          Breeze
+{{ if eq .chezmoi.hostname "mustafar" }}
+Xcursor.size:                           32
+{{ else }}
 Xcursor.size:                           8
+{{ end }}
 
 ! URxvt
 URxvt*background:                       #202020

@@ -5,5 +5,9 @@ if [[ $(setxkbmap -query | command grep 'variant:') =~ "3l" ]]; then
     setxkbmap us
 else
     echo "Setting to 3l"
+{{ if eq .chezmoi.hostname "mustafar" }}
+    setxkbmap us 3l-cros
+{{ else }}
     setxkbmap us 3l
+{{ end }}
 fi

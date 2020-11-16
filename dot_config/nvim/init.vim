@@ -57,7 +57,6 @@ Plug 'mhinz/vim-signify'                " VCS integration in the gutter
 Plug 'terryma/vim-multiple-cursors'     " Allow multiple cursors
 Plug 'tpope/vim-commentary'             " Easy commenting of lines
 Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
-Plug 'Yggdroot/indentLine'              " Show indentation levels
 
 " Language Support
 " Plug 'Cofyc/vim-uncrustify'             " Auto-formatting for Vala
@@ -250,6 +249,7 @@ set virtualedit=onemore                         " Allow the cursor to go one pas
 " Tabs
 set expandtab                                   " Insert spaces instead of tabs
 set shiftwidth=4                                " 4 is the only way
+set tabstop=8
 
 " Search
 set ignorecase  " ignore case...

@@ -47,7 +47,7 @@ buttons = ["play", "next"]
 buttons = ["prev", "play", "next"]
 {{- end }}
 
-{{ if eq .chezmoi.hostname "jedha" }}
+{{- if or (eq .chezmoi.hostname "jedha") (eq .chezmoi.hostname "mustafar") }}
 [[block]]
 block = "backlight"
 {{ end }}
@@ -60,6 +60,7 @@ command_on = "nmcli con up id 'Mines VPN'"
 command_off = "nmcli con down id 'Mines VPN'"
 interval = 5
 
+{{- if ne .chezmoi.osRelease.id "nixos" }}
 [[block]]
 block = "toggle"
 text = "WG"
@@ -69,10 +70,10 @@ command_on = "systemctl start wg-quick-wg0"
 command_off = "systemctl stop wg-quick-wg0"
 {{- else if eq .chezmoi.hostname "coruscant" }}
 command_state = "nmcli con show --active | grep 'Wireguard'"
-command_on = "nmcli con up id Wireguard"
-command_off = "nmcli con down id Wireguard"
-{{- end }}
+command_on = "nmcli con up Wireguard"
+command_off = "nmcli con down Wireguard"
 interval = 5
+{{- end }}
 
 # Ping time
 [[block]]
@@ -86,6 +87,8 @@ block = "net"
 device = "wlp4s0"
 {{- else if eq .chezmoi.hostname "coruscant" }}
 device = "wlp35s0"
+{{- else if eq .chezmoi.hostname "mustafar" }}
+device = "wlp0s20f3"
 {{- end }}
 ssid = true
 ip = true
@@ -97,6 +100,8 @@ interval = 5
 hide_missing = true
 hide_inactive = true
 
+# Only include the second "net" block if on a computer with two net blocks.
+{{- if or (eq .chezmoi.hostname "jedha") (eq .chezmoi.hostname "coruscant") }}
 [[block]]
 block = "net"
 {{- if eq .chezmoi.hostname "jedha" }}
@@ -112,6 +117,7 @@ graph_up = false
 interval = 5
 hide_missing = true
 hide_inactive = true
+{{- end }}
 
 {{- if eq .chezmoi.hostname "coruscant" }}
 [[block]]
@@ -130,13 +136,15 @@ block = "time"
 format = "%F %R:%S"
 interval = 1
 
-{{ if eq .chezmoi.hostname "jedha" }}
+{{ if ne .chezmoi.hostname "coruscant" }}
 [[block]]
 block = "battery"
 interval = 30
 format = "{percentage}% {time}"
 device = "BAT0"
+{{ end }}
 
+{{- if eq .chezmoi.hostname "jedha" }}
 [[block]]
 block = "battery"
 interval = 30

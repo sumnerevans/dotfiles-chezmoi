@@ -16,7 +16,6 @@ fi
 [[ `uname` == 'Darwin'  ]] && export MACOS=1 || export MACOS=
 
 # Prompt Setup
-autoload -Uz promptinit && promptinit
 setopt prompt_subst
 autoload colors zsh/terminfo
 colors
@@ -159,7 +158,6 @@ setopt correct
 # add custom completion scripts
 fpath=(~/.zsh/completion $fpath)
 
-autoload -U compinit && compinit
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:approximate:' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3 )) numeric)'
@@ -190,7 +188,6 @@ hash -d db=~/Dropbox
 hash -d df=~/.local/share/chezmoi
 hash -d dl=~/Downloads
 hash -d kattis=~/projects/kattis
-hash -d nc=~/Nextcloud
 hash -d no=~/Documents/notes
 hash -d pass=~/.password-store
 hash -d pics=~/Pictures
@@ -198,11 +195,15 @@ hash -d proj=~/projects
 hash -d pres=~doc/presentations
 hash -d sch=~/school
 hash -d st=~/Syncthing
-hash -d tea=~sch/teaching
-hash -d ppl=~tea/pplf20
+hash -d scratch=~/scratch
 hash -d tmp=~/tmp
 hash -d vid=~/Videos
 hash -d yt=~proj/youtube-content
+
+# Teaching
+hash -d tea=~sch/teaching
+hash -d ppl=~tea/pplf20
+hash -d aca=~tea/aca
 
 # Projects
 hash -d hspc=~proj/acm/hspc-problems
@@ -291,6 +292,7 @@ alias journal='vim ~doc/journal/$(date +%Y-%m-%d).rst'
 alias la="ls -a"
 alias ll="ls -lah"
 alias man="MANWIDTH=80 man --nh --nj"
+alias myip="curl 'https://api.ipify.org?format=text' && echo"
 alias ohea='echo "You need to either wake up or go to bed!"'
 [[ "$LINUX" == "1" ]] && alias open='(thunar &> /dev/null &)'
 [[ "$MACOS" == "1" ]] && alias open='open .'
