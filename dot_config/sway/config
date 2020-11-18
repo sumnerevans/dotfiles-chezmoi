@@ -234,6 +234,7 @@ bindsym $mod+c exec clipman pick -t rofi \
 
 # Screenshot
 bindsym $mod+shift+c exec grim -g "$(slurp)" ~/tmp/$(date +%Y-%m-%d-%T).png
+bindsym $mod+shift+ctrl+c exec grim ~/tmp/$(date +%Y-%m-%d-%T).png
 
 # FUNCTION KEYS
 bindsym F6 exec brightnessctl s 5%-

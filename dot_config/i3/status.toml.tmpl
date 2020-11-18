@@ -41,11 +41,11 @@ critical_swap = 95
 [[block]]
 block = "music"
 player = "sublimemusic"
-{{- if eq .chezmoi.hostname "jedha" }}
-buttons = ["play", "next"]
-{{- else if eq .chezmoi.hostname "coruscant" }}
+{{- if eq .chezmoi.hostname "coruscant" }}
 buttons = ["prev", "play", "next"]
-{{- end }}
+{{- else }}
+buttons = ["play", "next"]
+{{ end }}
 
 {{- if or (eq .chezmoi.hostname "jedha") (eq .chezmoi.hostname "mustafar") }}
 [[block]]

@@ -59,7 +59,7 @@ Plug 'tpope/vim-commentary'             " Easy commenting of lines
 Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
 
 " Language Support
-" Plug 'Cofyc/vim-uncrustify'             " Auto-formatting for Vala
+Plug 'Cofyc/vim-uncrustify'             " Auto-formatting for Vala
 Plug 'direnv/direnv.vim'                " Syntax support for .envrc files
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
