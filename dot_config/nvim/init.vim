@@ -91,7 +91,7 @@ let g:coc_global_extensions=[
             \ 'coc-yaml',
             \ ]
 
-set runtimepath^=/home/sumner/projects/coc-vala
+" set runtimepath^=/home/sumner/projects/coc-vala
 
 " VARIABLES
 " =============================================================================
