@@ -69,7 +69,7 @@ call plug#end()
 
 " CoC Extensions
 let g:coc_global_extensions=[
-            \ 'coc-ccls',
+            \ 'coc-clangd',
             \ 'coc-css',
             \ 'coc-dictionary',
             \ 'coc-docker',

@@ -1,6 +1,6 @@
 {
   "coc.preferences.jumpCommand": "tab drop",
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>": [
       "expandable?",
       [
@@ -11,16 +11,16 @@
       "open"
     ]
   },
-  "explorer.file.column.git.icon.added": "✚",
-  "explorer.file.column.git.icon.deleted": "✖",
-  "explorer.file.column.git.icon.renamed": "➜",
-  "explorer.file.column.git.icon.copied": "➜",
-  "explorer.file.column.git.icon.unmerged": "═",
-  "explorer.file.column.git.icon.untracked": "?",
-  "explorer.file.column.git.icon.ignored": "☒",
-  "explorer.file.column.git.icon.mixed": "✹",
-  "explorer.file.column.git.icon.modified": "✹",
-  "explorer.file.column.git.showIgnored": true,
+  "explorer.git.icon.status.added": "✚",
+  "explorer.git.icon.status.deleted": "✖",
+  "explorer.git.icon.status.renamed": "➜",
+  "explorer.git.icon.status.copied": "➜",
+  "explorer.git.icon.status.unmerged": "═",
+  "explorer.git.icon.status.untracked": "?",
+  "explorer.git.icon.status.ignored": "☒",
+  "explorer.git.icon.status.mixed": "✹",
+  "explorer.git.icon.status.modified": "✹",
+  "explorer.git.showIgnored": true,
   "languageserver": {
     "ccls": {
       "command": "ccls",
@@ -45,7 +45,9 @@
     },
     "nix": {
       "command": "rnix-lsp",
-      "filetypes": ["nix"]
+      "filetypes": [
+        "nix"
+      ]
     },
     "racket": {
       "command": "racket",
@@ -60,7 +62,8 @@
     "vala": {
       "command": "vala-language-server",
       "filetypes": [
-        "vala"
+        "vala",
+        "genie"
       ]
     }
   }

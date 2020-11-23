@@ -195,14 +195,17 @@ hash -d pass=~/.password-store
 hash -d pics=~/Pictures
 hash -d proj=~/projects
 hash -d pres=~doc/presentations
-hash -d sch=~/school
 hash -d st=~/Syncthing
-hash -d tea=~sch/teaching
-hash -d ppl=~tea/pplf20
 hash -d scratch=~/scratch
 hash -d tmp=~/tmp
 hash -d vid=~/Videos
 hash -d yt=~proj/youtube-content
+
+# Teaching
+hash -d sch=~/school
+hash -d tea=~sch/teaching
+hash -d aca=~tea/aca
+hash -d ppl=~tea/pplf20
 
 # Projects
 hash -d fl=~proj/flight
@@ -487,7 +490,7 @@ eval "$(direnv hook zsh)"
 
 # Do the thing so rust blows up verbosely
 command -v rustc >/dev/null && export RUST_BACKTRACE=1
-command -v rustc >/dev/null && export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+# command -v rustc >/dev/null && export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # Set fuzzy finder to use fd
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
