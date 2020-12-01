@@ -36,10 +36,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'   " TMUX alt-h,j,k,l integration
 
 " Themes
-Plug 'dracula/vim'
-Plug 'joshdick/onedark.vim'
 Plug 'lanox/lanox-vim-theme'
 Plug 'mhartington/oceanic-next'
+Plug 'rakr/vim-one'
 Plug 'ryanoasis/vim-devicons'           " Fancy icons
 
 " UI Chrome
@@ -103,11 +102,15 @@ let $PLUGIN_CONFIG_ROOT = '$HOME/.config/nvim/plugin_configs'
 if ($TERM == 'xterm-256color' || $TERM == 'screen-256color') && !has('gui_running')
     set termguicolors
 endif
-colorscheme OceanicNext
-" set background=dark
+colorscheme one
+let g:airline_theme='one'
 
-highlight NonText ctermfg=DarkRed guifg=#aa3333 ctermfg=Grey guibg=#1b2b34
-" highlight Comment ctermfg=74 guifg=#6a6a6a
+if strftime("%H") >= 7 && strftime("%H") < 17
+  set background=light
+else
+  set background=dark
+endif
+
 " TODO: find color is a bit bright
 
 " Highlight past 100 characters

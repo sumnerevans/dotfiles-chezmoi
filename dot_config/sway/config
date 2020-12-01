@@ -63,9 +63,6 @@ input 1:1:AT_Translated_Set_2_keyboard {
 # Don't scroll so fast
 input 1739:52731:Synaptics_TM3579-001 scroll_factor 0.75
 
-# Handle the touchscreen
-input 11551:157:WCOM50C1:00_2D1F:009D map_to_output eDP-1
-
 # UI Chrome
 # =============================================================================
 
