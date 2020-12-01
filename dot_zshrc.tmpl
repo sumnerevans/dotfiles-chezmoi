@@ -15,9 +15,9 @@ fi
 [[ `uname` == 'Linux'  ]] && export LINUX=1 || export LINUX=
 [[ `uname` == 'Darwin'  ]] && export MACOS=1 || export MACOS=
 
+{{- if ne .chezmoi.osRelease.id "nixos" }}
 # prompt and comp init (don't need this on NixOS because it's already done in
 # /etc/zshrc)
-{{- if ne .chezmoi.osRelease.id "nixos" }}
 autoload -Uz promptinit && promptinit
 autoload -U compinit && compinit
 {{- end }}
