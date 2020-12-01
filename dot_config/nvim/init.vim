@@ -36,10 +36,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'   " TMUX alt-h,j,k,l integration
 
 " Themes
-Plug 'dracula/vim'
-Plug 'joshdick/onedark.vim'
 Plug 'lanox/lanox-vim-theme'
 Plug 'mhartington/oceanic-next'
+Plug 'rakr/vim-one'
 Plug 'ryanoasis/vim-devicons'           " Fancy icons
 
 " UI Chrome
@@ -59,7 +58,7 @@ Plug 'tpope/vim-commentary'             " Easy commenting of lines
 Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
 
 " Language Support
-" Plug 'Cofyc/vim-uncrustify'             " Auto-formatting for Vala
+Plug 'Cofyc/vim-uncrustify'             " Auto-formatting for Vala
 Plug 'direnv/direnv.vim'                " Syntax support for .envrc files
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -91,26 +90,27 @@ let g:coc_global_extensions=[
             \ 'coc-yaml',
             \ ]
 
-set runtimepath^=/home/sumner/projects/coc-vala
+" set runtimepath^=/home/sumner/projects/coc-vala
 
 " VARIABLES
 " =============================================================================
 let s:os = system('uname -s')
 let $PLUGIN_CONFIG_ROOT = '$HOME/.config/nvim/plugin_configs'
 
-" Always use the Python from the ~/.local/share/nvim/virtualenv
-" let g:python3_host_prog = '/home/sumner/.local/share/nvim/virtualenv/.venv/bin/python'
-
 " THEME
 " =============================================================================
 if ($TERM == 'xterm-256color' || $TERM == 'screen-256color') && !has('gui_running')
     set termguicolors
 endif
-colorscheme OceanicNext
-" set background=dark
+colorscheme one
+let g:airline_theme='one'
 
-highlight NonText ctermfg=DarkRed guifg=#aa3333 ctermfg=Grey guibg=#1b2b34
-" highlight Comment ctermfg=74 guifg=#6a6a6a
+if strftime("%H") >= 7 && strftime("%H") < 17
+  set background=light
+else
+  set background=dark
+endif
+
 " TODO: find color is a bit bright
 
 " Highlight past 100 characters
@@ -144,7 +144,7 @@ let g:ctrlsf_winsize = '70%'
 let g:EditorConfig_preserve_formatoptions = 1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" FZF Preview (junegunn/fzf.vim)
+" FZF (junegunn/fzf.vim)
 nnoremap <C-p> :Files<CR>
 let g:fzf_preview_window = 'right:60%'
 
@@ -327,7 +327,7 @@ autocmd BufRead $HOME/tmp/mutt-*,$HOME/.local/share/chezmoi/dot_mutt/quotes setl
 autocmd BufRead $HOME/tmp/mutt-*,$HOME/.local/share/chezmoi/dot_mutt/quotes match Over100Length /\%73v.\+/
 
 " Use TAB = 2 spaces for a few file types
-autocmd FileType javascript,json,xhtml,html,htmldjango,scss,less,yaml,css,markdown,rst,lisp setlocal shiftwidth=2
+autocmd FileType javascript,json,xhtml,html,htmldjango,scss,less,yaml,css,markdown,rst,lisp,nix setlocal shiftwidth=2
 
 " Make spelling a top level syntax element
 autocmd FileType * syntax spell toplevel

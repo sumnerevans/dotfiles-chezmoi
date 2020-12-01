@@ -1,5 +1,7 @@
 #! /usr/bin/env sh
 
+set -x
+
 # THE FUNCTION TO CALL
 TYPE="mojave_dynamic"
 # TYPE="catalina_dynamic"
@@ -18,6 +20,15 @@ TMP_WP="$HOME/tmp/wallpaper.jpg"
 
 pgrep sway > /dev/null
 IS_SWAY=$?
+
+do_set_wallpaper() {
+    echo "Set wallpaper to $1"
+    if [[ $IS_SWAY == "0" ]]; then
+        swaymsg -s $SWAYSOCK output "*" bg $1 fill
+    else
+        feh --bg-fill $@
+    fi
+}
 
 mojave_dynamic() {
     h=$(date '+%H')
@@ -96,7 +107,7 @@ mojave_dynamic() {
                   $TMP_WP
     fi
 
-    feh --bg-fill "$TMP_WP"
+    do_set_wallpaper $TMP_WP
 }
 
 catalina_dynamic() {
@@ -168,7 +179,7 @@ catalina_dynamic() {
                   $TMP_WP
     fi
 
-    feh --bg-fill "$TMP_WP"
+    do_set_wallpaper $TMP_WP
 }
 
 die () {
@@ -204,7 +215,7 @@ random_bg () {
     f1=$(head -1 $FILE)
     f2=$(sed "2q;d" $FILE)
     echo "Setting $f1 $f2 as backgrounds"
-    feh --bg-fill $f1 $f2
+    do_set_wallpaper $f1 $f2
 
     if [[ "$2" == "--generate-lock-image" ]]; then
         # Resize the lock image

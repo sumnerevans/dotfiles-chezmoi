@@ -15,8 +15,14 @@ fi
 [[ `uname` == 'Linux'  ]] && export LINUX=1 || export LINUX=
 [[ `uname` == 'Darwin'  ]] && export MACOS=1 || export MACOS=
 
-# Prompt Setup
+# prompt and comp init (don't need this on NixOS because it's already done in
+# /etc/zshrc)
+{{- if ne .chezmoi.osRelease.id "nixos" }}
 autoload -Uz promptinit && promptinit
+autoload -U compinit && compinit
+{{- end }}
+
+# Prompt Setup
 setopt prompt_subst
 autoload colors zsh/terminfo
 colors
@@ -159,7 +165,6 @@ setopt correct
 # add custom completion scripts
 fpath=(~/.zsh/completion $fpath)
 
-autoload -U compinit && compinit
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:approximate:' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3 )) numeric)'
@@ -208,14 +213,11 @@ hash -d aca=~tea/aca
 hash -d ppl=~tea/pplf20
 
 # Projects
-hash -d fl=~proj/flight
-hash -d gchal=~proj/google-challenge
 hash -d hspc=~proj/acm/hspc-problems
 hash -d infra=~proj/infrastructure
 hash -d res=~proj/resume
 hash -d sub=~proj/sublime-music/sublime-music
 hash -d sws=~proj/sumnerevans.com
-hash -d tef=~proj/the-evans.family
 hash -d tt=~proj/tracktime
 hash -d vis=~proj/acm/visplay
 
@@ -486,7 +488,7 @@ test -r /home/sumner/.opam/opam-init/init.zsh && . /home/sumner/.opam/opam-init/
 command -v opam >/dev/null && eval $(opam env)
 
 # Direnv
-eval "$(direnv hook zsh)"
+command -v direnv >/dev/null && eval "$(direnv hook zsh)"
 
 # Do the thing so rust blows up verbosely
 command -v rustc >/dev/null && export RUST_BACKTRACE=1
@@ -504,6 +506,8 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l | grep "The agent has no identities" && ssh-add
 
 echo "$(tput bold)======================================================================$(tput sgr 0)"
+
+# Show my calendar
 command -v khal >/dev/null && khal calendar
 
 # Notify me if I haven't written in my journal for the day.
@@ -511,5 +515,7 @@ if [[ ! -f ~doc/journal/$(date +%Y-%m-%d).rst ]]; then
     echo "\n$(tput bold)Make sure to write in your journal today.$(tput sgr 0)"
 fi
 
+# Show a quote
 command -v fortune >/dev/null && echo && fortune ~/.mutt/quotes
+
 echo "$(tput bold)======================================================================$(tput sgr 0)"

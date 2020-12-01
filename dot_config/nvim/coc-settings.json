@@ -20,6 +20,7 @@
   "explorer.git.icon.status.ignored": "☒",
   "explorer.git.icon.status.mixed": "✹",
   "explorer.git.icon.status.modified": "✹",
+  "explorer.icon.enableNerdfont": true,
   "explorer.git.showIgnored": true,
   "languageserver": {
     "ccls": {

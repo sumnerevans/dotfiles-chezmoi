@@ -1,8 +1,0 @@
-[Unit]
-Description=Set wallpaper
-
-[Service]
-ExecStart=/home/sumner/bin/set_wallpaper.sh
-
-[Install]
-WantedBy=default.target
