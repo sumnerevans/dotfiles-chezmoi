@@ -325,15 +325,27 @@ done
 function chpwd() {
     emulate -L zsh
 
-    # Automatically list directory contents.
-    la
-
     # Fetch if this is a Git repo.
     [[ -d .git ]] || git rev-parse --git-dir > /dev/null 2>&1
     if [[ "$?" == "0" ]]; then
         echo -e "Fetching from git in the background..."
         (git fetch 2&>/dev/null &)
     fi
+
+    export __zsh_chpwd_just_happened=1
+}
+
+# Run right before the prompt.
+function precmd() {
+    # Run the $POST_CD_COMMAND if it exists.
+    if [[ "$__zsh_chpwd_just_happened" == "1" ]]; then
+        # Automatically list directory contents.
+        la
+
+        # Run the post-cd command if it exists
+        [[ ! -z "$POST_CD_COMMAND" ]] && $POST_CD_COMMAND
+    fi
+    unset __zsh_chpwd_just_happened
 }
 
 # "delete" files (use ~/tmp as a recycle bin)

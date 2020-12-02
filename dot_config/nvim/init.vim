@@ -124,7 +124,7 @@ match Over100Length /\%101v.\+/
 " Vim Rooter (airblade/vim-rooter)
 let g:rooter_patterns = [
             \'.rooter_root',
-            \'.git/',
+            \'.git',
             \]
 
 " CtrlSF (dyng/ctrlsf.vim)

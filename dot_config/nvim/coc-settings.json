@@ -11,6 +11,12 @@
       "open"
     ]
   },
+  "coc.preferences.rootPatterns": [
+    ".rooter_root",
+    ".git",
+    ".hg",
+    ".projections.json"
+  ],
   "explorer.git.icon.status.added": "✚",
   "explorer.git.icon.status.deleted": "✖",
   "explorer.git.icon.status.renamed": "➜",
