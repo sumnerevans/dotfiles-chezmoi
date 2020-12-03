@@ -69,6 +69,13 @@ input 1:1:AT_Translated_Set_2_keyboard {
 # Don't scroll so fast
 input 1739:52731:Synaptics_TM3579-001 scroll_factor 0.75
 
+# Map the inputs so rotation works.
+input 11551:157:WCOM50C1:00_2D1F:009D map_to_output eDP-1
+input 0:0:Elan_Touchscreen map_to_output eDP-1
+
+bindswitch tablet:on exec swaymsg output eDP-1 transform 180
+bindswitch tablet:off exec swaymsg output eDP-1 transform 0
+
 # UI Chrome
 # =============================================================================
 
