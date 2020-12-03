@@ -230,7 +230,12 @@ xmap <C-S-F> <Plug>(coc-format-selected)
 nmap <C-S-F> <Plug>(coc-format)
 
 " CoC Explorer
-map <S-T> :CocCommand explorer<CR>
+function! CocExploreCwd()
+    let cwd = substitute(execute(":pwd"), '\n', '', '')
+    exe 'CocCommand explorer ' . cwd
+endfunction
+map <S-T> :call CocExploreCwd()<CR>
+
 
 " Markdown Preview (iamcco/markdown-preview.nvim)
 let g:mkdp_auto_close = 0

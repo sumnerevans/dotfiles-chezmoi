@@ -17,6 +17,7 @@
     ".hg",
     ".projections.json"
   ],
+  "explorer.file.showHiddenFiles": true,
   "explorer.git.icon.status.added": "✚",
   "explorer.git.icon.status.deleted": "✖",
   "explorer.git.icon.status.renamed": "➜",
