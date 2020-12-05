@@ -102,6 +102,7 @@ let $PLUGIN_CONFIG_ROOT = '$HOME/.config/nvim/plugin_configs'
 if ($TERM == 'xterm-256color' || $TERM == 'screen-256color') && !has('gui_running')
     set termguicolors
 endif
+
 colorscheme one
 let g:airline_theme='one'
 
@@ -110,8 +111,6 @@ if strftime("%H") >= 7 && strftime("%H") < 17
 else
   set background=dark
 endif
-
-" TODO: find color is a bit bright
 
 " Highlight past 100 characters
 highlight Over100Length ctermbg=red ctermfg=white guibg=#BD4F4F guifg=#cccccc
@@ -242,21 +241,21 @@ let g:mkdp_auto_close = 0
 
 " VIM SETTINGS
 " =============================================================================
-set colorcolumn=80,100,120                      " Column guides
-set hidden                                      " Don't close when switching buffers
-set list listchars=tab:\▶\ ,trail:␣,nbsp:␣      " Highlight unwanted whitespace
-set mouse=a                                     " Enable mouse scrolling
-set number                                      " Show the current line number
-set pastetoggle=<F2>                            " Make C-S-V paste work better
-set scrolloff=5                                 " Always have 5 lines above/below the current line
+set colorcolumn=80,100,120                              " Column guides
+set hidden                                              " Don't close when switching buffers
+set list listchars=tab:\▶\ ,trail:·,nbsp:·,space:·      " Highlight whitespace
+set mouse=a                                             " Enable mouse scrolling
+set number                                              " Show the current line number
+set pastetoggle=<F2>                                    " Make C-S-V paste work better
+set scrolloff=5                                         " Always have 5 lines above/below the current line
 set showbreak=↩\ 
-set signcolumn=yes                              " Always show the sign column for git gutter
-set title                                       " Override the terminal title
-set virtualedit=onemore                         " Allow the cursor to go one past the EOL
+set signcolumn=yes                                      " Always show the sign column for git gutter
+set title                                               " Override the terminal title
+set virtualedit=onemore                                 " Allow the cursor to go one past the EOL
 
 " Tabs
-set expandtab                                   " Insert spaces instead of tabs
-set shiftwidth=4                                " 4 is the only way
+set expandtab                                           " Insert spaces instead of tabs
+set shiftwidth=4                                        " 4 is the only way
 set tabstop=8
 
 " Search
