@@ -81,7 +81,7 @@ let g:coc_global_extensions=[
             \ 'coc-lists',
             \ 'coc-marketplace',
             \ 'coc-omnisharp',
-            \ 'coc-python',
+            \ 'coc-pyright',
             \ 'coc-rust-analyzer',
             \ 'coc-sh',
             \ 'coc-texlab',
