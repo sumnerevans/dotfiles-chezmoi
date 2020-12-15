@@ -1,7 +1,6 @@
 .virtualenv
 .ropeproject
 .style.yapf
-*.vim-template:*
 .stylelintrc
 ctrlp-root
 .rooter_root
