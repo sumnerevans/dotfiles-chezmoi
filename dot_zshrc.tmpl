@@ -315,7 +315,7 @@ alias zathura=$PDFVIEWER
 command -v nvim >/dev/null && alias realvim='command vim' && alias vim='nvim'
 
 # Making GNU fileutils more verbose
-for c in cp rm chmod chown rename; do
+for c in cp mv rm chmod chown rename; do
     alias $c="$c -v"
 done
 
