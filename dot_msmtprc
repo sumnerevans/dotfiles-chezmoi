@@ -28,10 +28,10 @@ user sumner@the-evans.family
 passwordeval "pass Mail/the-evans.family | head -n 1"
 
 account mines
-host smtp.gmail.com
+host smtp.mines.edu
 port 587
-from jonathanevans@mymail.mines.edu
-user jonathanevans@mymail.mines.edu
-passwordeval "pass Mail/Offlineimap/Mines | head -n 1"
+from jonathanevans@mines.edu
+user jonathanevans
+passwordeval "pass School/Mines/MultiPass | head -n 1"
 
 account default : personal
