@@ -106,11 +106,11 @@ endif
 colorscheme one
 let g:airline_theme='one'
 
-if strftime("%H") >= 7 && strftime("%H") < 17
-  set background=light
-else
+" if strftime("%H") >= 7 && strftime("%H") < 17
+"   set background=light
+" else
   set background=dark
-endif
+" endif
 
 " Highlight past 100 characters
 highlight Over100Length ctermbg=red ctermfg=white guibg=#BD4F4F guifg=#cccccc
