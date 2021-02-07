@@ -6,9 +6,17 @@
 [core]
     editor = nvim
     excludesfile = ~/.gitignore_global
+    pager = "delta"
+
+[delta]
+    features = "side-by-side"
 
 [diff]
     tool = kdiff3
+    colorMoved = "default"
+
+[interactive]
+    diffFilter = "delta --color-only"
 
 [merge]
     tool = kdiff3
