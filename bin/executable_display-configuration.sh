@@ -9,7 +9,7 @@ ROTATION="normal"
 
 DP0=$(xrandr | grep '^DP-0 connected')
 DP1=$(xrandr | grep '^DP1 connected')
-DP2=$(xrandr | grep '^DP2 connected')
+DP2=$(xrandr | grep '^DP-2 connected')
 DP4=$(xrandr | grep '^DP4 connected')
 DP23=$(xrandr | grep '^DP2-3 connected')
 DP13=$(xrandr | grep '^DP1-3 connected')
@@ -19,7 +19,12 @@ HDMI2=$(xrandr | grep '^HDMI2 connected')
 # Desktop
 DP4=$(xrandr | grep 'DP-4 connected')
 
-if [[ $DP1 != "" ]]; then
+if [[ $DP0 != "" && $DP2 != "" && $DP4 != "" ]]; then
+    # Tripple monitor set up with Desktop
+    xrandr --output DP-0 --mode 2560x1440 --rate 144.00 --primary
+    xrandr --output DP-4 --mode 2560x1440 --right-of DP-0 --rotate $ROTATION
+    xrandr --output DP-2 --mode 1920x1200 --right-of DP-4 --rotate "left"
+elif [[ $DP1 != "" ]]; then
     # External monitor at home
     xrandr --output DP1 --mode 1920x1200 --right-of eDP1 --rotate $ROTATION
 elif [[ $DP2 != "" ]]; then

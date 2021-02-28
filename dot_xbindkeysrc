@@ -59,6 +59,3 @@
 # Print Screen
 "scrot '%Y-%m-%d-%T.png' -e 'mv $f ~/tmp'"
     Print
-
-"/home/sumner/bin/toggle-layout.sh"
-    m:0x0 + c:51
