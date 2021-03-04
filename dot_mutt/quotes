@@ -1193,5 +1193,11 @@ clear about that.
 Could a sword [decapitate somebody]? Yeah, you could do it if you were
 fighting an army of naked people.
     -- Mike Loades (Military Historian Breaks Down Medieval Weapons in
-                    Video Games | WIRED)
+       Video Games | WIRED)
+%
+[Unit testing is] no silver bullet: your software is not going to crash
+and burn if you don’t write your tests first, and the presence of tests
+alone does not mean you won't have maintainability issues.
+    -- Roberta Arcoverde and Ryan Donovan (Best practices can slow your
+    application down. The StackOverflow Blog)
 %
