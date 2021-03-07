@@ -30,8 +30,10 @@ customer_addresses:
 customer_aliases:
   TTD: The Trade Desk
   Tracy Camp: Dr. Tracy Camp
+{{- if false }}
 external_synchroniser_files:
   jira: /home/sumner/projects/tracktime/examples/jira_selenium_chrome.py
+{{- end}}
 {{- if eq .chezmoi.osRelease.id "nixos" }}
 # Needed so that the synchroniser can find the Chrome binary.
 chromedriver:

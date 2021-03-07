@@ -20,6 +20,8 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
+let g:ale_disable_lsp = 1
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Project Navigation and Configuration
@@ -61,6 +63,7 @@ Plug 'tpope/vim-surround'               " Manipulate surrounding delimiters
 Plug 'Cofyc/vim-uncrustify'             " Auto-formatting for Vala
 Plug 'direnv/direnv.vim'                " Syntax support for .envrc files
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'             " Syntax support for basically all of the languages
 
@@ -195,6 +198,16 @@ let g:indentLine_char = '┊'
 let g:indentLine_fileTypeExclude = ['markdown']
 
 " Language Support ------------------------------------------------------------
+" ALE - Linting
+let g:ale_open_list = 1                 " Auto open the error list
+let g:ale_completion_enabled = 1        " Enable completion
+let g:ale_set_loclist = 0               " Limit the size of the ALE output to 5 lines
+let g:ale_set_quickfix = 1              " Limit the size of the ALE output to 5 lines
+let g:ale_list_window_size = 5          " Limit the size of the ALE output to 5 lines
+let g:ale_sign_error = '✖'              " Consistent sign column with Language Client
+let g:ale_sign_warning = '⚠'
+let g:ale_sign_info = '➤'
+
 " CoC (neoclide/coc.nvim)
 set updatetime=300
 set shortmess+=c
@@ -252,6 +265,7 @@ set showbreak=↩\
 set signcolumn=yes                                      " Always show the sign column for git gutter
 set title                                               " Override the terminal title
 set virtualedit=onemore                                 " Allow the cursor to go one past the EOL
+set nojoinspaces                                        " One space after period when doing gq
 
 " Tabs
 set expandtab                                           " Insert spaces instead of tabs

@@ -1,4 +1,5 @@
 {
+  "diagnostic.displayByAle": true,
   "coc.preferences.jumpCommand": "tab drop",
   "explorer.keyMappings.global": {
     "<cr>": [
