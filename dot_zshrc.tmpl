@@ -1,5 +1,9 @@
 # vim: ft=zsh
 
+{{- if eq .chezmoi.osRelease.id "nixos" }}
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+{{- end }}
+
 # If inside of an SSH session, run tmux.
 if [[ -n $SSH_CONNECTION ]]; then
     if command -v tmux &> /dev/null &&
