@@ -3,4 +3,4 @@
 # Completion for my shell function to retrieve .gitignore files from
 # http://gitignore.io/
 
-_arguments '*:Ignore Type:($(curl -s https://www.gitignore.io/api/list | sed "s/,/ /g"))'
+_arguments '*:Ignore Type:($(curl -s https://www.toptal.com/developers/gitignore/api/list | sed "s/,/ /g"))'
