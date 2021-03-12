@@ -15,6 +15,4 @@ macro index d \
     "<save-message>+Gmail/[Gmail]/Trash<enter>" \
     "move message to the trash"
 
-macro index gd "<delete-message>" "delete the mesage permanently"
-
 macro index y "<save-message>+Gmail/[Gmail]/All Mail<enter>" "Archive"

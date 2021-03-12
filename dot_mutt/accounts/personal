@@ -15,6 +15,4 @@ macro index d \
     "<save-message>+Personal/Trash<enter>" \
     "move message to the trash"
 
-macro index gd "<delete-message>" "delete the mesage permanently"
-
 macro index y "<save-message>+Personal/Archive<enter>" "Archive"
