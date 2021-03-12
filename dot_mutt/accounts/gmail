@@ -1,7 +1,7 @@
 # vim: ft=muttrc
 set realname  = "Sumner Evans"
 set from      = "Sumner Evans <sumner.evans98@gmail.com>"
-set sendmail  = "offlinemsmtp -a gmail"
+set sendmail  = "offlinemsmtp -a Gmail"
 set mbox      = "+Gmail/[Gmail]/All Mail"
 set postponed = "+Gmail/[Gmail]/Drafts"
 set record    = "+Gmail/[Gmail]/Sent Mail"

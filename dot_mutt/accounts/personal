@@ -1,7 +1,7 @@
 # vim: ft=muttrc
 set realname  = "Sumner Evans"
 set from      = "Sumner Evans <me@sumnerevans.com>"
-set sendmail  = "offlinemsmtp -a personal"
+set sendmail  = "offlinemsmtp -a Personal"
 set mbox      = "+Personal/Archive"
 set postponed = "+Personal/Drafts"
 set record    = "+Personal/Sent"
