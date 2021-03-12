@@ -1,5 +1,18 @@
 # Sumner's Dotfiles
 
+```
+.----------------------------------------------------------------------------.
+|                             DEPRECATION WARNING                            |
+|                                                                            |
+| I am in the process of migrating all of my configuration over to Nix Home  |
+| Manager. I am still using these configurations for some things, but not    |
+| everything is maintained here anymore.                                     |
+|                                                                            |
+| You can find my home manager configuration repository here:                |
+| https://git.sr.ht/~sumner/home-manager-config                              |
+'----------------------------------------------------------------------------'
+```
+
 See my [notes from a LUG presentation I gave on 2020-09-10](https://git.sr.ht/~sumner/dotfiles/tree/master/LUG_NOTES.md)
 
 My dotfiles are managed by [chezmoi](https://github.com/twpayne/chezmoi/).
