@@ -293,7 +293,7 @@ function! AdjustWindowHeight(minheight, maxheight)
 endfunction
 
 " Shortcuts (for the things I type a lot in insert mode) ----------------------
-source $HOME/.vim/shortcuts
+source $HOME/.config/nvim/shortcuts
 
 " Clipboard (use system keyboard) ---------------------------------------------
 if s:os ==# "Linux\n"
