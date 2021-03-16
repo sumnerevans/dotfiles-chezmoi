@@ -5,6 +5,7 @@ import pathlib
 import re
 import sys
 from datetime import datetime
+from functools import lru_cache
 
 import pytz
 from dateutil import parser
@@ -14,6 +15,7 @@ email_re = re.compile('<mailto:(.*?)>')
 url_re = re.compile(r'(https?://[^\s]*)')
 
 
+@lru_cache(maxsize=None)
 def create_url_verify_page(url):
     tmp_dir = pathlib.Path(os.path.expanduser('~/tmp/mdf/'))
     tmp_dir.mkdir(parents=True, exist_ok=True)
@@ -88,7 +90,9 @@ for line in sys.stdin.readlines():
         # Create a HTML page that has a link to the actual URL, and give a
         # local address instead of a long URL.
         for url in url_re.findall(line):
-            if len(url) > 60:
-                line = line.replace(url, create_url_verify_page(url))
+            if len(url) > 30:
+                url_verify_page_filename = create_url_verify_page(url)
+                if len(url_verify_page_filename) < len(url):
+                    line = line.replace(url, url_verify_page_filename)
 
     print(line, end='')
