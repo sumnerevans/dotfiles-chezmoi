@@ -1,9 +1,0 @@
-#! /usr/bin/env bash
-
-# If it's on the headphones, toggle to speakers. Otherwise, toggle to the
-# headphones by default.
-if [[ $(~/bin/current_audio_device) =~ "Family 17h (Models 00h-0fh)" ]]; then
-    ~/bin/change_audio_sink.sh 'PCM2704 16-bit stereo audio'
-else
-    ~/bin/change_audio_sink.sh 'Family 17h \(Models 00h-0fh\)'
-fi

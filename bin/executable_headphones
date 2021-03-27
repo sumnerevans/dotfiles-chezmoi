@@ -1,3 +1,0 @@
-#! /usr/bin/env sh
-
-~/bin/change_audio_sink.sh 'Family 17h \(Models 00h-0fh\)'
