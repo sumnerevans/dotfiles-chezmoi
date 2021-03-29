@@ -1,2 +1,0 @@
-poetry install
-source .venv/bin/activate

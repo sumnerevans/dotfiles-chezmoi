@@ -1,7 +1,0 @@
-{
-    "pacmanbin": "pacman",
-    "pacmanconf": "/etc/pacman.conf",
-    "sudoloop": true,
-    "timeupdate": false,
-    "devel": true
-}
